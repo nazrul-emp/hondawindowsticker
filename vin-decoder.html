@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Honda Window Sticker - Retrieve Your Factory Monroney Label</title>
-  <meta name="description" content="Retrieve your original Honda factory window sticker (Monroney label) by VIN. See MSRP, factory options, MPG, trim, and more. Instant PDF download.">
+  <title>Honda VIN Decoder - Decode Any Honda VIN Instantly</title>
+  <meta name="description" content="Free Honda VIN decoder. Enter your 17-character VIN to reveal model year, engine, transmission, trim, assembly plant, and more.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -31,26 +31,27 @@
     .detail__features li { display:flex; align-items:flex-start; gap:10px; font-size:14px; color:var(--text-secondary) }
     .detail__features li::before { content:''; width:6px; height:6px; background:var(--primary); border-radius:50%; flex-shrink:0; margin-top:7px }
     .detail__icon-wrap { width:80px; height:80px; display:flex; align-items:center; justify-content:center; background:rgba(243,4,21,.08); border-radius:20px }
-    .detail-sticker { background:#fff; border:1px solid var(--border); border-radius:var(--radius-lg); padding:24px; max-width:400px; width:100%; box-shadow:var(--shadow-md) }
-    .detail-sticker__header { background:var(--primary); color:#fff; padding:10px 16px; display:flex; justify-content:space-between; font-size:12px; font-weight:700; font-family:var(--font-heading); border-radius:8px 8px 0 0; letter-spacing:.04em }
-    .detail-sticker__body { padding:16px 0 }
-    .detail-sticker__row { display:flex; justify-content:space-between; padding:7px 0; border-bottom:1px solid var(--border); font-size:13px }
-    .detail-sticker__row:last-child { border-bottom:none }
-    .detail-sticker__row span:first-child { color:var(--text-secondary); font-weight:500 }
-    .detail-sticker__row span:last-child { font-weight:600; color:var(--text) }
+    .detail-card { background:#fff; border:1px solid var(--border); border-radius:var(--radius-lg); padding:24px; max-width:400px; width:100%; box-shadow:var(--shadow-md) }
+    .detail-card__header { background:var(--text); color:#fff; padding:10px 16px; display:flex; justify-content:space-between; font-size:12px; font-weight:700; font-family:var(--font-heading); border-radius:8px 8px 0 0; letter-spacing:.04em }
+    .detail-card__body { padding:16px 0 }
+    .detail-card__row { display:flex; justify-content:space-between; padding:7px 0; border-bottom:1px solid var(--border); font-size:13px }
+    .detail-card__row:last-child { border-bottom:none }
+    .detail-card__row span:first-child { color:var(--text-secondary); font-weight:500 }
+    .detail-card__row span:last-child { font-weight:600; color:var(--text) }
     .detail-steps { display:flex; gap:24px; margin-top:24px }
     .detail-step { flex:1; text-align:center; padding:20px; background:var(--card); border:1px solid var(--border); border-radius:var(--radius-md) }
     .detail-step__num { width:36px; height:36px; display:flex; align-items:center; justify-content:center; background:var(--primary); color:#fff; font-family:var(--font-heading); font-size:16px; font-weight:700; border-radius:50%; margin:0 auto 12px }
     .detail-step__title { font-family:var(--font-heading); font-size:14px; font-weight:700; color:var(--text); margin-bottom:6px }
     .detail-step__desc { font-size:13px; color:var(--text-secondary); line-height:1.5 }
     .sample-section { padding:80px 0; background:var(--bg-alt); text-align:center }
-    .sample-sticker { display:inline-block; background:#fff; border:1px solid var(--border); border-radius:var(--radius-lg); padding:32px; max-width:500px; width:100%; text-align:left; box-shadow:var(--shadow-md) }
-    .sample-sticker__header { background:var(--primary); color:#fff; padding:12px 20px; display:flex; justify-content:space-between; font-size:13px; font-weight:700; font-family:var(--font-heading); border-radius:8px 8px 0 0; letter-spacing:.04em }
-    .sample-sticker__body { padding:20px 0 }
-    .sample-sticker__row { display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid var(--border); font-size:14px }
-    .sample-sticker__row:last-child { border-bottom:none }
-    .sample-sticker__row span:first-child { color:var(--text-secondary); font-weight:500 }
-    .sample-sticker__row span:last-child { font-weight:600; color:var(--text) }
+    .sample-card { display:inline-block; background:#fff; border:1px solid var(--border); border-radius:var(--radius-lg); padding:32px; max-width:520px; width:100%; text-align:left; box-shadow:var(--shadow-md) }
+    .sample-card__header { background:var(--text); color:#fff; padding:12px 20px; display:flex; justify-content:space-between; font-size:13px; font-weight:700; font-family:var(--font-heading); border-radius:8px 8px 0 0; letter-spacing:.04em }
+    .sample-card__body { padding:20px 0 }
+    .sample-card__row { display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid var(--border); font-size:14px }
+    .sample-card__row:last-child { border-bottom:none }
+    .sample-card__row span:first-child { color:var(--text-secondary); font-weight:500 }
+    .sample-card__row span:last-child { font-weight:600; color:var(--text) }
+    .sample-card__note { padding:12px 20px; background:#F7F8FA; border-top:1px solid var(--border); font-size:12px; color:var(--text-secondary); text-align:left }
     @media (max-width:768px) {
       .detail__grid { grid-template-columns:1fr; gap:32px }
       .detail:nth-child(even) .detail__content { order:0 }
@@ -157,109 +158,64 @@
       <span></span><span></span>
     </div>
     <div class="container fade-up">
-      <span class="hero__badge" style="background:#E9ECF8;color:#264BBF">Window Sticker</span>
-      <h1 class="page-hero__title">Original Honda Factory Window Sticker</h1>
-      <p class="page-hero__desc">Retrieve the exact Monroney label that came with your Honda when it was sold new. Sourced directly from Honda's factory database.</p>
+      <span class="hero__badge" style="background:#E9ECF8;color:#264BBF">VIN Decoder</span>
+      <h1 class="page-hero__title">Decode Any Honda VIN Instantly</h1>
+      <p class="page-hero__desc">Enter your 17-character VIN and reveal the model year, engine, transmission, trim level, assembly plant, and more — directly from Honda factory data.</p>
     </div>
   </section>
 
-  <!-- WHAT IS A WINDOW STICKER -->
+  <!-- WHAT IS A VIN -->
   <section class="detail" id="about">
     <div class="container">
       <div class="detail__grid fade-up">
         <div class="detail__content">
           <span class="detail__tag">What Is It</span>
-          <h2 class="detail__title">The Monroney Label Explained</h2>
-          <p class="detail__desc">The window sticker — officially called a Monroney label — is a federally required document affixed to every new vehicle sold in the United States. It's your vehicle's birth certificate, showing exactly what it contained when it left the factory.</p>
+          <h2 class="detail__title">The 17-Character Vehicle ID</h2>
+          <p class="detail__desc">Your Vehicle Identification Number (VIN) is a unique 17-character code that identifies your Honda — the year it was made, the model, the engine, where it was built, and its exact production sequence.</p>
           <ul class="detail__features">
-            <li>Manufacturer's Suggested Retail Price (MSRP)</li>
-            <li>Factory-installed options and packages</li>
-            <li>EPA fuel economy estimates (city/highway/combined)</li>
-            <li>Standard equipment and safety features</li>
-            <li>Destination and delivery charges</li>
-            <li>Warranty information</li>
+            <li>WMI (1-3): Manufacturer and country of origin</li>
+            <li>VDS (4-8): Body style, model line, and engine</li>
+            <li>Check digit (9): Validates the entire VIN</li>
+            <li>Model year (10) and assembly plant (11)</li>
+            <li>VIS (12-17): Sequential production number</li>
+            <li>100% accurate decoding from factory records</li>
           </ul>
         </div>
         <div class="detail__visual">
-          <div class="detail__icon-wrap">
-            <svg width="36" height="36" viewBox="0 0 28 28" fill="none"><rect x="3" y="4" width="22" height="20" rx="2" stroke="#F30415" stroke-width="1.5"/><path d="M3 10h22M9 4v6M19 4v6" stroke="#F30415" stroke-width="1.5"/></svg>
+          <div class="detail-card">
+            <div class="detail-card__header">
+              <span>VIN Structure</span>
+              <span>17 Characters</span>
+            </div>
+            <div class="detail-card__body">
+              <div class="detail-card__row"><span>WMI</span><span>2HK (Honda, USA)</span></div>
+              <div class="detail-card__row"><span>VDS</span><span>RW5H5 (CR-V EX-L)</span></div>
+              <div class="detail-card__row"><span>Check Digit</span><span>X</span></div>
+              <div class="detail-card__row"><span>Model Year</span><span>S (2025)</span></div>
+              <div class="detail-card__row"><span>Plant</span><span>H (Ohio)</span></div>
+              <div class="detail-card__row"><span>Sequence</span><span>123456</span></div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- HOW IT WORKS -->
-  <section class="detail" id="how-it-works">
-    <div class="container">
-      <div class="section__header fade-up" style="margin-bottom:40px">
-        <span class="hero__badge" style="background:#E9ECF8;color:#264BBF">Process</span>
-        <h2 class="section__title" style="font-size:clamp(22px,2.5vw,30px)">How Window Sticker Retrieval Works</h2>
-      </div>
-      <div class="detail-steps fade-up">
-        <div class="detail-step">
-          <div class="detail-step__num">1</div>
-          <div class="detail-step__title">Enter Your VIN</div>
-          <div class="detail-step__desc">Type your 17-character Honda VIN. Found on your dashboard, door jamb, or registration.</div>
-        </div>
-        <div class="detail-step">
-          <div class="detail-step__num">2</div>
-          <div class="detail-step__title">We Match Factory Data</div>
-          <div class="detail-step__desc">Our system queries official Honda records to find your exact vehicle configuration.</div>
-        </div>
-        <div class="detail-step">
-          <div class="detail-step__num">3</div>
-          <div class="detail-step__title">Download Your Sticker</div>
-          <div class="detail-step__desc">Receive a high-quality PDF replica of your original factory window sticker.</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SAMPLE STICKER -->
-  <section class="sample-section" id="sample">
-    <div class="container">
-      <div class="section__header fade-up">
-        <span class="hero__badge" style="background:#E9ECF8;color:#264BBF">Sample</span>
-        <h2 class="section__title" style="font-size:clamp(22px,2.5vw,30px)">What You'll Receive</h2>
-        <p class="section__desc">A complete, factory-accurate replica of your Honda's original window sticker.</p>
-      </div>
-      <div class="sample-sticker fade-up">
-        <div class="sample-sticker__header">
-          <span>HONDA</span>
-          <span>Monroney Label</span>
-        </div>
-        <div class="sample-sticker__body">
-          <div class="sample-sticker__row"><span>Model</span><span>2025 CR-V EX-L</span></div>
-          <div class="sample-sticker__row"><span>VIN</span><span>2HKRW5H5XSH123456</span></div>
-          <div class="sample-sticker__row"><span>MSRP</span><span>$29,850.00</span></div>
-          <div class="sample-sticker__row"><span>Engine</span><span>1.5L I-4 Turbo</span></div>
-          <div class="sample-sticker__row"><span>Transmission</span><span>CVT</span></div>
-          <div class="sample-sticker__row"><span>Drivetrain</span><span>Real-Time AWD</span></div>
-          <div class="sample-sticker__row"><span>Exterior</span><span>Platinum White Pearl</span></div>
-          <div class="sample-sticker__row"><span>Interior</span><span>Gray Leather</span></div>
-          <div class="sample-sticker__row"><span>Fuel Economy</span><span>28 City / 34 Hwy</span></div>
-          <div class="sample-sticker__row"><span>Destination</span><span>$1,095.00</span></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FEATURES -->
-  <section class="detail" id="details">
+  <!-- DECODED DATA -->
+  <section class="detail" id="decoded">
     <div class="container">
       <div class="detail__grid fade-up">
         <div class="detail__content">
-          <span class="detail__tag">Included Data</span>
-          <h2 class="detail__title">Every Detail From The Factory</h2>
-          <p class="detail__desc">Your window sticker includes all the information that was printed on the original Monroney label attached to your Honda at the dealership.</p>
+          <span class="detail__tag">Decoded Data</span>
+          <h2 class="detail__title">Everything Your VIN Reveals</h2>
+          <p class="detail__desc">Our decoder pulls every specification tied to your VIN from Honda's official factory database — not generic VIN databases.</p>
           <ul class="detail__features">
-            <li>Base MSRP and total MSRP with options</li>
-            <li>All factory-installed options with pricing</li>
-            <li>Factory warranty coverage details</li>
-            <li>EPA fuel economy and environmental ratings</li>
-            <li>Safety ratings and standard safety equipment</li>
-            <li>Exterior and interior color codes</li>
+            <li>Exact model year and generation</li>
+            <li>Engine type, displacement, and horsepower</li>
+            <li>Transmission and drivetrain configuration</li>
+            <li>Trim level and body style</li>
+            <li>Assembly plant and production date</li>
+            <li>Restraint and safety system details</li>
           </ul>
         </div>
         <div class="detail__visual">
@@ -271,17 +227,73 @@
     </div>
   </section>
 
+  <!-- STEPS -->
+  <section class="detail" id="how-it-works">
+    <div class="container">
+      <div class="section__header fade-up" style="margin-bottom:40px">
+        <span class="hero__badge" style="background:#E9ECF8;color:#264BBF">Process</span>
+        <h2 class="section__title" style="font-size:clamp(22px,2.5vw,30px)">How VIN Decoding Works</h2>
+      </div>
+      <div class="detail-steps fade-up">
+        <div class="detail-step">
+          <div class="detail-step__num">1</div>
+          <div class="detail-step__title">Enter Your VIN</div>
+          <div class="detail-step__desc">Type your 17-character VIN. Found on your dashboard, door jamb, or registration.</div>
+        </div>
+        <div class="detail-step">
+          <div class="detail-step__num">2</div>
+          <div class="detail-step__title">We Match Factory Data</div>
+          <div class="detail-step__desc">Our system validates the check digit and matches against Honda factory records.</div>
+        </div>
+        <div class="detail-step">
+          <div class="detail-step__num">3</div>
+          <div class="detail-step__title">View Decoded Details</div>
+          <div class="detail-step__desc">Receive a complete decoded report with every factory specification.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SAMPLE RESULT -->
+  <section class="sample-section" id="sample">
+    <div class="container">
+      <div class="section__header fade-up">
+        <span class="hero__badge" style="background:#E9ECF8;color:#264BBF">Sample</span>
+        <h2 class="section__title" style="font-size:clamp(22px,2.5vw,30px)">What You'll Receive</h2>
+        <p class="section__desc">A complete decoded report showing every detail tied to your Honda's VIN.</p>
+      </div>
+      <div class="sample-card fade-up">
+        <div class="sample-card__header">
+          <span>Decoded Vehicle Information</span>
+          <span>2HKRW5H5XSH123456</span>
+        </div>
+        <div class="sample-card__body">
+          <div class="sample-card__row"><span>Make</span><span>Honda</span></div>
+          <div class="sample-card__row"><span>Model Year</span><span>2025</span></div>
+          <div class="sample-card__row"><span>Model</span><span>CR-V</span></div>
+          <div class="sample-card__row"><span>Trim Level</span><span>EX-L</span></div>
+          <div class="sample-card__row"><span>Body Style</span><span>Sport Utility Vehicle</span></div>
+          <div class="sample-card__row"><span>Engine</span><span>1.5L I-4 Turbo (190 hp)</span></div>
+          <div class="sample-card__row"><span>Transmission</span><span>CVT</span></div>
+          <div class="sample-card__row"><span>Drivetrain</span><span>Real-Time AWD</span></div>
+          <div class="sample-card__row"><span>Assembly Plant</span><span>East Liberty, Ohio (USA)</span></div>
+        </div>
+        <div class="sample-card__note">Sample output shown. Your vehicle's decoding will reflect its exact factory configuration.</div>
+      </div>
+    </div>
+  </section>
+
   <!-- CTA -->
   <section class="cta section">
     <div class="container">
       <div class="cta__card fade-up">
-        <h2 class="cta__title">Get Your Honda Window Sticker Now</h2>
-        <p class="cta__desc">Enter your VIN below and retrieve your original factory window sticker instantly.</p>
+        <h2 class="cta__title">Ready to Decode Your Honda?</h2>
+        <p class="cta__desc">Enter your VIN below and unlock your vehicle's full factory history.</p>
         <div class="cta__search">
           <input type="text" class="cta__input" placeholder="Enter your 17-character Honda VIN" maxlength="17">
-          <button class="btn btn--primary btn--lg cta__btn">Get Window Sticker</button>
+          <button class="btn btn--primary btn--lg cta__btn">Decode VIN</button>
         </div>
-        <p class="cta__fineprint">Free VIN decoding included. Window sticker PDF available for a small fee.</p>
+        <p class="cta__fineprint">Free VIN decoding. Upgraded reports available with a window sticker purchase.</p>
       </div>
     </div>
   </section>
