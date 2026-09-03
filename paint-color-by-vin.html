@@ -1,0 +1,791 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Honda Paint Codes by VIN | Paint Color Lookup Tool</title>
+  <meta name="description" content="Use your Honda VIN to check factory color details, including exterior color, interior color, and related window sticker details.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    .hero { padding-top:calc(var(--nav-height) + 20px) }
+    .compare__table-wrap { overflow-x:auto; max-width:860px; margin:0 auto; border:1px solid var(--border); border-radius:var(--radius-lg); background:#fff; box-shadow:var(--shadow-sm) }
+    .compare__table { width:100%; border-collapse:collapse; font-size:14px }
+    .compare__table th { background:var(--text); color:#fff; padding:14px 20px; text-align:left; font-family:var(--font-heading); font-weight:700; font-size:13px; letter-spacing:.04em; text-transform:uppercase }
+    .compare__table td { padding:12px 20px; border-bottom:1px solid var(--border); color:var(--text-secondary) }
+    .compare__table td:first-child { font-weight:600; color:var(--text); background:var(--bg-alt); width:24% }
+    .compare__table tr:last-child td { border-bottom:none }
+    .why-matters__grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; max-width:960px; margin:0 auto }
+    .why-matters__card { background:#fff; border:1px solid var(--border); border-radius:var(--radius-md); padding:24px; text-align:left; transition:var(--transition); position:relative; overflow:hidden }
+    .why-matters__card::after { content:''; position:absolute; bottom:0; left:0; width:0; height:2px; background:linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%); transition:width .35s ease }
+    .why-matters__card:hover { box-shadow:var(--shadow-md); transform:translateY(-2px); border-color:rgba(243,4,21,.12) }
+    .why-matters__card:hover::after { width:100% }
+    .why-matters__icon { width:48px; height:48px; display:flex; align-items:center; justify-content:center; background:rgba(243,4,21,.06); border-radius:12px; margin-bottom:14px; transition:var(--transition) }
+    .why-matters__card:hover .why-matters__icon { background:var(--primary) }
+    .why-matters__card:hover .why-matters__icon svg path, .why-matters__card:hover .why-matters__icon svg circle { stroke:#fff }
+    .why-matters__title { font-family:var(--font-heading); font-size:15px; font-weight:700; color:var(--text); margin-bottom:8px }
+    .why-matters__desc { font-size:13px; color:var(--text-secondary); line-height:1.6; margin:0 }
+    .paint-colors__grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; max-width:960px; margin:0 auto }
+    .paint-card { background:#fff; border:1px solid var(--border); border-radius:var(--radius-md); padding:20px; text-align:center; transition:var(--transition) }
+    .paint-card:hover { box-shadow:var(--shadow-md); transform:translateY(-2px); border-color:rgba(243,4,21,.12) }
+    .paint-card__swatch { width:48px; height:48px; border-radius:50%; margin:0 auto 12px; border:2px solid #fff; box-shadow:0 2px 8px rgba(0,0,0,.12); }
+    .paint-card__name { font-family:var(--font-heading); font-size:13px; font-weight:700; color:var(--text); margin-bottom:4px }
+    .paint-card__code { font-family:monospace; font-size:12px; font-weight:600; color:var(--primary); background:rgba(243,4,21,.06); padding:3px 8px; border-radius:4px; display:inline-block }
+    .where__layout { display:grid; grid-template-columns:1.2fr 0.9fr; gap:32px; align-items:center; justify-content:center; max-width:1100px; margin:0 auto }
+    .where__visual { border-radius:var(--radius-lg); overflow:hidden; border:1px solid var(--border); box-shadow:var(--shadow-sm); background:#fff }
+    .where__visual img { width:100%; display:block; height:auto }
+    .location__grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+    .location-card { background:#fff; border:1px solid var(--border); border-radius:var(--radius-md); padding:20px; text-align:center; transition:var(--transition) }
+    .location-card:hover { box-shadow:var(--shadow-sm); border-color:rgba(243,4,21,.12) }
+    .location-card__icon { width:48px; height:48px; display:flex; align-items:center; justify-content:center; background:rgba(243,4,21,.06); border-radius:12px; margin:0 auto 12px }
+    .location-card__title { font-family:var(--font-heading); font-size:14px; font-weight:700; color:var(--text) }
+    @media (max-width:768px) {
+      .where__layout { grid-template-columns:1fr; gap:24px }
+      .why-matters__grid { grid-template-columns:repeat(2,1fr); gap:16px }
+      .paint-colors__grid { grid-template-columns:repeat(2,1fr); gap:12px }
+      .location__grid { grid-template-columns:repeat(2,1fr); gap:12px }
+      .compare__table { font-size:13px }
+      .compare__table th, .compare__table td { padding:10px 14px }
+    }
+    @media (max-width:480px) {
+      .why-matters__grid { grid-template-columns:1fr }
+      .paint-colors__grid { grid-template-columns:1fr }
+      .location__grid { grid-template-columns:1fr }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav" id="nav">
+    <div class="nav__container">
+      <a href="index.html" class="nav__logo">
+        <svg class="nav__logo-icon" viewBox="0 0 32 32" fill="none">
+          <rect width="32" height="32" rx="6" fill="#F30415"/>
+          <path d="M16 8c-4.4 0-8 3.6-8 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8zm0 14c-3.3 0-6-2.7-6-6s2.7-6 6-6 6 2.7 6 6-2.7 6-6 6z" fill="#fff"/>
+          <path d="M16 11l-2 5h4l-2 5" stroke="#F30415" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+        <span class="nav__logo-text">Honda<span class="nav__logo-accent">WindowSticker</span></span>
+      </a>
+      <div class="nav__menu" id="navMenu">
+        <a href="build-sheet-by-vin.html" class="nav__link">Build Sheet</a>
+        <a href="paint-color-by-vin.html" class="nav__link">Paint Colour by VIN</a>
+        <a href="vin-decoder.html" class="nav__link">FREE VIN Decoder</a>
+        <div class="nav__dropdown">
+          <a href="#" class="nav__link nav__link--dropdown" id="servicesToggle">
+            Tools
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 5l3 3 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <div class="nav__mega" id="navMega">
+            <div class="nav__mega-grid">
+              <a href="warranty-check-by-vin.html" class="nav__mega-item" data-service>
+                <div class="nav__mega-icon">
+                  <svg width="22" height="22" viewBox="0 0 28 28" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="#F30415" stroke-width="1.5" fill="none"/><path d="M9 12l2 2 4-4" stroke="#F30415" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <div class="nav__mega-text">
+                  <span class="nav__mega-title">Warranty Check</span>
+                  <span class="nav__mega-desc">Check warranty status by VIN</span>
+                </div>
+              </a>
+              <a href="msrp-by-vin.html" class="nav__mega-item" data-service>
+                <div class="nav__mega-icon">
+                  <svg width="22" height="22" viewBox="0 0 28 28" fill="none"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6" stroke="#F30415" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <div class="nav__mega-text">
+                  <span class="nav__mega-title">MSRP Check</span>
+                  <span class="nav__mega-desc">Check original MSRP by VIN</span>
+                </div>
+              </a>
+              <a href="specifications-by-vin.html" class="nav__mega-item" data-service>
+                <div class="nav__mega-icon">
+                  <svg width="22" height="22" viewBox="0 0 28 28" fill="none"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" stroke="#F30415" stroke-width="1.5" stroke-linecap="round"/></svg>
+                </div>
+                <div class="nav__mega-text">
+                  <span class="nav__mega-title">Specifications Check</span>
+                  <span class="nav__mega-desc">View factory specifications</span>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="nav__menu-divider"></div>
+        <a href="#login" class="nav__link nav__menu-login">Log In</a>
+        <a href="#signup" class="btn btn--primary btn--sm nav__menu-signup">Sign Up</a>
+      </div>
+      <div class="nav__actions">
+        <a href="#login" class="nav__link nav__link--login">Log In</a>
+        <a href="#signup" class="btn btn--primary btn--sm">Sign Up</a>
+        <button class="nav__hamburger" id="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero__bg">
+      <div class="hero__shape hero__shape--1"></div>
+      <div class="hero__shape hero__shape--2"></div>
+      <div class="hero__shape hero__shape--3"></div>
+    </div>
+    <div class="container hero__container">
+      <div class="hero__content">
+        <span class="hero__badge" style="background:#E9ECF8;color:#264BBF">Paint Colour</span>
+        <h1 class="hero__title">Get Exact Honda Paint Code by VIN</h1>
+        <p class="hero__subtitle">Use your Honda VIN to check factory color details, including exterior color, interior color, and related window sticker details. Helps with touch-up paint, body repair, repainting, or color verification.</p>
+        <div class="hero__tabs" style="margin-bottom:0">
+          <div class="hero__tabs-nav">
+            <button class="hero__tab active" data-tab="vin">By VIN</button>
+            <button class="hero__tab" data-tab="plate">By U.S License Plate</button>
+            <button class="hero__tab" data-tab="ymm">By Year, Make, Model</button>
+          </div>
+          <div class="hero__tabs-body">
+            <div class="hero__tab-panel active" data-panel="vin">
+              <div class="hero__search-input-wrap">
+                <input type="text" class="hero__search-input" placeholder="Enter your 17-character Honda VIN" maxlength="17" id="vinInput">
+                <button class="hero__search-btn btn btn--primary" id="searchBtn">Get Paint Code</button>
+              </div>
+              <div class="hero__search-helpers">
+                <a href="#" class="hero__sample">How to find the VIN?</a>
+                <a href="#" class="hero__sample">View Sample</a>
+              </div>
+            </div>
+            <div class="hero__tab-panel" data-panel="plate">
+              <div class="hero__search-row">
+                <input type="text" class="hero__search-input" placeholder="Enter License Plate" maxlength="8" id="plateInput">
+                <select class="hero__search-select" id="plateState">
+                  <option value="">Select State</option>
+                  <option>Alabama</option><option>Alaska</option><option>Arizona</option><option>California</option><option>Colorado</option><option>Connecticut</option><option>Delaware</option><option>Florida</option><option>Georgia</option><option>Hawaii</option><option>Idaho</option><option>Illinois</option><option>Indiana</option><option>Iowa</option><option>Kansas</option><option>Kentucky</option><option>Louisiana</option><option>Maine</option><option>Maryland</option><option>Massachusetts</option><option>Michigan</option><option>Minnesota</option><option>Mississippi</option><option>Missouri</option><option>Montana</option><option>Nebraska</option><option>Nevada</option><option>New Hampshire</option><option>New Jersey</option><option>New Mexico</option><option>New York</option><option>North Carolina</option><option>North Dakota</option><option>Ohio</option><option>Oklahoma</option><option>Oregon</option><option>Pennsylvania</option><option>Rhode Island</option><option>South Carolina</option><option>South Dakota</option><option>Tennessee</option><option>Texas</option><option>Utah</option><option>Vermont</option><option>Virginia</option><option>Washington</option><option>West Virginia</option><option>Wisconsin</option><option>Wyoming</option>
+                </select>
+              </div>
+              <button class="hero__search-btn btn btn--primary" id="plateBtn" style="width:100%;margin-top:8px">Get Paint Code</button>
+              <div class="hero__search-helpers">
+                <a href="#" class="hero__sample">How to find the VIN?</a>
+                <a href="#" class="hero__sample">View Sample</a>
+              </div>
+            </div>
+            <div class="hero__tab-panel" data-panel="ymm">
+              <div class="hero__search-row">
+                <select class="hero__search-select" id="ymmYear"><option value="">Select Year</option><option>2025</option><option>2024</option><option>2023</option><option>2022</option><option>2021</option><option>2020</option><option>2019</option><option>2018</option><option>2017</option><option>2016</option><option>2015</option><option>2014</option><option>2013</option><option>2012</option><option>2011</option><option>2010</option><option>2009</option><option>2008</option><option>2007</option><option>2006</option><option>2005</option><option>2004</option><option>2003</option><option>2002</option><option>2001</option><option>2000</option></select>
+                <select class="hero__search-select" id="ymmMake" disabled><option value="">Select Make</option></select>
+              </div>
+              <div class="hero__search-row" style="margin-top:8px">
+                <select class="hero__search-select" id="ymmModel" disabled><option value="">Select Model</option></select>
+                <input type="email" class="hero__search-input" placeholder="Enter Your Email" id="ymmEmail">
+              </div>
+              <div class="hero__search-row hero__search-row--promo" style="margin-top:8px">
+                <div class="hero__search-input-wrap hero__search-input-wrap--promo">
+                  <input type="tel" class="hero__search-input" placeholder="Enter Phone for" id="ymmPhone">
+                  <span class="hero__promo-badge">10% off</span>
+                </div>
+              </div>
+              <button class="hero__search-btn btn btn--primary" id="ymmBtn" style="width:100%;margin-top:8px">Get Paint Code</button>
+              <div class="hero__search-helpers">
+                <a href="#" class="hero__sample">How to find the VIN?</a>
+                <a href="#" class="hero__sample">View Sample</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="hero__trust" style="margin-top:14px">
+          <div class="hero__trust-item">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 1L11.05 6.2l5.45.5-4.15 3.7L13.5 16 9 13.5 4.5 16l1.15-5.6L1.5 6.7l5.45-.5L9 1z" fill="#F30415"/></svg>
+            <span>Factory Accurate</span>
+          </div>
+          <div class="hero__trust-item">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 1L11.05 6.2l5.45.5-4.15 3.7L13.5 16 9 13.5 4.5 16l1.15-5.6L1.5 6.7l5.45-.5L9 1z" fill="#F30415"/></svg>
+            <span>Instant PDF</span>
+          </div>
+          <div class="hero__trust-item">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 1L11.05 6.2l5.45.5-4.15 3.7L13.5 16 9 13.5 4.5 16l1.15-5.6L1.5 6.7l5.45-.5L9 1z" fill="#F30415"/></svg>
+            <span>Secure Checkout</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero__visual">
+        <div class="hero__image-wrapper">
+          <div class="hero__car-glow"></div>
+          <img src="assets/images/Honda_Elevate_1_0e35d0dc4b.jpg" alt="Honda Paint Color Sample - Crystal Black Pearl" class="hero__car-img" loading="lazy">
+          <div class="hero__badge-float hero__badge-float--1">
+            <strong>Paint Code</strong>
+            <span>NH-731P</span>
+          </div>
+          <div class="hero__badge-float hero__badge-float--2">
+            <strong>Color</strong>
+            <span>Black Pearl</span>
+          </div>
+          <div class="hero__badge-float hero__badge-float--3">
+            <strong>Finish</strong>
+            <span>Pearl</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT IS PAINT CODE -->
+  <section class="what section" id="what">
+    <div class="container">
+      <div class="section__header fade-up">
+        <span class="section__tag">What Is It</span>
+        <h2 class="section__title">What Is a Honda Paint Code?</h2>
+        <p class="section__desc">A Honda paint code is the factory code used to match your vehicle's original paint color. It is usually a short letter-and-number code, such as NH-731P, NH-797M, or B-593M. The paint code is more precise than the color name. For example, Crystal Black Pearl is the color name, while NH-731P is the code used for paint matching, touch-ups, and body repairs.</p>
+      </div>
+      <div class="compare__table-wrap fade-up">
+        <table class="compare__table">
+          <thead>
+            <tr><th>Item</th><th>Meaning</th><th>Example</th><th>Best Used For</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Color Name</td><td>The public-facing name Honda uses to describe the paint color</td><td>Crystal Black Pearl</td><td>Identifying factory color in listings, stickers, or documents</td></tr>
+            <tr><td>Paint Code</td><td>The exact factory code used to match the paint formula</td><td>NH-731P</td><td>Ordering touch-up paint, repainting panels, body shop repairs</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="fade-up" style="max-width:780px; margin:20px auto 0; font-size:14px; color:var(--text-secondary); line-height:1.7; text-align:center">A Honda color name and paint code are related, but they are not the same. The color name helps identify the factory color, while the paint code is used for accurate paint matching. If the code label is missing, a <a href="index.html" style="color:var(--primary); font-weight:600">window sticker lookup</a> can help confirm the original color name.</p>
+    </div>
+  </section>
+
+  <!-- HOW TO FIND -->
+  <section class="how section section--alt" id="how">
+    <div class="container">
+      <div class="section__header fade-up">
+        <span class="section__tag">Process</span>
+        <h2 class="section__title">How to Find Honda Paint Code?</h2>
+      </div>
+      <div class="how__layout how__layout--bridge fade-up">
+        <div class="how__steps-side">
+          <div class="how__bridge-plain">
+            <div class="how__bridge-vline" aria-hidden="true"></div>
+            <div class="how__bridge-plain-step">
+              <div class="how__bridge-plain-num">1</div>
+              <div>
+                <h3 class="how__bridge-plain-title">Enter the Honda VIN</h3>
+                <p class="how__bridge-plain-desc">Type or paste your Honda VIN into the lookup tool. You can usually find it on the driver's side dashboard, door jamb, title, registration, or insurance documents.</p>
+              </div>
+            </div>
+            <div class="how__bridge-plain-step">
+              <div class="how__bridge-plain-num">2</div>
+              <div>
+                <h3 class="how__bridge-plain-title">Preview Vehicle Details</h3>
+                <p class="how__bridge-plain-desc">Check the basic vehicle details to make sure the VIN matches the Honda you want to verify.</p>
+              </div>
+            </div>
+            <div class="how__bridge-plain-step">
+              <div class="how__bridge-plain-num">3</div>
+              <div>
+                <h3 class="how__bridge-plain-title">Get Factory Color Details</h3>
+                <p class="how__bridge-plain-desc">Get the Honda window sticker to view factory color details, including exterior color, interior color, and related vehicle information.</p>
+              </div>
+            </div>
+          </div>
+          <div style="text-align:center; margin-top:28px">
+            <a href="#hero" class="btn btn--primary btn--md">Get Honda Paint Color by VIN</a>
+          </div>
+        </div>
+        <div class="how__visual how__visual--side fade-up">
+          <img src="assets/images/honda-vin-location-1024x576.jpg" alt="Honda VIN Location - Dashboard and Driver Door Frame" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT LOOKUP SHOWS -->
+  <section class="included section" id="lookup">
+    <div class="container">
+      <div class="section__header fade-up">
+        <span class="section__tag">Details</span>
+        <h2 class="section__title">What Does a Honda Paint Color Lookup Show?</h2>
+        <p class="section__desc">A paint color lookup by VIN helps confirm the factory color details recorded for a Honda when it was built. Useful for touch-ups, repainting, body repairs, resale listings, and checking originality.</p>
+      </div>
+      <div class="included__grid included__accordion">
+        <div class="included__card fade-up">
+          <button class="included__card-header" aria-expanded="false">
+            <span class="included__card-left">
+              <span class="included__card-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#F30415" stroke-width="1.5"/><path d="M12 8v4l3 2" stroke="#F30415" stroke-width="1.5" stroke-linecap="round"/></svg>
+              </span>
+              <span class="included__card-title">Exterior Color Information</span>
+            </span>
+            <svg class="included__chevron" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="included__card-body"><p class="included__card-desc">Shows the Honda's original exterior color details. Includes: Paint Color Name (e.g., Crystal Black Pearl, Modern Steel Metallic), Paint Code (NH-731P), Paint Type (solid, metallic, pearl, clear coat), Color Family (black, white, silver, blue, red, gray, green).</p></div>
+        </div>
+        <div class="included__card fade-up">
+          <button class="included__card-header" aria-expanded="false">
+            <span class="included__card-left">
+              <span class="included__card-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2M12 3a4 4 0 110 8 4 4 0 010-8z" stroke="#F30415" stroke-width="1.5" stroke-linecap="round"/></svg>
+              </span>
+              <span class="included__card-title">Interior Color Information</span>
+            </span>
+            <svg class="included__chevron" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="included__card-body"><p class="included__card-desc">Shows the Honda's original interior color details, including factory color names, trim combinations, and cabin material information. Includes Interior Color Name and Interior Material Code for matching replacement leather, fabric, and panels.</p></div>
+        </div>
+        <div class="included__card fade-up">
+          <button class="included__card-header" aria-expanded="false">
+            <span class="included__card-left">
+              <span class="included__card-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" stroke="#F30415" stroke-width="1.5" stroke-linecap="round"/></svg>
+              </span>
+              <span class="included__card-title">Related Color Details</span>
+            </span>
+            <svg class="included__chevron" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="included__card-body"><p class="included__card-desc">Additional color details: Two-Tone Paint Combinations (both factory colors if applicable), Stripe and Accent Colors including roof accents, decals, trim accents, or special color details.</p></div>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:24px" class="fade-up">
+        <a href="#" class="btn btn--primary btn--md">View Sample</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- MICHAEL STORY -->
+  <section class="story section section--alt" id="story">
+    <div class="container">
+      <div class="story__card fade-up">
+        <div class="story__badge">Real Customer Story</div>
+        <h2 class="story__title">How Michael Verified a Honda Ridgeline Factory Color</h2>
+        <p style="font-size:14px; color:var(--text-secondary); line-height:1.7; margin-bottom:20px">Michael wanted to verify the original factory color of a used 2020 Honda Ridgeline before planning paint correction and exterior repair. The vehicle looked black, but he wanted to confirm the exact factory color details using the VIN: <strong style="color:var(--text)">5FPYK3F84LB006358</strong>.</p>
+        <h4 style="font-family:var(--font-heading); font-size:16px; font-weight:700; margin-bottom:12px">What Michael Found on the Honda Window Sticker</h4>
+        <div class="story__steps">
+          <div class="story__step">
+            <span class="story__step-icon story__step-icon--good">✓</span>
+            <div>
+              <h4 class="story__step-title">Exterior Color</h4>
+              <p class="story__step-desc">The original exterior color was listed as <strong>Crystal Black Pearl</strong>.</p>
+            </div>
+          </div>
+          <div class="story__step">
+            <span class="story__step-icon story__step-icon--good">✓</span>
+            <div>
+              <h4 class="story__step-title">Interior Color</h4>
+              <p class="story__step-desc">The original interior color was listed as <strong>Black w/Leather Seat Trim</strong>.</p>
+            </div>
+          </div>
+          <div class="story__step">
+            <span class="story__step-icon story__step-icon--good">✓</span>
+            <div>
+              <h4 class="story__step-title">Related Color Information</h4>
+              <p class="story__step-desc">Paint Application: Monotone Paint Application · Exterior Finish: Clearcoat Paint · Wheels: 18" Exclusive Black-Painted Alloy · Trim: Black side window and windshield trim · Interior: Piano Black instrument and door panel inserts.</p>
+            </div>
+          </div>
+        </div>
+        <div style="background:var(--bg-alt); border-left:4px solid var(--primary); padding:16px 20px; border-radius:0 8px 8px 0; margin:20px 0">
+          <p style="font-size:14px; color:var(--text-secondary); line-height:1.7; margin:0"><strong style="color:var(--text)">The Outcome:</strong> By confirming the factory exterior color as Crystal Black Pearl and the original interior as Black w/Leather Seat Trim, Michael had a clearer reference before discussing paint work with a repair shop. The window sticker also helped verify that the Ridgeline's color, trim, equipment, and factory details matched the VIN.</p>
+        </div>
+        <div style="text-align:center">
+          <a href="#" class="btn btn--primary btn--md">View Honda Window Sticker</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHERE TO FIND — CARDS + CAR IMAGE SIDE BY SIDE -->
+  <section class="section" id="where">
+    <div class="container">
+      <div class="section__header fade-up">
+        <span class="section__tag">Locations</span>
+        <h2 class="section__title">Where to Find the Paint Code on Honda?</h2>
+        <p class="section__desc">You can often find the paint code on Honda labels placed around the vehicle. Check these common areas.</p>
+      </div>
+      <div class="where__layout fade-up">
+        <div class="location__grid">
+          <div class="location-card">
+            <div class="location-card__icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M8 3h8v4H8V3z" stroke="#F30415" stroke-width="1.5" stroke-linecap="round"/><path d="M6 7h12v13a2 2 0 01-2 2H8a2 2 0 01-2-2V7z" stroke="#F30415" stroke-width="1.5"/></svg>
+            </div>
+            <h4 class="location-card__title">Driver's Door Jamb</h4>
+          </div>
+          <div class="location-card">
+            <div class="location-card__icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3 8h18v8H3V8z" stroke="#F30415" stroke-width="1.5"/><path d="M12 8v12" stroke="#F30415" stroke-width="1.5"/></svg>
+            </div>
+            <h4 class="location-card__title">Radiator Support Area</h4>
+          </div>
+          <div class="location-card">
+            <div class="location-card__icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3 6h18v12H3V6z" stroke="#F30415" stroke-width="1.5"/><path d="M8 6v6h8V6" stroke="#F30415" stroke-width="1.5"/></svg>
+            </div>
+            <h4 class="location-card__title">Under the Hood</h4>
+          </div>
+          <div class="location-card">
+            <div class="location-card__icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8" stroke="#F30415" stroke-width="1.5"/><path d="M12 8v8M8 12h8" stroke="#F30415" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </div>
+            <h4 class="location-card__title">Trunk or Spare Tire Area</h4>
+          </div>
+          <div class="location-card">
+            <div class="location-card__icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M6 4h12v8H6V4z" stroke="#F30415" stroke-width="1.5"/><path d="M9 12v6M15 12v6" stroke="#F30415" stroke-width="1.5"/></svg>
+            </div>
+            <h4 class="location-card__title">Firewall or Strut Tower</h4>
+          </div>
+          <div class="location-card">
+            <div class="location-card__icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="6" y="6" width="12" height="12" rx="2" stroke="#F30415" stroke-width="1.5"/><path d="M9 15h6M9 12h6" stroke="#F30415" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </div>
+            <h4 class="location-card__title">Inside the Glove Box</h4>
+          </div>
+        </div>
+        <div class="where__visual">
+          <img src="assets/images/honda-vin-location-1024x576.jpg" alt="Honda VIN and Paint Code Locations - Car Diagram" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY MATTERS — PREMIUM CARDS -->
+  <section class="section section--alt" id="why-matters">
+    <div class="container">
+      <div class="section__header fade-up">
+        <span class="section__tag">Why It Matters</span>
+        <h2 class="section__title">Why Honda Paint Color Matters?</h2>
+        <p class="section__desc">Knowing the original color helps you make better repair, buying, and selling decisions. Avoid mismatched panels, incorrect touch-up paint, and confusion from similar color names.</p>
+      </div>
+      <div class="why-matters__grid fade-up">
+        <div class="why-matters__card">
+          <div class="why-matters__icon">
+            <svg width="24" height="24" viewBox="0 0 28 28" fill="none"><path d="M8 7h4v10M12 7l-1 1M8 17h6" stroke="#F30415" stroke-width="1.6" stroke-linecap="round"/></svg>
+          </div>
+          <h4 class="why-matters__title">Touch-Up Paint</h4>
+          <p class="why-matters__desc">Use the correct paint details to match scratches, chips, and small repairs.</p>
+        </div>
+        <div class="why-matters__card">
+          <div class="why-matters__icon">
+            <svg width="24" height="24" viewBox="0 0 28 28" fill="none"><path d="M6 7h12v6H6V7z" stroke="#F30415" stroke-width="1.6"/><path d="M9 12v6M15 12v6" stroke="#F30415" stroke-width="1.6"/></svg>
+          </div>
+          <h4 class="why-matters__title">Body Repairs</h4>
+          <p class="why-matters__desc">Help body shops choose the right color before repainting damaged panels.</p>
+        </div>
+        <div class="why-matters__card">
+          <div class="why-matters__icon">
+            <svg width="24" height="24" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="10" stroke="#F30415" stroke-width="1.6"/><path d="M14 8v4l3 2" stroke="#F30415" stroke-width="1.6" stroke-linecap="round"/></svg>
+          </div>
+          <h4 class="why-matters__title">Repainting</h4>
+          <p class="why-matters__desc">Confirm the original Honda color before planning a full or partial repaint.</p>
+        </div>
+        <div class="why-matters__card">
+          <div class="why-matters__icon">
+            <svg width="24" height="24" viewBox="0 0 28 28" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="#F30415" stroke-width="1.6"/><path d="M9 12l2 2 4-4" stroke="#F30415" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h4 class="why-matters__title">Buyer Verification</h4>
+          <p class="why-matters__desc">Compare factory color details with the vehicle to spot possible repainting.</p>
+        </div>
+        <div class="why-matters__card">
+          <div class="why-matters__icon">
+            <svg width="24" height="24" viewBox="0 0 28 28" fill="none"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" stroke="#F30415" stroke-width="1.6" stroke-linecap="round"/></svg>
+          </div>
+          <h4 class="why-matters__title">Seller Transparency</h4>
+          <p class="why-matters__desc">Show accurate color information to make your listing more trustworthy.</p>
+        </div>
+        <div class="why-matters__card">
+          <div class="why-matters__icon">
+            <svg width="24" height="24" viewBox="0 0 28 28" fill="none"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z" stroke="#F30415" stroke-width="1.6"/><path d="M9 12l2 2 4-4" stroke="#F30415" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h4 class="why-matters__title">Resale Value</h4>
+          <p class="why-matters__desc">Maintain a more consistent factory appearance for future resale value.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- POPULAR COLORS -->
+  <section class="section" id="popular-colors">
+    <div class="container">
+      <div class="section__header fade-up">
+        <span class="section__tag">Popular Colors</span>
+        <h2 class="section__title">Popular Honda Paint Colors and Codes</h2>
+        <p class="section__desc">Honda uses many paint codes across different models and years. These examples can help you recognize what a color code by VIN result or vehicle label may look like.</p>
+      </div>
+      <div class="paint-colors__grid">
+        <div class="paint-card fade-up">
+          <div class="paint-card__swatch" style="background:#0A0A0A"></div>
+          <div class="paint-card__name">Crystal Black Pearl</div>
+          <div class="paint-card__code">NH731P</div>
+        </div>
+        <div class="paint-card fade-up">
+          <div class="paint-card__swatch" style="background:#6B7280"></div>
+          <div class="paint-card__name">Modern Steel Metallic</div>
+          <div class="paint-card__code">NH797M</div>
+        </div>
+        <div class="paint-card fade-up">
+          <div class="paint-card__swatch" style="background:#F9FAFB; border-color:#E5E7EB"></div>
+          <div class="paint-card__name">Platinum White Pearl</div>
+          <div class="paint-card__code">NH883P</div>
+        </div>
+        <div class="paint-card fade-up">
+          <div class="paint-card__swatch" style="background:#1E3A5F"></div>
+          <div class="paint-card__name">Obsidian Blue Pearl</div>
+          <div class="paint-card__code">B588P</div>
+        </div>
+        <div class="paint-card fade-up">
+          <div class="paint-card__swatch" style="background:#3B82BF"></div>
+          <div class="paint-card__name">Aegean Blue Metallic</div>
+          <div class="paint-card__code">B593M</div>
+        </div>
+        <div class="paint-card fade-up">
+          <div class="paint-card__swatch" style="background:#C0C4C8"></div>
+          <div class="paint-card__name">Lunar Silver Metallic</div>
+          <div class="paint-card__code">NH830M</div>
+        </div>
+        <div class="paint-card fade-up">
+          <div class="paint-card__swatch" style="background:#DC2626"></div>
+          <div class="paint-card__name">Rallye Red</div>
+          <div class="paint-card__code">R513</div>
+        </div>
+        <div class="paint-card fade-up">
+          <div class="paint-card__swatch" style="background:#9B1C1C"></div>
+          <div class="paint-card__name">San Marino Red</div>
+          <div class="paint-card__code">R94</div>
+        </div>
+        <div class="paint-card fade-up">
+          <div class="paint-card__swatch" style="background:#6B7280"></div>
+          <div class="paint-card__name">Sonic Gray Pearl</div>
+          <div class="paint-card__code">NH877P</div>
+        </div>
+        <div class="paint-card fade-up">
+          <div class="paint-card__swatch" style="background:#4B5563"></div>
+          <div class="paint-card__name">Urban Gray Pearl</div>
+          <div class="paint-card__code">NH912P</div>
+        </div>
+        <div class="paint-card fade-up">
+          <div class="paint-card__swatch" style="background:#B91C1C"></div>
+          <div class="paint-card__name">Radiant Red Metallic</div>
+          <div class="paint-card__code">R569M</div>
+        </div>
+        <div class="paint-card fade-up">
+          <div class="paint-card__swatch" style="background:#FFFFFF; border-color:#E5E7EB"></div>
+          <div class="paint-card__name">Championship White</div>
+          <div class="paint-card__code">NH0</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODELS -->
+  <section class="models section section--alt" id="models">
+    <div class="container">
+      <div class="section__header fade-up">
+        <span class="section__tag">All Models</span>
+        <h2 class="section__title">Honda Models You Can Check</h2>
+        <p class="section__desc">You can use this page to check factory color details for many Honda models, including:</p>
+      </div>
+      <div class="models__dark-grid fade-up">
+        <a href="#" class="model-dark"><span class="model-dark__name">Accord</span><span class="model-dark__arrow">&rarr;</span></a>
+        <a href="#" class="model-dark"><span class="model-dark__name">Civic</span><span class="model-dark__arrow">&rarr;</span></a>
+        <a href="#" class="model-dark"><span class="model-dark__name">CR-V</span><span class="model-dark__arrow">&rarr;</span></a>
+        <a href="#" class="model-dark"><span class="model-dark__name">Pilot</span><span class="model-dark__arrow">&rarr;</span></a>
+        <a href="#" class="model-dark"><span class="model-dark__name">Odyssey</span><span class="model-dark__arrow">&rarr;</span></a>
+        <a href="#" class="model-dark"><span class="model-dark__name">Ridgeline</span><span class="model-dark__arrow">&rarr;</span></a>
+        <a href="#" class="model-dark"><span class="model-dark__name">HR-V</span><span class="model-dark__arrow">&rarr;</span></a>
+        <a href="#" class="model-dark"><span class="model-dark__name">Passport</span><span class="model-dark__arrow">&rarr;</span></a>
+        <a href="#" class="model-dark"><span class="model-dark__name">Fit</span><span class="model-dark__arrow">&rarr;</span></a>
+        <a href="#" class="model-dark"><span class="model-dark__name">Insight</span><span class="model-dark__arrow">&rarr;</span></a>
+        <a href="#" class="model-dark"><span class="model-dark__name">Prelude</span><span class="model-dark__arrow">&rarr;</span></a>
+        <a href="#" class="model-dark"><span class="model-dark__name">S2000</span><span class="model-dark__arrow">&rarr;</span></a>
+        <a href="#" class="model-dark"><span class="model-dark__name">NSX</span><span class="model-dark__arrow">&rarr;</span></a>
+        <a href="#" class="model-dark"><span class="model-dark__name">Element</span><span class="model-dark__arrow">&rarr;</span></a>
+        <a href="#" class="model-dark"><span class="model-dark__name">CR-Z</span><span class="model-dark__arrow">&rarr;</span></a>
+        <a href="#" class="model-dark"><span class="model-dark__name">Clarity</span><span class="model-dark__arrow">&rarr;</span></a>
+        <a href="#" class="model-dark"><span class="model-dark__name">Crosstour</span><span class="model-dark__arrow">&rarr;</span></a>
+        <a href="#" class="model-dark"><span class="model-dark__name">Prologue</span><span class="model-dark__arrow">&rarr;</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRY SPECIFIC TOOLS -->
+  <section class="tools-red section" id="tools">
+    <div class="container">
+      <div class="section__header fade-up">
+        <span class="section__tag" style="color:rgba(255,255,255,.7)">Try Specific Tool</span>
+        <h2 class="section__title" style="color:#fff">Try Specific Honda VIN Tool for Your Needs</h2>
+      </div>
+      <div class="tools-red__bar fade-up" style="grid-template-columns:repeat(3,1fr)">
+        <a href="warranty-check-by-vin.html" class="tool-pill"><span>Warranty Check by VIN</span><span class="tool-pill__arrow">&rarr;</span></a>
+        <a href="specifications-by-vin.html" class="tool-pill"><span>Specifications by VIN</span><span class="tool-pill__arrow">&rarr;</span></a>
+        <a href="msrp-by-vin.html" class="tool-pill"><span>MSRP by VIN</span><span class="tool-pill__arrow">&rarr;</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta section" id="pricing">
+    <div class="container">
+      <div class="cta__card cta__card--premium fade-up">
+        <span class="section__tag">Factory Color</span>
+        <h2 class="cta__title">Get Honda Factory Color Code by VIN</h2>
+        <p class="cta__desc">A Honda VIN can help confirm the vehicle's factory color details before you order touch-up paint, plan body repairs, or verify a used Honda. Enter your VIN to view factory color information and window sticker details, including exterior color, interior color, and related vehicle information.</p>
+        <div class="cta__search">
+          <input type="text" class="cta__input" placeholder="Enter your 17-character Honda VIN" maxlength="17">
+          <button class="btn btn--primary btn--lg cta__btn">Get Honda Paint Color by VIN</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ADVANTAGES -->
+  <section class="benefits section section--alt" id="benefits">
+    <div class="container">
+      <div class="section__header fade-up">
+        <span class="section__tag">Advantages</span>
+        <h2 class="section__title">The Advantages You'll Get</h2>
+      </div>
+      <div class="benefits__checklist fade-up">
+        <div class="benefit-check"><span class="benefit-check__box"><svg width="18" height="18" viewBox="0 0 28 28" fill="none"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span><span class="benefit-check__text">Covers All Honda Models</span></div>
+        <div class="benefit-check"><span class="benefit-check__box"><svg width="18" height="18" viewBox="0 0 28 28" fill="none"><path d="M14 3L3 8v6c0 6.5 4.5 12.5 11 14 6.5-1.5 11-7.5 11-14V8L14 3z" stroke="currentColor" stroke-width="1.6" fill="none"/><path d="M9 14l4 4 6-8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="benefit-check__text">Support Classic Models</span></div>
+        <div class="benefit-check"><span class="benefit-check__box"><svg width="18" height="18" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="10" stroke="currentColor" stroke-width="1.6" fill="none"/><path d="M14 8v4l3 2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span><span class="benefit-check__text">Precise Data in PDF</span></div>
+        <div class="benefit-check"><span class="benefit-check__box"><svg width="18" height="18" viewBox="0 0 28 28" fill="none"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z" stroke="currentColor" stroke-width="1.6"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="benefit-check__text">Database always updated</span></div>
+        <div class="benefit-check"><span class="benefit-check__box"><svg width="18" height="18" viewBox="0 0 28 28" fill="none"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="benefit-check__text">24/7 Customer Support</span></div>
+        <div class="benefit-check"><span class="benefit-check__box"><svg width="18" height="18" viewBox="0 0 28 28" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="benefit-check__text">Satisfaction Guarantee</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq section" id="faq">
+    <div class="container">
+      <div class="section__header fade-up">
+        <span class="section__tag">FAQ</span>
+        <h2 class="section__title">Frequently Asked Questions</h2>
+      </div>
+      <div class="faq__list">
+        <div class="faq__item fade-up">
+          <button class="faq__question">
+            <span>Can I find Honda paint codes by VIN?</span>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round"/></svg>
+          </button>
+          <div class="faq__answer">
+            <p>A VIN helps identify the Honda and can be used to look up factory color details. However, the exact paint code should be verified with the vehicle label, dealer records, or trusted paint supplier when paint matching is required.</p>
+          </div>
+        </div>
+        <div class="faq__item fade-up">
+          <button class="faq__question">
+            <span>What does a Honda paint code look like?</span>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round"/></svg>
+          </button>
+          <div class="faq__answer">
+            <p>A Honda paint code is usually an alphanumeric code such as NH-731P, NH-797M, B-593M, or R-513. The format can vary by color, model, and year.</p>
+          </div>
+        </div>
+        <div class="faq__item fade-up">
+          <button class="faq__question">
+            <span>Where is the paint code on Honda vehicles?</span>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round"/></svg>
+          </button>
+          <div class="faq__answer">
+            <p>The paint code is commonly found on the driver-side door jamb label, under the hood, or through Honda dealer records. Some labels may fade, move, or become difficult to read over time.</p>
+          </div>
+        </div>
+        <div class="faq__item fade-up">
+          <button class="faq__question">
+            <span>Is Honda paint code the same as color name?</span>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round"/></svg>
+          </button>
+          <div class="faq__answer">
+            <p>No. The color name is the public-facing name, such as Crystal Black Pearl. The paint code is the technical identifier used to match the exact paint formula.</p>
+          </div>
+        </div>
+        <div class="faq__item fade-up">
+          <button class="faq__question">
+            <span>Can I use Honda touch up paint by VIN?</span>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round"/></svg>
+          </button>
+          <div class="faq__answer">
+            <p>Yes, the VIN can help confirm your Honda's factory color details. For best results, verify the paint code before ordering touch-up paint.</p>
+          </div>
+        </div>
+        <div class="faq__item fade-up">
+          <button class="faq__question">
+            <span>What does a Honda VIN lookup color result show?</span>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round"/></svg>
+          </button>
+          <div class="faq__answer">
+            <p>A Honda VIN lookup color result may show factory exterior color, interior color, trim details, and related window sticker information.</p>
+          </div>
+        </div>
+        <div class="faq__item fade-up">
+          <button class="faq__question">
+            <span>Can a window sticker show Honda paint color?</span>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round"/></svg>
+          </button>
+          <div class="faq__answer">
+            <p>Yes. A Honda window sticker can show original factory color details, including exterior and interior color information.</p>
+          </div>
+        </div>
+        <div class="faq__item fade-up">
+          <button class="faq__question">
+            <span>What if my Honda was repainted?</span>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round"/></svg>
+          </button>
+          <div class="faq__answer">
+            <p>A VIN or window sticker can show the original factory color, but it cannot confirm whether the vehicle has been repainted. Compare the factory color details with the physical vehicle, panels, and repair records.</p>
+          </div>
+        </div>
+        <div class="faq__item fade-up">
+          <button class="faq__question">
+            <span>Can I look up paint code by VIN for any Honda model?</span>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round"/></svg>
+          </button>
+          <div class="faq__answer">
+            <p>You can use the VIN to check factory color details for many Honda models. Exact data may vary by model, year, and record availability.</p>
+          </div>
+        </div>
+        <div class="faq__item fade-up">
+          <button class="faq__question">
+            <span>Why is my Honda paint code important?</span>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round"/></svg>
+          </button>
+          <div class="faq__answer">
+            <p>The paint code helps match the correct color for touch-ups, repainting, body repairs, and panel replacement. It also helps verify factory originality when buying or selling.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__col footer__col--brand">
+          <a href="index.html" class="nav__logo" style="margin-bottom:1rem">
+            <svg class="nav__logo-icon" viewBox="0 0 32 32" fill="none">
+              <rect width="32" height="32" rx="6" fill="#F30415"/>
+              <path d="M16 8c-4.4 0-8 3.6-8 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8zm0 14c-3.3 0-6-2.7-6-6s2.7-6 6-6 6 2.7 6 6-2.7 6-6 6z" fill="#fff"/>
+              <path d="M16 11l-2 5h4l-2 5" stroke="#F30415" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            </svg>
+            <span class="nav__logo-text">Honda<span class="nav__logo-accent">WindowSticker</span></span>
+          </a>
+          <p class="footer__desc">Retrieve your original Honda factory window sticker using your VIN. Fast, accurate, and secure.</p>
+        </div>
+        <div class="footer__col">
+          <h4 class="footer__heading">Products</h4>
+          <a href="build-sheet-by-vin.html" class="footer__link">Build Sheet</a>
+          <a href="paint-color-by-vin.html" class="footer__link">Paint Colour by VIN</a>
+          <a href="vin-decoder.html" class="footer__link">FREE VIN Decoder</a>
+        </div>
+        <div class="footer__col">
+          <h4 class="footer__heading">Tools</h4>
+          <a href="warranty-check-by-vin.html" class="footer__link">Warranty Check</a>
+          <a href="msrp-by-vin.html" class="footer__link">MSRP Check</a>
+          <a href="specifications-by-vin.html" class="footer__link">Specifications Check</a>
+        </div>
+        <div class="footer__col">
+          <h4 class="footer__heading">Support</h4>
+          <a href="index.html#faq" class="footer__link">FAQ</a>
+          <a href="#" class="footer__link">Contact Us</a>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>&copy; 2026 HondaWindowSticker.com. All rights reserved. Not affiliated with or endorsed by Honda Motor Co., Ltd.</p>
+      </div>
+    </div>
+  </footer>
+  <script src="js/scripts.js"></script>
+</body>
+</html>
+
+

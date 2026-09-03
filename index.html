@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Honda Window Sticker - Retrieve Your Original Factory Window Sticker</title>
-  <meta name="description" content="Retrieve your original Honda factory window sticker using your VIN. Get MSRP, original options, trim, colors, and specifications instantly.">
+  <title>Honda Window Sticker Lookup by VIN | Original Monroney</title>
+  <meta name="description" content="Retrieve your original Honda factory window sticker (Monroney label) by VIN. See MSRP, factory options, MPG, trim, and more. Instant PDF download.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -15,7 +15,7 @@
   <!-- NAVIGATION -->
   <nav class="nav" id="nav">
     <div class="nav__container">
-      <a href="#" class="nav__logo">
+      <a href="index.html" class="nav__logo">
         <svg class="nav__logo-icon" viewBox="0 0 32 32" fill="none">
           <rect width="32" height="32" rx="6" fill="#F30415"/>
           <path d="M16 8c-4.4 0-8 3.6-8 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8zm0 14c-3.3 0-6-2.7-6-6s2.7-6 6-6 6 2.7 6 6-2.7 6-6 6z" fill="#fff"/>
@@ -24,75 +24,53 @@
         <span class="nav__logo-text">Honda<span class="nav__logo-accent">WindowSticker</span></span>
       </a>
       <div class="nav__menu" id="navMenu">
+        <a href="build-sheet-by-vin.html" class="nav__link">Build Sheet</a>
+        <a href="paint-color-by-vin.html" class="nav__link">Paint Colour by VIN</a>
+        <a href="vin-decoder.html" class="nav__link">FREE VIN Decoder</a>
         <div class="nav__dropdown">
           <a href="#" class="nav__link nav__link--dropdown" id="servicesToggle">
-            Services
+            Tools
             <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 5l3 3 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
           <div class="nav__mega" id="navMega">
             <div class="nav__mega-grid">
-              <a href="window-sticker.html" class="nav__mega-item" data-service>
+              <a href="warranty-check-by-vin.html" class="nav__mega-item" data-service>
                 <div class="nav__mega-icon">
-                  <svg width="22" height="22" viewBox="0 0 28 28" fill="none"><rect x="3" y="4" width="22" height="20" rx="2" stroke="#F30415" stroke-width="1.5"/><path d="M3 10h22M9 4v6M19 4v6" stroke="#F30415" stroke-width="1.5"/></svg>
+                  <svg width="22" height="22" viewBox="0 0 28 28" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="#F30415" stroke-width="1.5" fill="none"/><path d="M9 12l2 2 4-4" stroke="#F30415" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </div>
                 <div class="nav__mega-text">
-                  <span class="nav__mega-title">Window Sticker</span>
-                  <span class="nav__mega-desc">Retrieve original factory window sticker</span>
+                  <span class="nav__mega-title">Warranty Check</span>
+                  <span class="nav__mega-desc">Check warranty status by VIN</span>
                 </div>
               </a>
-              <a href="vin-decoder.html" class="nav__mega-item" data-service>
+              <a href="msrp-by-vin.html" class="nav__mega-item" data-service>
                 <div class="nav__mega-icon">
-                  <svg width="22" height="22" viewBox="0 0 28 28" fill="none"><path d="M14 3L3 8v6c0 6.5 4.5 12.5 11 14 6.5-1.5 11-7.5 11-14V8L14 3z" stroke="#F30415" stroke-width="1.5" fill="none"/><path d="M14 14l-3-3m3 3l3-3m-3 3v-6" stroke="#F30415" stroke-width="1.5" stroke-linecap="round"/></svg>
+                  <svg width="22" height="22" viewBox="0 0 28 28" fill="none"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6" stroke="#F30415" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </div>
                 <div class="nav__mega-text">
-                  <span class="nav__mega-title">VIN Decoder</span>
-                  <span class="nav__mega-desc">Decode any Honda VIN instantly</span>
+                  <span class="nav__mega-title">MSRP Check</span>
+                  <span class="nav__mega-desc">Check original MSRP by VIN</span>
                 </div>
               </a>
-              <a href="index.html#services" class="nav__mega-item" data-service>
+              <a href="specifications-by-vin.html" class="nav__mega-item" data-service>
                 <div class="nav__mega-icon">
-                  <svg width="22" height="22" viewBox="0 0 28 28" fill="none"><path d="M5 7h18v14H5V7z" stroke="#F30415" stroke-width="1.5" fill="none"/><path d="M5 11h18M9 7v4M19 7v4" stroke="#F30415" stroke-width="1.5"/></svg>
+                  <svg width="22" height="22" viewBox="0 0 28 28" fill="none"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" stroke="#F30415" stroke-width="1.5" stroke-linecap="round"/></svg>
                 </div>
                 <div class="nav__mega-text">
-                  <span class="nav__mega-title">Build Sheet</span>
-                  <span class="nav__mega-desc">Complete factory build sheet data</span>
-                </div>
-              </a>
-              <a href="index.html#services" class="nav__mega-item" data-service>
-                <div class="nav__mega-icon">
-                  <svg width="22" height="22" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="11" stroke="#F30415" stroke-width="1.5" fill="none"/><path d="M14 8v6l4 4" stroke="#F30415" stroke-width="1.5" stroke-linecap="round"/></svg>
-                </div>
-                <div class="nav__mega-text">
-                  <span class="nav__mega-title">Recall Lookup</span>
-                  <span class="nav__mega-desc">Check open recalls by VIN</span>
-                </div>
-              </a>
-              <a href="index.html#services" class="nav__mega-item" data-service>
-                <div class="nav__mega-icon">
-                  <svg width="22" height="22" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="10" stroke="#F30415" stroke-width="1.5" fill="none"/><path d="M14 10v4l3 1.5" stroke="#F30415" stroke-width="1.5" stroke-linecap="round"/></svg>
-                </div>
-                <div class="nav__mega-text">
-                  <span class="nav__mega-title">Paint Code</span>
-                  <span class="nav__mega-desc">Find exact factory paint code</span>
-                </div>
-              </a>
-              <a href="index.html#services" class="nav__mega-item" data-service>
-                <div class="nav__mega-icon">
-                  <svg width="22" height="22" viewBox="0 0 28 28" fill="none"><path d="M4 8h20v14H4V8z" stroke="#F30415" stroke-width="1.5" fill="none"/><circle cx="14" cy="15" r="3" stroke="#F30415" stroke-width="1.5" fill="none"/></svg>
-                </div>
-                <div class="nav__mega-text">
-                  <span class="nav__mega-title">Factory Options</span>
-                  <span class="nav__mega-desc">Every installed option listed</span>
+                  <span class="nav__mega-title">Specifications Check</span>
+                  <span class="nav__mega-desc">View factory specifications</span>
                 </div>
               </a>
             </div>
           </div>
         </div>
-        <a href="#pricing" class="nav__link">Pricing</a>
-        <a href="#resources" class="nav__link">Resources</a>
-        <a href="#faq" class="nav__link">Support</a>
+        <div class="nav__menu-divider"></div>
+        <a href="#login" class="nav__link nav__menu-login">Log In</a>
+        <a href="#signup" class="btn btn--primary btn--sm nav__menu-signup">Sign Up</a>
       </div>
       <div class="nav__actions">
+        <a href="#login" class="nav__link nav__link--login">Log In</a>
+        <a href="#signup" class="btn btn--primary btn--sm">Sign Up</a>
         <button class="nav__hamburger" id="hamburger" aria-label="Menu">
           <span></span><span></span><span></span>
         </button>
@@ -109,16 +87,68 @@
     </div>
     <div class="container hero__container">
       <div class="hero__content fade-up">
-        <span class="hero__badge">Factory Original Data</span>
-        <h1 class="hero__title">Retrieve Your Original Honda Window Sticker</h1>
-        <p class="hero__subtitle">Get your factory window sticker instantly. See the original MSRP, factory-installed options, trim level, exterior &amp; interior colors, and complete vehicle specifications — all from your VIN.</p>
-        <div class="hero__search">
-          <div class="hero__search-input-wrap">
-            <input type="text" class="hero__search-input" placeholder="Enter your 17-character Honda VIN" maxlength="17" id="vinInput">
-            <button class="hero__search-btn btn btn--primary" id="searchBtn">Get Window Sticker</button>
+        <h1 class="hero__title">Get a Honda Window Sticker by VIN</h1>
+        <p class="hero__subtitle">View the original factory details for any Honda using the VIN. Check MSRP, trim, standard equipment, factory-installed options, exterior color, interior color, MPG, warranty details, safety ratings, and total vehicle price in one easy-to-read sticker.</p>
+
+        <!-- MULTI-SEARCH TABS -->
+        <div class="hero__tabs">
+          <div class="hero__tabs-nav">
+            <button class="hero__tab active" data-tab="vin">By VIN</button>
+            <button class="hero__tab" data-tab="plate">By U.S License Plate</button>
+            <button class="hero__tab" data-tab="ymm">By Year, Make, Model</button>
           </div>
-          <a href="#" class="hero__sample">View Sample Sticker &rarr;</a>
+          <div class="hero__tabs-body">
+            <!-- VIN Tab -->
+            <div class="hero__tab-panel active" data-panel="vin">
+              <div class="hero__search-input-wrap">
+                <input type="text" class="hero__search-input" placeholder="Enter your 17-character Honda VIN" maxlength="17" id="vinInput">
+                <button class="hero__search-btn btn btn--primary" id="searchBtn">Get Window Sticker</button>
+              </div>
+              <div class="hero__search-helpers">
+                <a href="#" class="hero__sample">How to find the VIN?</a>
+                <a href="#" class="hero__sample">View Sample</a>
+              </div>
+            </div>
+            <!-- Plate Tab -->
+            <div class="hero__tab-panel" data-panel="plate">
+              <div class="hero__search-row">
+                <input type="text" class="hero__search-input" placeholder="Enter License Plate" maxlength="8" id="plateInput">
+                <select class="hero__search-select" id="plateState">
+                  <option value="">Select State</option>
+                  <option>Alabama</option><option>Alaska</option><option>Arizona</option><option>California</option><option>Colorado</option><option>Connecticut</option><option>Delaware</option><option>Florida</option><option>Georgia</option><option>Hawaii</option><option>Idaho</option><option>Illinois</option><option>Indiana</option><option>Iowa</option><option>Kansas</option><option>Kentucky</option><option>Louisiana</option><option>Maine</option><option>Maryland</option><option>Massachusetts</option><option>Michigan</option><option>Minnesota</option><option>Mississippi</option><option>Missouri</option><option>Montana</option><option>Nebraska</option><option>Nevada</option><option>New Hampshire</option><option>New Jersey</option><option>New Mexico</option><option>New York</option><option>North Carolina</option><option>North Dakota</option><option>Ohio</option><option>Oklahoma</option><option>Oregon</option><option>Pennsylvania</option><option>Rhode Island</option><option>South Carolina</option><option>South Dakota</option><option>Tennessee</option><option>Texas</option><option>Utah</option><option>Vermont</option><option>Virginia</option><option>Washington</option><option>West Virginia</option><option>Wisconsin</option><option>Wyoming</option>
+                </select>
+              </div>
+              <button class="hero__search-btn btn btn--primary" id="plateBtn" style="width:100%;margin-top:8px">Get Window Sticker</button>
+              <div class="hero__search-helpers">
+                <a href="#" class="hero__sample">How to find the VIN?</a>
+                <a href="#" class="hero__sample">View Sample</a>
+              </div>
+            </div>
+            <!-- YMM Tab -->
+            <div class="hero__tab-panel" data-panel="ymm">
+              <div class="hero__search-row">
+                <select class="hero__search-select" id="ymmYear"><option value="">Select Year</option><option>2025</option><option>2024</option><option>2023</option><option>2022</option><option>2021</option><option>2020</option><option>2019</option><option>2018</option><option>2017</option><option>2016</option><option>2015</option><option>2014</option><option>2013</option><option>2012</option><option>2011</option><option>2010</option><option>2009</option><option>2008</option><option>2007</option><option>2006</option><option>2005</option><option>2004</option><option>2003</option><option>2002</option><option>2001</option><option>2000</option></select>
+                <select class="hero__search-select" id="ymmMake" disabled><option value="">Select Make</option></select>
+              </div>
+              <div class="hero__search-row" style="margin-top:8px">
+                <select class="hero__search-select" id="ymmModel" disabled><option value="">Select Model</option></select>
+                <input type="email" class="hero__search-input" placeholder="Enter Your Email" id="ymmEmail">
+              </div>
+              <div class="hero__search-row hero__search-row--promo" style="margin-top:8px">
+                <div class="hero__search-input-wrap hero__search-input-wrap--promo">
+                  <input type="tel" class="hero__search-input" placeholder="Enter Phone for" id="ymmPhone">
+                  <span class="hero__promo-badge">10% off</span>
+                </div>
+              </div>
+              <button class="hero__search-btn btn btn--primary" id="ymmBtn" style="width:100%;margin-top:8px">Get Window Sticker</button>
+              <div class="hero__search-helpers">
+                <a href="#" class="hero__sample">How to find the VIN?</a>
+                <a href="#" class="hero__sample">View Sample</a>
+              </div>
+            </div>
+          </div>
         </div>
+
         <div class="hero__trust">
           <div class="hero__trust-item">
             <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 1L11.05 6.2l5.45.5-4.15 3.7L13.5 16 9 13.5 4.5 16l1.15-5.6L1.5 6.7l5.45-.5L9 1z" fill="#F30415"/></svg>
@@ -141,7 +171,7 @@
       <div class="hero__visual fade-up">
         <div class="hero__image-wrapper">
           <div class="hero__car-glow"></div>
-          <img src="https://placehold.co/800x500/eef1f6/1a1a1a?text=Honda+SUV" alt="2025 Honda CR-V" class="hero__car-img" loading="lazy">
+          <img src="assets/images/Honda_Elevate_1_0e35d0dc4b.jpg" alt="Honda Elevate" class="hero__car-img" loading="lazy">
           <div class="hero__badge-float hero__badge-float--1">
             <strong>MSRP</strong>
             <span>$29,850</span>
@@ -159,312 +189,462 @@
     </div>
   </section>
 
-  <!-- FEATURED SERVICES -->
-  <section class="services section" id="services">
+  <!-- WHAT IS A WINDOW STICKER -->
+  <section class="what section" id="what">
     <div class="container">
       <div class="section__header fade-up">
-        <span class="section__tag">Services</span>
-        <h2 class="section__title">Everything You Need to Know About Your Honda</h2>
-        <p class="section__desc">Access comprehensive vehicle data from your VIN. From the original window sticker to build sheets and recall information.</p>
+        <span class="section__tag">What Is It</span>
+        <h2 class="section__title">What Is a Honda Window Sticker?</h2>
+        <p class="section__desc">A Honda window sticker, also known as a <strong>Honda Monroney sticker</strong>, is the official label placed on every new Honda when it leaves the factory. It displays the exact original MSRP, factory-installed features, fuel efficiency, and safety ratings.</p>
       </div>
-      <div class="services__grid">
-        <div class="service-card fade-up">
-          <div class="service-card__icon">
-            <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect x="3" y="4" width="22" height="20" rx="2" stroke="#F30415" stroke-width="1.5"/><path d="M3 10h22M9 4v6M19 4v6" stroke="#F30415" stroke-width="1.5"/></svg>
-          </div>
-          <h3 class="service-card__title">Window Sticker</h3>
-          <p class="service-card__desc">Retrieve the original factory window sticker with MSRP, options, and standard features.</p>
+    </div>
+  </section>
+
+  <!-- WHY CHECK - WARNING CARDS -->
+  <section class="warnings section section--alt" id="warnings">
+    <div class="container">
+      <div class="section__header fade-up">
+        <span class="section__tag">Why It Matters</span>
+        <h2 class="section__title">Why Check a Honda Window Sticker Before Buying?</h2>
+        <p class="section__desc">Buying a used Honda without the original paperwork is like buying a house without an inspection. You are relying entirely on someone else's word. That is where problems often arise. A Honda window sticker search solves this by giving you verified factory details you can trust.</p>
+      </div>
+      <div class="warnings__grid">
+        <div class="warning-card fade-up">
+          <div class="warning-card__icon">&#9888;&#65039;</div>
+          <h3 class="warning-card__title">Stop Overpaying for a Used Honda</h3>
+          <p class="warning-card__desc">Sellers sometimes list extra features that were never installed at the factory. A Honda window sticker by VIN shows standard equipment, added options, and original MSRP, helping you compare the asking price with real factory details.</p>
         </div>
-        <div class="service-card fade-up">
-          <div class="service-card__icon">
-            <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M14 3L3 8v6c0 6.5 4.5 12.5 11 14 6.5-1.5 11-7.5 11-14V8L14 3z" stroke="#F30415" stroke-width="1.5" fill="none"/><path d="M14 14l-3-3m3 3l3-3m-3 3v-6" stroke="#F30415" stroke-width="1.5" stroke-linecap="round"/></svg>
-          </div>
-          <h3 class="service-card__title">VIN Decoder</h3>
-          <p class="service-card__desc">Decode any Honda VIN to reveal model year, engine, transmission, and assembly plant.</p>
+        <div class="warning-card fade-up">
+          <div class="warning-card__icon">&#9888;&#65039;</div>
+          <h3 class="warning-card__title">Confirm the True Trim Level</h3>
+          <p class="warning-card__desc">Trim levels often get mixed up in used-car listings. A car advertised as an EX-L might actually be a lower trim with add-ons. A window sticker search confirms the factory trim tied to the VIN.</p>
         </div>
-        <div class="service-card fade-up">
-          <div class="service-card__icon">
-            <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M5 7h18v14H5V7z" stroke="#F30415" stroke-width="1.5" fill="none"/><path d="M5 11h18M9 7v4M19 7v4" stroke="#F30415" stroke-width="1.5"/></svg>
-          </div>
-          <h3 class="service-card__title">Build Sheet</h3>
-          <p class="service-card__desc">Get the complete factory build sheet with every component and option your Honda left the factory with.</p>
-        </div>
-        <div class="service-card fade-up">
-          <div class="service-card__icon">
-            <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="11" stroke="#F30415" stroke-width="1.5" fill="none"/><path d="M14 8v6l4 4" stroke="#F30415" stroke-width="1.5" stroke-linecap="round"/></svg>
-          </div>
-          <h3 class="service-card__title">Recall Lookup</h3>
-          <p class="service-card__desc">Check for open recalls and service campaigns specific to your Honda's VIN.</p>
-        </div>
-        <div class="service-card fade-up">
-          <div class="service-card__icon">
-            <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="10" stroke="#F30415" stroke-width="1.5" fill="none"/><path d="M14 10v4l3 1.5" stroke="#F30415" stroke-width="1.5" stroke-linecap="round"/></svg>
-          </div>
-          <h3 class="service-card__title">Paint Code</h3>
-          <p class="service-card__desc">Find your exact factory paint code and color name for touch-ups and repairs.</p>
-        </div>
-        <div class="service-card fade-up">
-          <div class="service-card__icon">
-            <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M4 8h20v14H4V8z" stroke="#F30415" stroke-width="1.5" fill="none"/><circle cx="14" cy="15" r="3" stroke="#F30415" stroke-width="1.5" fill="none"/></svg>
-          </div>
-          <h3 class="service-card__title">Factory Options</h3>
-          <p class="service-card__desc">See every factory-installed option and package that came with your vehicle.</p>
+        <div class="warning-card fade-up">
+          <div class="warning-card__icon">&#9888;&#65039;</div>
+          <h3 class="warning-card__title">Protect from Aftermarket Add-ons</h3>
+          <p class="warning-card__desc">Some dealers add features after the car leaves the factory and price them like factory equipment. A genuine Honda factory window sticker lists only original equipment, helping you separate factory features from later add-ons.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- HOW IT WORKS -->
-  <section class="how section" id="how">
+  <!-- WHAT'S INCLUDED -->
+  <section class="included section" id="included">
     <div class="container">
       <div class="section__header fade-up">
-        <span class="section__tag">How It Works</span>
-        <h2 class="section__title">Three Simple Steps</h2>
-        <p class="section__desc">Get your Honda window sticker in minutes. No appointments, no paperwork.</p>
+        <span class="section__tag">Complete Details</span>
+        <h2 class="section__title">What Information Is Included in an Original Honda Window Sticker?</h2>
+        <p class="section__desc">Every original Honda window sticker is packed with useful data. Here is what you will find when you pull one up.</p>
       </div>
-      <div class="how__steps">
-        <div class="how__step fade-up">
-          <div class="how__step-number">1</div>
-          <h3 class="how__step-title">Enter Your VIN</h3>
-          <p class="how__step-desc">Type or paste your 17-character Honda VIN into the search field. Found on your dashboard, door jamb, or insurance card.</p>
+      <div class="included__sample-img fade-up" style="margin:32px auto 48px;max-width:900px;text-align:center">
+        <img src="assets/images/window-sticker-sample.jpg" alt="2020 Honda Ridgeline Window Sticker Sample - Original Monroney Label" style="width:100%;border-radius:var(--radius-lg);box-shadow:var(--shadow-lg);border:1px solid var(--border);display:block" loading="lazy">
+      </div>
+      <div class="included__grid included__accordion">
+        <div class="included__card fade-up">
+          <button class="included__card-header" aria-expanded="false">
+            <span class="included__card-left">
+              <span class="included__card-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" stroke="#F30415" stroke-width="1.5" stroke-linecap="round"/></svg>
+              </span>
+              <span class="included__card-title">Vehicle Description</span>
+            </span>
+            <svg class="included__chevron" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="included__card-body"><p class="included__card-desc">Basic details including model name, trim level, engine, transmission type, and both exterior and interior colors.</p></div>
         </div>
-        <div class="how__step-arrow fade-up">
-          <svg width="40" height="16" viewBox="0 0 40 16" fill="none"><path d="M0 8h34M28 2l6 6-6 6" stroke="#2648BD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div class="included__card fade-up">
+          <button class="included__card-header" aria-expanded="false">
+            <span class="included__card-left">
+              <span class="included__card-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 6h16M4 12h16M4 18h16" stroke="#F30415" stroke-width="1.5" stroke-linecap="round"/></svg>
+              </span>
+              <span class="included__card-title">Standard Equipment</span>
+            </span>
+            <svg class="included__chevron" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="included__card-body"><p class="included__card-desc">Everything that comes with the car at no extra cost, organized by exterior, interior, mechanical, and safety features.</p></div>
         </div>
-        <div class="how__step fade-up">
-          <div class="how__step-number">2</div>
-          <h3 class="how__step-title">Generate Sticker</h3>
-          <p class="how__step-desc">Our system instantly matches your VIN against official Honda factory data and generates your original window sticker.</p>
+        <div class="included__card fade-up">
+          <button class="included__card-header" aria-expanded="false">
+            <span class="included__card-left">
+              <span class="included__card-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6" stroke="#F30415" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <span class="included__card-title">MSRP</span>
+            </span>
+            <svg class="included__chevron" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="included__card-body"><p class="included__card-desc">The base price Honda sets before any additional features are added. A useful reference when determining a fair deal.</p></div>
         </div>
-        <div class="how__step-arrow fade-up">
-          <svg width="40" height="16" viewBox="0 0 40 16" fill="none"><path d="M0 8h34M28 2l6 6-6 6" stroke="#2648BD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div class="included__card fade-up">
+          <button class="included__card-header" aria-expanded="false">
+            <span class="included__card-left">
+              <span class="included__card-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" stroke="#F30415" stroke-width="1.5" stroke-linecap="round"/></svg>
+              </span>
+              <span class="included__card-title">Optional Equipment</span>
+            </span>
+            <svg class="included__chevron" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="included__card-body"><p class="included__card-desc">Factory-installed upgrades or add-on packages with individual prices: leather seats, sunroof, upgraded wheels, driver-assist systems.</p></div>
         </div>
-        <div class="how__step fade-up">
-          <div class="how__step-number">3</div>
-          <h3 class="how__step-title">Download PDF</h3>
-          <p class="how__step-desc">Download your official window sticker as a high-quality PDF. Print it, save it, or share it instantly.</p>
+        <div class="included__card fade-up">
+          <button class="included__card-header" aria-expanded="false">
+            <span class="included__card-left">
+              <span class="included__card-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2M12 3a4 4 0 110 8 4 4 0 010-8z" stroke="#F30415" stroke-width="1.5" stroke-linecap="round"/></svg>
+              </span>
+              <span class="included__card-title">Destination Charge</span>
+            </span>
+            <svg class="included__chevron" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="included__card-body"><p class="included__card-desc">The fee Honda charges to ship the vehicle from the factory to the dealership. A standard, non-negotiable cost.</p></div>
         </div>
+        <div class="included__card fade-up">
+          <button class="included__card-header" aria-expanded="false">
+            <span class="included__card-left">
+              <span class="included__card-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="#F30415" stroke-width="1.5" stroke-linecap="round"/></svg>
+              </span>
+              <span class="included__card-title">Total Price</span>
+            </span>
+            <svg class="included__chevron" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="included__card-body"><p class="included__card-desc">The final MSRP combining base MSRP, all optional equipment, and destination charge. The most important figure for original value.</p></div>
+        </div>
+        <div class="included__card fade-up">
+          <button class="included__card-header" aria-expanded="false">
+            <span class="included__card-left">
+              <span class="included__card-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="#F30415" stroke-width="1.5" stroke-linecap="round"/></svg>
+              </span>
+              <span class="included__card-title">Warranty Information</span>
+            </span>
+            <svg class="included__chevron" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="included__card-body"><p class="included__card-desc">Factory warranty coverage details: powertrain, basic, and roadside assistance, each listed with duration in months and miles.</p></div>
+        </div>
+        <div class="included__card fade-up">
+          <button class="included__card-header" aria-expanded="false">
+            <span class="included__card-left">
+              <span class="included__card-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="#F30415" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <span class="included__card-title">EPA Fuel Economy</span>
+            </span>
+            <svg class="included__chevron" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="included__card-body"><p class="included__card-desc">Official EPA fuel economy ratings for city, highway, and combined MPG, plus estimated annual fuel cost.</p></div>
+        </div>
+        <div class="included__card fade-up">
+          <button class="included__card-header" aria-expanded="false">
+            <span class="included__card-left">
+              <span class="included__card-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z" stroke="#F30415" stroke-width="1.5"/><path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01" stroke="#F30415" stroke-width="1.5" stroke-linecap="round"/></svg>
+              </span>
+              <span class="included__card-title">Greenhouse Gas Rating</span>
+            </span>
+            <svg class="included__chevron" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="included__card-body"><p class="included__card-desc">Tailpipe CO2 emissions scored 1-10, with 10 being most efficient. Easy to see how eco-friendly the Honda is.</p></div>
+        </div>
+        <div class="included__card fade-up">
+          <button class="included__card-header" aria-expanded="false">
+            <span class="included__card-left">
+              <span class="included__card-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="#F30415" stroke-width="1.5"/><path d="M9 12l2 2 4-4" stroke="#F30415" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <span class="included__card-title">Safety Ratings</span>
+            </span>
+            <svg class="included__chevron" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="included__card-body"><p class="included__card-desc">NHTSA safety ratings for frontal, side, and rollover tests, plus overall score on a five-star scale.</p></div>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:40px" class="fade-up">
+        <a href="#" class="btn btn--primary btn--md">View Window Sticker Sample</a>
       </div>
     </div>
   </section>
 
-  <!-- WINDOW STICKER PREVIEW -->
-  <section class="preview section section--alt" id="preview">
+  <!-- HOW TO GET -->
+  <section class="how section section--alt" id="how">
     <div class="container">
       <div class="section__header fade-up">
-        <span class="section__tag">Preview</span>
-        <h2 class="section__title">What You'll Receive</h2>
-        <p class="section__desc">A complete, factory-accurate window sticker with every detail from the original dealership window.</p>
+        <span class="section__tag">Process</span>
+        <h2 class="section__title">How to Get Your Honda Window Sticker by VIN?</h2>
+        <p class="section__desc">To get the Honda window sticker using the VIN, follow these simple steps.</p>
       </div>
-      <div class="preview__mockup fade-up">
-        <div class="preview__laptop">
-          <div class="preview__screen">
-            <div class="preview__sticker">
-              <div class="preview__sticker-header">
-                <span>HONDA</span>
-                <span>Monroney Label</span>
+      <div class="how__layout how__layout--bridge fade-up">
+        <div class="how__steps-side">
+          <div class="how__bridge-plain">
+            <div class="how__bridge-vline" aria-hidden="true"></div>
+            <div class="how__bridge-plain-step">
+              <div class="how__bridge-plain-num">1</div>
+              <div>
+                <h3 class="how__bridge-plain-title">Find Your VIN</h3>
+                <p class="how__bridge-plain-desc">Check the dashboard, the driver's side door frame, or your registration and insurance card to find your VIN quickly.</p>
               </div>
-              <div class="preview__sticker-body">
-                <div class="preview__row"><span>Model</span><span>2025 CR-V EX-L</span></div>
-                <div class="preview__row"><span>VIN</span><span>2HKRW5H5XSH123456</span></div>
-                <div class="preview__row"><span>MSRP</span><span>$29,850</span></div>
-                <div class="preview__row"><span>Engine</span><span>1.5L I-4 Turbo</span></div>
-                <div class="preview__row"><span>Transmission</span><span>CVT</span></div>
-                <div class="preview__row"><span>Exterior</span><span>Platinum White Pearl</span></div>
-                <div class="preview__row"><span>Interior</span><span>Gray Leather</span></div>
+            </div>
+            <div class="how__bridge-plain-step">
+              <div class="how__bridge-plain-num">2</div>
+              <div>
+                <h3 class="how__bridge-plain-title">Submit Your Request</h3>
+                <p class="how__bridge-plain-desc">Type your VIN into the form at the top of this page and click the "Get Window Sticker" button. Double-check each number and letter carefully.</p>
               </div>
-              <div class="preview__hotspot preview__hotspot--1" data-label="MSRP $29,850">
-                <span class="preview__pulse"></span>
-              </div>
-              <div class="preview__hotspot preview__hotspot--2" data-label="1.5L Turbo Engine">
-                <span class="preview__pulse"></span>
-              </div>
-              <div class="preview__hotspot preview__hotspot--3" data-label="EX-L Trim Level">
-                <span class="preview__pulse"></span>
+            </div>
+            <div class="how__bridge-plain-step">
+              <div class="how__bridge-plain-num">3</div>
+              <div>
+                <h3 class="how__bridge-plain-title">Retrieve Your Sticker in Seconds</h3>
+                <p class="how__bridge-plain-desc">Choose the plan that suits you, complete the payment, and your factory Honda Monroney label will be available right away.</p>
               </div>
             </div>
           </div>
-          <div class="preview__base"></div>
-          <div class="preview__lid"></div>
+          <div style="text-align:center; margin-top:28px">
+            <a href="#hero" class="btn btn--primary btn--md">Get Honda Window Sticker</a>
+          </div>
+        </div>
+        <div class="how__visual how__visual--side fade-up">
+          <img src="assets/images/honda-vin-location-1024x576.jpg" alt="Honda VIN Location - Dashboard and Driver Door Frame" loading="lazy">
         </div>
       </div>
     </div>
   </section>
 
-  <!-- POPULAR HONDA MODELS -->
+  <!-- USE CASES -->
+  <section class="use-cases section" id="use-cases">
+    <div class="container">
+      <div class="section__header fade-up">
+        <span class="section__tag">Use Cases</span>
+        <h2 class="section__title">Honda Window Sticker Lookup: Key for Buyers, Sellers, and Dealerships</h2>
+        <p class="section__desc">Whether you are buying, selling, or running a dealership, this single document can transform how confidently you move forward.</p>
+      </div>
+      <div class="use-cases__grid">
+        <div class="use-case-card fade-up">
+          <div class="use-case-card__header use-case-card__header--buyer">For Used Car Buyers</div>
+          <div class="use-case-card__body">
+            <h4 class="use-case-card__title">Verify Seller Claims Instantly</h4>
+            <p class="use-case-card__desc">Compare the seller's claims with the original sticker. Verify everything is accurate before making any payment.</p>
+            <h4 class="use-case-card__title">Negotiate With Real Facts</h4>
+            <p class="use-case-card__desc">Once you know the original MSRP and exact options, you gain real leverage. Negotiating a fair price becomes much easier.</p>
+          </div>
+        </div>
+        <div class="use-case-card fade-up">
+          <div class="use-case-card__header use-case-card__header--seller">For Sellers</div>
+          <div class="use-case-card__body">
+            <h4 class="use-case-card__title">Build Trust With Buyers</h4>
+            <p class="use-case-card__desc">A Honda Monroney sticker is official proof of your car's original price and factory-installed features. Transparency builds trust.</p>
+            <h4 class="use-case-card__title">Justify Your Asking Price</h4>
+            <p class="use-case-card__desc">Verified, factory-backed details help you justify your asking price and reassure buyers choosing your car is the smarter decision.</p>
+          </div>
+        </div>
+        <div class="use-case-card fade-up">
+          <div class="use-case-card__header use-case-card__header--dealer">For Dealerships</div>
+          <div class="use-case-card__body">
+            <h4 class="use-case-card__title">Build Trust With Every Sale</h4>
+            <p class="use-case-card__desc">Sharing the original window sticker helps dealerships establish trust with customers. Buyers feel more confident and assured.</p>
+            <h4 class="use-case-card__title">Speeds Up the Sales Process</h4>
+            <p class="use-case-card__desc">When the original MSRP, options, and features are clearly listed, sales conversations stay focused on what matters.</p>
+          </div>
+        </div>
+        <div class="use-case-card fade-up">
+          <div class="use-case-card__header use-case-card__header--flipper">For Car Flippers</div>
+          <div class="use-case-card__body">
+            <h4 class="use-case-card__title">Create Stronger Listings</h4>
+            <p class="use-case-card__desc">Use the window sticker to write cleaner, more detailed listings. Show actual factory equipment, options, trim, colors, MPG, and pricing.</p>
+            <h4 class="use-case-card__title">Avoid Weak Claims</h4>
+            <p class="use-case-card__desc">A window sticker helps you avoid overclaiming features that were not factory-installed, reducing buyer objections during negotiation.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CUSTOMER STORY -->
+  <section class="story section section--alt" id="story">
+    <div class="container">
+      <div class="story__card fade-up">
+        <div class="story__badge">Real Customer Story</div>
+        <h2 class="story__title">How HondaWindowSticker.com Helped Scott Sell His 2019 Honda Civic Stress-Free</h2>
+        <div class="story__steps">
+          <div class="story__step">
+            <span class="story__step-icon story__step-icon--bad">&#10060;</span>
+            <div>
+              <h4 class="story__step-title">The Problem: Lowball Offers</h4>
+              <p class="story__step-desc">Scott listed his 2019 Honda Civic Sport for sale, but the offers he received were thousands below his asking price. Buyers assumed he was exaggerating the trim and features.</p>
+            </div>
+          </div>
+          <div class="story__step">
+            <span class="story__step-icon story__step-icon--good">&#9989;</span>
+            <div>
+              <h4 class="story__step-title">The Solution: Using Our Window Sticker Lookup</h4>
+              <p class="story__step-desc">A friend suggested Scott try a quick Honda window sticker lookup at hondawindowsticker.com. In just seconds, he received the original factory document showing the true MSRP and confirming the Sport trim.</p>
+            </div>
+          </div>
+          <div class="story__step">
+            <span class="story__step-icon story__step-icon--good">&#128994;</span>
+            <div>
+              <h4 class="story__step-title">The Result: A Quick, Fair Sale</h4>
+              <p class="story__step-desc">He added the window sticker to his listing, and the lowball offers stopped almost immediately. Within two days, a serious buyer appeared, and Scott closed the sale at a price he was happy with.</p>
+            </div>
+          </div>
+        </div>
+        <blockquote class="story__quote">"Do not just tell people what your car has. Show them. The window sticker did more to sell my car than any photo I posted." &mdash; Scott</blockquote>
+        <div style="text-align:center">
+          <a href="#" class="btn btn--primary btn--md">View a 2019 Honda Civic Window Sticker</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY USE US -->
+  <section class="why section" id="why">
+    <div class="container">
+      <div class="section__header fade-up">
+        <span class="section__tag">Why Choose Us</span>
+        <h2 class="section__title">Why Use HondaWindowSticker?</h2>
+      </div>
+      <div class="why__benefits-grid">
+        <div class="why__benefit-card fade-up">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="#F30415" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <h4>Accurate Data</h4>
+          <p>We source information directly from manufacturer databases, ensuring every detail is 100% accurate.</p>
+        </div>
+        <div class="why__benefit-card fade-up">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="#F30415" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <h4>Instant Results</h4>
+          <p>No waiting for days. Enter your VIN and download your window sticker in seconds.</p>
+        </div>
+        <div class="why__benefit-card fade-up">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" stroke="#F30415" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <h4>Support for Classic Models</h4>
+          <p>Our database supports a wide range of older models, from modern CR-V to classic Honda S600.</p>
+        </div>
+        <div class="why__benefit-card fade-up">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6" stroke="#F30415" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <h4>Affordable Price</h4>
+          <p>Quality service at fair, budget-friendly rates. No hidden fees.</p>
+        </div>
+        <div class="why__benefit-card fade-up">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 6h16M4 12h16M4 18h16" stroke="#F30415" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <h4>Clear Layout</h4>
+          <p>Cleanly designed and easy to read. Equipment, packages, and pricing presented with clarity and precision.</p>
+        </div>
+        <div class="why__benefit-card fade-up">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" stroke="#F30415" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <h4>24/7 Customer Support</h4>
+          <p>Our support team is available around the time to assist with lookups, resolve order issues, or answer any questions.</p>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:40px" class="fade-up">
+        <a href="#hero" class="btn btn--primary btn--lg">Get Your Original Honda Window Sticker</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- RECENTLY SEARCHED -->
+  <section class="recent section section--alt" id="recent">
+    <div class="container">
+      <div class="section__header fade-up">
+        <span class="section__tag">Recent Lookups</span>
+        <h2 class="section__title">Recently Searched Honda Window Sticker by VIN</h2>
+        <p class="section__desc">Latest vehicle checks for Honda. Refreshes daily.</p>
+      </div>
+      <div class="recent__grid fade-up">
+        <a href="#" class="recent__vin">2HKRM4H33DH625969</a>
+        <a href="#" class="recent__vin">JHLRD78526C007031</a>
+        <a href="#" class="recent__vin">5FNRL6H86LB003292</a>
+        <a href="#" class="recent__vin">5FNRL3H44AB025610</a>
+        <a href="#" class="recent__vin">5FNYG1H97TB029430</a>
+        <a href="#" class="recent__vin">2HKRS5H59PH705150</a>
+        <a href="#" class="recent__vin">2HKRS4H46RH412939</a>
+        <a href="#" class="recent__vin">5FNYF9H35TB092300</a>
+        <a href="#" class="recent__vin">2HGFB2F54EH005016</a>
+        <a href="#" class="recent__vin">5J6RW2H53LL035887</a>
+        <a href="#" class="recent__vin">2HKRM4H73GH634887</a>
+        <a href="#" class="recent__vin">2HGFC2F54GH535520</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- HONDA MODELS -->
   <section class="models section" id="models">
     <div class="container">
       <div class="section__header fade-up">
-        <span class="section__tag">Popular Models</span>
-        <h2 class="section__title">Find Your Honda</h2>
-        <p class="section__desc">We support every Honda model sold in the United States from 1980 to today.</p>
+        <span class="section__tag">All Models</span>
+        <h2 class="section__title">Honda Window Stickers for Every Model</h2>
+        <p class="section__desc">Our Honda window sticker lookup tool supports the full model lineup across multiple generations.</p>
       </div>
-      <div class="models__grid">
-        <div class="model-card fade-up"><div class="model-card__img" style="background:#eef1f6"><span class="model-card__placeholder">Accord</span></div><div class="model-card__name">Accord</div></div>
-        <div class="model-card fade-up"><div class="model-card__img" style="background:#e8edf3"><span class="model-card__placeholder">Civic</span></div><div class="model-card__name">Civic</div></div>
-        <div class="model-card fade-up"><div class="model-card__img" style="background:#eef1f6"><span class="model-card__placeholder">CR-V</span></div><div class="model-card__name">CR-V</div></div>
-        <div class="model-card fade-up"><div class="model-card__img" style="background:#e8edf3"><span class="model-card__placeholder">Pilot</span></div><div class="model-card__name">Pilot</div></div>
-        <div class="model-card fade-up"><div class="model-card__img" style="background:#eef1f6"><span class="model-card__placeholder">Ridgeline</span></div><div class="model-card__name">Ridgeline</div></div>
-        <div class="model-card fade-up"><div class="model-card__img" style="background:#e8edf3"><span class="model-card__placeholder">Passport</span></div><div class="model-card__name">Passport</div></div>
-        <div class="model-card fade-up"><div class="model-card__img" style="background:#eef1f6"><span class="model-card__placeholder">HR-V</span></div><div class="model-card__name">HR-V</div></div>
-        <div class="model-card fade-up"><div class="model-card__img" style="background:#e8edf3"><span class="model-card__placeholder">Odyssey</span></div><div class="model-card__name">Odyssey</div></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- WHY CHOOSE US -->
-  <section class="why section section--alt" id="why">
-    <div class="container">
-      <div class="why__grid">
-        <div class="why__visual fade-up">
-          <div class="why__image" style="background:#eef1f6;border-radius:16px;display:flex;align-items:center;justify-content:center;min-height:400px;position:relative;overflow:hidden">
-            <div style="position:absolute;inset:0;background:linear-gradient(135deg,#eef1f6 0%,#dce1e8 100%)"></div>
-            <div style="position:relative;z-index:1;text-align:center;padding:2rem">
-              <svg width="80" height="80" viewBox="0 0 80 80" fill="none"><circle cx="40" cy="40" r="40" fill="#F30415" opacity="0.1"/><path d="M40 20c-6 0-20 2-20 10v20s14 8 20 8 20-8 20-8V30c0-8-14-10-20-10z" stroke="#F30415" stroke-width="2" fill="none"/><path d="M30 38l4 4 8-8" stroke="#F30415" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              <p style="color:#5F6368;margin-top:1rem;font-weight:500">Premium Honda Interior</p>
-            </div>
-          </div>
-        </div>
-        <div class="why__content fade-up">
-          <span class="section__tag">Why Choose Us</span>
-          <h2 class="section__title">Trusted by Honda Owners Nationwide</h2>
-          <div class="why__benefits">
-            <div class="why__benefit">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2L15.1 8.6L22 9.5L17 14.5L18.2 22L12 18.5L5.8 22L7 14.5L2 9.5L8.9 8.6L12 2z" fill="#F30415"/></svg>
-              <div><h4>Factory OEM Data</h4><p>Directly sourced from Honda's factory database. 100% accurate and verified.</p></div>
-            </div>
-            <div class="why__benefit">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2L15.1 8.6L22 9.5L17 14.5L18.2 22L12 18.5L5.8 22L7 14.5L2 9.5L8.9 8.6L12 2z" fill="#F30415"/></svg>
-              <div><h4>Instant Delivery</h4><p>Your window sticker is generated and available for download within seconds.</p></div>
-            </div>
-            <div class="why__benefit">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2L15.1 8.6L22 9.5L17 14.5L18.2 22L12 18.5L5.8 22L7 14.5L2 9.5L8.9 8.6L12 2z" fill="#F30415"/></svg>
-              <div><h4>Secure Payment</h4><p>256-bit encrypted checkout. Your data is always protected.</p></div>
-            </div>
-            <div class="why__benefit">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2L15.1 8.6L22 9.5L17 14.5L18.2 22L12 18.5L5.8 22L7 14.5L2 9.5L8.9 8.6L12 2z" fill="#F30415"/></svg>
-              <div><h4>Lifetime Access</h4><p>Pay once. Your sticker is stored in your account forever.</p></div>
-            </div>
-            <div class="why__benefit">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2L15.1 8.6L22 9.5L17 14.5L18.2 22L12 18.5L5.8 22L7 14.5L2 9.5L8.9 8.6L12 2z" fill="#F30415"/></svg>
-              <div><h4>Customer Support</h4><p>Real human support. We'll help you find your VIN and retrieve your sticker.</p></div>
-            </div>
-            <div class="why__benefit">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2L15.1 8.6L22 9.5L17 14.5L18.2 22L12 18.5L5.8 22L7 14.5L2 9.5L8.9 8.6L12 2z" fill="#F30415"/></svg>
-              <div><h4>All Models Supported</h4><p>Every Honda model from 1980 to current year. Civic to NSX.</p></div>
-            </div>
-          </div>
-        </div>
+      <div class="models__dark-grid fade-up">
+        <a href="#" class="model-dark"><span class="model-dark__name">N600</span><span class="model-dark__arrow">&rarr;</span></a>
+        <a href="#" class="model-dark"><span class="model-dark__name">Civic</span><span class="model-dark__arrow">&rarr;</span></a>
+        <a href="#" class="model-dark"><span class="model-dark__name">Accord</span><span class="model-dark__arrow">&rarr;</span></a>
+        <a href="#" class="model-dark"><span class="model-dark__name">Prelude</span><span class="model-dark__arrow">&rarr;</span></a>
+        <a href="#" class="model-dark"><span class="model-dark__name">CR-X</span><span class="model-dark__arrow">&rarr;</span></a>
+        <a href="#" class="model-dark"><span class="model-dark__name">CR-X del Sol</span><span class="model-dark__arrow">&rarr;</span></a>
+        <a href="#" class="model-dark"><span class="model-dark__name">Passport</span><span class="model-dark__arrow">&rarr;</span></a>
+        <a href="#" class="model-dark"><span class="model-dark__name">Odyssey</span><span class="model-dark__arrow">&rarr;</span></a>
+        <a href="#" class="model-dark"><span class="model-dark__name">CR-V</span><span class="model-dark__arrow">&rarr;</span></a>
+        <a href="#" class="model-dark"><span class="model-dark__name">Insight</span><span class="model-dark__arrow">&rarr;</span></a>
+        <a href="#" class="model-dark"><span class="model-dark__name">S2000</span><span class="model-dark__arrow">&rarr;</span></a>
+        <a href="#" class="model-dark"><span class="model-dark__name">Element</span><span class="model-dark__arrow">&rarr;</span></a>
+        <a href="#" class="model-dark"><span class="model-dark__name">Civic Type R</span><span class="model-dark__arrow">&rarr;</span></a>
+        <a href="#" class="model-dark"><span class="model-dark__name">CR-Z</span><span class="model-dark__arrow">&rarr;</span></a>
+        <a href="#" class="model-dark"><span class="model-dark__name">NSX</span><span class="model-dark__arrow">&rarr;</span></a>
+        <a href="#" class="model-dark"><span class="model-dark__name">Pilot</span><span class="model-dark__arrow">&rarr;</span></a>
+        <a href="#" class="model-dark"><span class="model-dark__name">Fit</span><span class="model-dark__arrow">&rarr;</span></a>
+        <a href="#" class="model-dark"><span class="model-dark__name">Ridgeline</span><span class="model-dark__arrow">&rarr;</span></a>
+        <a href="#" class="model-dark"><span class="model-dark__name">Crosstour</span><span class="model-dark__arrow">&rarr;</span></a>
+        <a href="#" class="model-dark"><span class="model-dark__name">Clarity</span><span class="model-dark__arrow">&rarr;</span></a>
+        <a href="#" class="model-dark"><span class="model-dark__name">HR-V</span><span class="model-dark__arrow">&rarr;</span></a>
+        <a href="#" class="model-dark"><span class="model-dark__name">Prologue</span><span class="model-dark__arrow">&rarr;</span></a>
+        <a href="#" class="model-dark"><span class="model-dark__name">ZR-V</span><span class="model-dark__arrow">&rarr;</span></a>
       </div>
     </div>
   </section>
 
-  <!-- CUSTOMER REVIEWS -->
-  <section class="reviews section" id="reviews">
+  <!-- DISCOVER MORE — RED BAR -->
+  <section class="tools-red section" id="discover">
     <div class="container">
       <div class="section__header fade-up">
-        <span class="section__tag">Reviews</span>
-        <h2 class="section__title">What Our Customers Say</h2>
-        <p class="section__desc">Join thousands of satisfied Honda owners who have retrieved their window stickers.</p>
+        <span class="section__tag" style="color:rgba(255,255,255,.7)">More Tools</span>
+        <h2 class="section__title" style="color:#fff">Discover More About Your Honda</h2>
       </div>
-      <div class="reviews__grid">
-        <div class="review-card fade-up">
-          <div class="review-card__stars">
-            <svg width="18" height="18" viewBox="0 0 18 18" fill="#F30415"><path d="M9 1L11.05 6.2l5.45.5-4.15 3.7L13.5 16 9 13.5 4.5 16l1.15-5.6L1.5 6.7l5.45-.5L9 1z"/></svg>
-            <svg width="18" height="18" viewBox="0 0 18 18" fill="#F30415"><path d="M9 1L11.05 6.2l5.45.5-4.15 3.7L13.5 16 9 13.5 4.5 16l1.15-5.6L1.5 6.7l5.45-.5L9 1z"/></svg>
-            <svg width="18" height="18" viewBox="0 0 18 18" fill="#F30415"><path d="M9 1L11.05 6.2l5.45.5-4.15 3.7L13.5 16 9 13.5 4.5 16l1.15-5.6L1.5 6.7l5.45-.5L9 1z"/></svg>
-            <svg width="18" height="18" viewBox="0 0 18 18" fill="#F30415"><path d="M9 1L11.05 6.2l5.45.5-4.15 3.7L13.5 16 9 13.5 4.5 16l1.15-5.6L1.5 6.7l5.45-.5L9 1z"/></svg>
-            <svg width="18" height="18" viewBox="0 0 18 18" fill="#F30415"><path d="M9 1L11.05 6.2l5.45.5-4.15 3.7L13.5 16 9 13.5 4.5 16l1.15-5.6L1.5 6.7l5.45-.5L9 1z"/></svg>
-          </div>
-          <p class="review-card__text">"I needed my original window sticker for insurance purposes. Got it in under 2 minutes. Exactly what the dealer gave me in 2019."</p>
-          <div class="review-card__author">
-            <div class="review-card__avatar" style="background:#F30415;color:#fff">M</div>
-            <div><strong>Michael T.</strong><span>2020 Honda Accord</span></div>
-          </div>
-        </div>
-        <div class="review-card fade-up">
-          <div class="review-card__stars">
-            <svg width="18" height="18" viewBox="0 0 18 18" fill="#F30415"><path d="M9 1L11.05 6.2l5.45.5-4.15 3.7L13.5 16 9 13.5 4.5 16l1.15-5.6L1.5 6.7l5.45-.5L9 1z"/></svg>
-            <svg width="18" height="18" viewBox="0 0 18 18" fill="#F30415"><path d="M9 1L11.05 6.2l5.45.5-4.15 3.7L13.5 16 9 13.5 4.5 16l1.15-5.6L1.5 6.7l5.45-.5L9 1z"/></svg>
-            <svg width="18" height="18" viewBox="0 0 18 18" fill="#F30415"><path d="M9 1L11.05 6.2l5.45.5-4.15 3.7L13.5 16 9 13.5 4.5 16l1.15-5.6L1.5 6.7l5.45-.5L9 1z"/></svg>
-            <svg width="18" height="18" viewBox="0 0 18 18" fill="#F30415"><path d="M9 1L11.05 6.2l5.45.5-4.15 3.7L13.5 16 9 13.5 4.5 16l1.15-5.6L1.5 6.7l5.45-.5L9 1z"/></svg>
-            <svg width="18" height="18" viewBox="0 0 18 18" fill="#F30415"><path d="M9 1L11.05 6.2l5.45.5-4.15 3.7L13.5 16 9 13.5 4.5 16l1.15-5.6L1.5 6.7l5.45-.5L9 1z"/></svg>
-          </div>
-          <p class="review-card__text">"Bought a used CR-V and wanted to see the original build sheet. This service was incredible — detailed, fast, and affordable."</p>
-          <div class="review-card__author">
-            <div class="review-card__avatar" style="background:#1A1A1A;color:#fff">S</div>
-            <div><strong>Sarah K.</strong><span>2022 Honda CR-V</span></div>
-          </div>
-        </div>
-        <div class="review-card fade-up">
-          <div class="review-card__stars">
-            <svg width="18" height="18" viewBox="0 0 18 18" fill="#F30415"><path d="M9 1L11.05 6.2l5.45.5-4.15 3.7L13.5 16 9 13.5 4.5 16l1.15-5.6L1.5 6.7l5.45-.5L9 1z"/></svg>
-            <svg width="18" height="18" viewBox="0 0 18 18" fill="#F30415"><path d="M9 1L11.05 6.2l5.45.5-4.15 3.7L13.5 16 9 13.5 4.5 16l1.15-5.6L1.5 6.7l5.45-.5L9 1z"/></svg>
-            <svg width="18" height="18" viewBox="0 0 18 18" fill="#F30415"><path d="M9 1L11.05 6.2l5.45.5-4.15 3.7L13.5 16 9 13.5 4.5 16l1.15-5.6L1.5 6.7l5.45-.5L9 1z"/></svg>
-            <svg width="18" height="18" viewBox="0 0 18 18" fill="#F30415"><path d="M9 1L11.05 6.2l5.45.5-4.15 3.7L13.5 16 9 13.5 4.5 16l1.15-5.6L1.5 6.7l5.45-.5L9 1z"/></svg>
-            <svg width="18" height="18" viewBox="0 0 18 18" fill="#F30415"><path d="M9 1L11.05 6.2l5.45.5-4.15 3.7L13.5 16 9 13.5 4.5 16l1.15-5.6L1.5 6.7l5.45-.5L9 1z"/></svg>
-          </div>
-          <p class="review-card__text">"Perfect for documenting my Civic Si's value. The PDF includes everything — MSRP, packages, MPG ratings. Highly recommend."</p>
-          <div class="review-card__author">
-            <div class="review-card__avatar" style="background:#5F6368;color:#fff">D</div>
-            <div><strong>David R.</strong><span>2023 Honda Civic Si</span></div>
-          </div>
-        </div>
+      <div class="tools-red__bar fade-up">
+        <a href="#" class="tool-pill"><span>Honda MSRP Lookup</span><span class="tool-pill__arrow">&rarr;</span></a>
+        <a href="#" class="tool-pill"><span>Lookup Honda Factory Paint Color</span><span class="tool-pill__arrow">&rarr;</span></a>
+        <a href="#" class="tool-pill"><span>Check Honda Warranty Status</span><span class="tool-pill__arrow">&rarr;</span></a>
+        <a href="#" class="tool-pill"><span>Honda Specifications By VIN</span><span class="tool-pill__arrow">&rarr;</span></a>
       </div>
     </div>
   </section>
 
-  <!-- LATEST ARTICLES -->
-  <section class="blog section section--alt" id="resources">
+  <!-- VERIFY CTA -->
+  <section class="verify section" id="verify">
+    <div class="container">
+      <div class="verify__card fade-up">
+        <h2 class="verify__title">Verify Honda Factory Features and MSRP Instantly</h2>
+        <p class="verify__desc">Look up any Honda by VIN and access the factory window sticker within seconds. See the original trim, options, packages, and MSRP so you can shop or sell with confidence. Rely on our Honda window sticker lookup by VIN tool for fast and accurate results.</p>
+        <a href="#hero" class="btn btn--primary btn--lg">Unlock Your Honda's Original Window Sticker Today</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- BENEFITS -->
+  <section class="benefits section section--alt" id="benefits">
     <div class="container">
       <div class="section__header fade-up">
-        <span class="section__tag">Articles</span>
-        <h2 class="section__title">Latest from Our Blog</h2>
-        <p class="section__desc">Tips, guides, and resources for Honda owners.</p>
+        <span class="section__tag">Benefits</span>
+        <h2 class="section__title">The Benefit You'll Get</h2>
       </div>
-      <div class="blog__grid">
-        <article class="blog-card fade-up">
-          <div class="blog-card__image" style="background:#eef1f6">
-            <span class="blog-card__category">Guides</span>
-            <span style="display:flex;align-items:center;justify-content:center;height:100%;color:#5F6368;font-weight:600">How to Find Your VIN</span>
-          </div>
-          <div class="blog-card__body">
-            <h3 class="blog-card__title">Where to Find Your Honda VIN: 5 Easy Locations</h3>
-            <p class="blog-card__excerpt">Your VIN is easier to find than you think. Check these five locations on any Honda vehicle.</p>
-            <div class="blog-card__meta">
-              <span>5 min read</span>
-              <a href="#" class="blog-card__link">Read More &rarr;</a>
-            </div>
-          </div>
-        </article>
-        <article class="blog-card fade-up">
-          <div class="blog-card__image" style="background:#e8edf3">
-            <span class="blog-card__category">Explained</span>
-            <span style="display:flex;align-items:center;justify-content:center;height:100%;color:#5F6368;font-weight:600">Understanding MSRP</span>
-          </div>
-          <div class="blog-card__body">
-            <h3 class="blog-card__title">What Your Honda's Original MSRP Really Means</h3>
-            <p class="blog-card__excerpt">Understanding factory MSRP, destination charges, and how options affected your Honda's price.</p>
-            <div class="blog-card__meta">
-              <span>8 min read</span>
-              <a href="#" class="blog-card__link">Read More &rarr;</a>
-            </div>
-          </div>
-        </article>
-        <article class="blog-card fade-up">
-          <div class="blog-card__image" style="background:#eef1f6">
-            <span class="blog-card__category">Tips</span>
-            <span style="display:flex;align-items:center;justify-content:center;height:100%;color:#5F6368;font-weight:600">Factory Options Guide</span>
-          </div>
-          <div class="blog-card__body">
-            <h3 class="blog-card__title">Decoding Your Honda's Factory Options &amp; Packages</h3>
-            <p class="blog-card__excerpt">Learn how to read your build sheet and understand every option code on your Honda.</p>
-            <div class="blog-card__meta">
-              <span>6 min read</span>
-              <a href="#" class="blog-card__link">Read More &rarr;</a>
-            </div>
-          </div>
-        </article>
+      <div class="benefits__checklist fade-up">
+        <div class="benefit-check"><span class="benefit-check__box"><svg width="18" height="18" viewBox="0 0 28 28" fill="none"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span><span class="benefit-check__text">Covers All Honda Models</span></div>
+        <div class="benefit-check"><span class="benefit-check__box"><svg width="18" height="18" viewBox="0 0 28 28" fill="none"><path d="M14 3L3 8v6c0 6.5 4.5 12.5 11 14 6.5-1.5 11-7.5 11-14V8L14 3z" stroke="currentColor" stroke-width="1.6" fill="none"/><path d="M9 14l4 4 6-8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="benefit-check__text">Precise Data in PDF</span></div>
+        <div class="benefit-check"><span class="benefit-check__box"><svg width="18" height="18" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="10" stroke="currentColor" stroke-width="1.6" fill="none"/><path d="M14 8v4l3 2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span><span class="benefit-check__text">Support Classic Models</span></div>
+        <div class="benefit-check"><span class="benefit-check__box"><svg width="18" height="18" viewBox="0 0 28 28" fill="none"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z" stroke="currentColor" stroke-width="1.6"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="benefit-check__text">Always-Updated Trusted Database</span></div>
+        <div class="benefit-check"><span class="benefit-check__box"><svg width="18" height="18" viewBox="0 0 28 28" fill="none"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="benefit-check__text">24/7 Customer Support</span></div>
+        <div class="benefit-check"><span class="benefit-check__box"><svg width="18" height="18" viewBox="0 0 28 28" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="benefit-check__text">Satisfaction Guarantee</span></div>
       </div>
     </div>
   </section>
@@ -474,53 +654,79 @@
     <div class="container">
       <div class="section__header fade-up">
         <span class="section__tag">FAQ</span>
-        <h2 class="section__title">Frequently Asked Questions</h2>
-        <p class="section__desc">Everything you need to know about Honda window stickers and VIN decoding.</p>
+        <h2 class="section__title">Frequently Asked Questions about Honda Window Stickers</h2>
       </div>
       <div class="faq__list">
         <div class="faq__item fade-up">
           <button class="faq__question">
-            <span>What is a window sticker (Monroney label)?</span>
+            <span>Can I get a Honda window sticker for free?</span>
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round"/></svg>
           </button>
           <div class="faq__answer">
-            <p>A window sticker, officially called a Monroney label, is a required label affixed to all new vehicles sold in the United States. It displays the manufacturer's suggested retail price (MSRP), standard equipment, factory-installed options, fuel economy ratings, and safety information.</p>
+            <p>New Honda buyers receive the sticker with their car at no cost. For used cars, free VIN lookups only provide limited details, not the original sticker. You may also contact an authorized Honda dealership. Hondawindowsticker.com offers the fastest and most affordable way to get the complete factory label with original pricing and features.</p>
           </div>
         </div>
         <div class="faq__item fade-up">
           <button class="faq__question">
-            <span>How do I find my Honda VIN?</span>
+            <span>How do I find my Honda window sticker by VIN?</span>
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round"/></svg>
           </button>
           <div class="faq__answer">
-            <p>Your Honda VIN can be found on the dashboard near the windshield (driver's side), on the driver's side door jamb sticker, on your vehicle registration, on your insurance card, and on your vehicle title.</p>
+            <p>Enter your VIN in the form at the top of the page and click the Get Window Sticker button. The site will display your vehicle's basic details, after which you can select your preferred package and complete payment. Within seconds, you'll receive the original sticker with verified equipment, MSRP, fuel economy, and safety ratings.</p>
           </div>
         </div>
         <div class="faq__item fade-up">
           <button class="faq__question">
-            <span>How long does it take to get my window sticker?</span>
+            <span>Where can I find my Honda VIN?</span>
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round"/></svg>
           </button>
           <div class="faq__answer">
-            <p>Most window stickers are generated and available for download within 30 seconds. In rare cases, it may take up to 2 minutes for older or less common models.</p>
+            <p>The VIN is located on the dashboard and can be seen through the windshield. It is also stamped inside the driver's-side doorjamb. You can also find it on your vehicle registration card or insurance papers.</p>
           </div>
         </div>
         <div class="faq__item fade-up">
           <button class="faq__question">
-            <span>Is the data really from Honda's factory database?</span>
+            <span>Can I look up a Honda window sticker for a used car?</span>
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round"/></svg>
           </button>
           <div class="faq__answer">
-            <p>Yes. We source all window sticker data directly from official Honda factory records. Every sticker is a true replica of the original Monroney label that came with your vehicle.</p>
+            <p>Yes, you can easily generate a window sticker for a pre-owned vehicle. Buyers often use the Honda window sticker lookup tool to confirm the actual features of a used car before making a purchase.</p>
           </div>
         </div>
         <div class="faq__item fade-up">
           <button class="faq__question">
-            <span>What models and years do you support?</span>
+            <span>Can I download or print my Honda window sticker as a PDF?</span>
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round"/></svg>
           </button>
           <div class="faq__answer">
-            <p>We support all Honda models sold in the United States from 1980 to the current model year. This includes Accord, Civic, CR-V, Pilot, Odyssey, Ridgeline, Passport, HR-V, Fit, Insight, and more.</p>
+            <p>Yes, our service lets you download and print a clear digital copy of your window sticker. Having a downloadable sticker is especially useful for resale listings, and saving it as a PDF ensures you always have a permanent copy on file.</p>
+          </div>
+        </div>
+        <div class="faq__item fade-up">
+          <button class="faq__question">
+            <span>Is the MSRP on the window sticker negotiable?</span>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round"/></svg>
+          </button>
+          <div class="faq__answer">
+            <p>Yes, the MSRP shown on a new car's window sticker is usually negotiable. Dealers are required to display it, but it serves as a suggested price rather than a fixed one. In most cases, discounts, incentives, and rebates reduce the final sale price below the MSRP.</p>
+          </div>
+        </div>
+        <div class="faq__item fade-up">
+          <button class="faq__question">
+            <span>Can I search without a VIN?</span>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round"/></svg>
+          </button>
+          <div class="faq__answer">
+            <p>Yes, you may be able to search by U.S. license plate and state, or by year, make, model, and trim when available.</p>
+          </div>
+        </div>
+        <div class="faq__item fade-up">
+          <button class="faq__question">
+            <span>Is a Honda window sticker the same as a VIN decoder?</span>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round"/></svg>
+          </button>
+          <div class="faq__answer">
+            <p>No. A VIN decoder shows basic vehicle identity details. A Honda window sticker shows original factory build, pricing, equipment, colors, MPG, warranty, and safety details.</p>
           </div>
         </div>
       </div>
@@ -530,12 +736,18 @@
   <!-- FINAL CTA -->
   <section class="cta section" id="pricing">
     <div class="container">
-      <div class="cta__card fade-up">
+      <div class="cta__card cta__card--premium fade-up">
+        <span class="section__tag">Instant Access</span>
         <h2 class="cta__title">Ready to Get Your Honda Window Sticker?</h2>
         <p class="cta__desc">Enter your VIN below and retrieve your original factory window sticker instantly.</p>
         <div class="cta__search">
           <input type="text" class="cta__input" placeholder="Enter your 17-character Honda VIN" maxlength="17">
           <button class="btn btn--primary btn--lg cta__btn">Get Window Sticker</button>
+        </div>
+        <div class="cta__trust" style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:16px;font-size:13px;color:var(--text-secondary);font-weight:500">
+          <span style="display:flex;align-items:center;gap:6px"><svg width="14" height="14" viewBox="0 0 14 14" fill="#F30415"><path d="M7 1L8.6 4.8 13 5.2 9.8 8 10.6 13 7 10.7 3.4 13l.8-5L1 5.2l4.4-.4L7 1z"/></svg> Factory Accurate</span>
+          <span style="display:flex;align-items:center;gap:6px"><svg width="14" height="14" viewBox="0 0 14 14" fill="#F30415"><path d="M7 1L8.6 4.8 13 5.2 9.8 8 10.6 13 7 10.7 3.4 13l.8-5L1 5.2l4.4-.4L7 1z"/></svg> Instant PDF</span>
+          <span style="display:flex;align-items:center;gap:6px"><svg width="14" height="14" viewBox="0 0 14 14" fill="#F30415"><path d="M7 1L8.6 4.8 13 5.2 9.8 8 10.6 13 7 10.7 3.4 13l.8-5L1 5.2l4.4-.4L7 1z"/></svg> Secure Checkout</span>
         </div>
         <p class="cta__fineprint">Free VIN decoding included. Window sticker PDF available for a small fee.</p>
       </div>
@@ -547,7 +759,7 @@
     <div class="container">
       <div class="footer__grid">
         <div class="footer__col footer__col--brand">
-          <a href="#" class="nav__logo" style="margin-bottom:1rem">
+          <a href="index.html" class="nav__logo" style="margin-bottom:1rem">
             <svg class="nav__logo-icon" viewBox="0 0 32 32" fill="none">
               <rect width="32" height="32" rx="6" fill="#F30415"/>
               <path d="M16 8c-4.4 0-8 3.6-8 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8zm0 14c-3.3 0-6-2.7-6-6s2.7-6 6-6 6 2.7 6 6-2.7 6-6 6z" fill="#fff"/>
@@ -563,36 +775,28 @@
           </div>
         </div>
         <div class="footer__col">
-          <h4 class="footer__heading">Products</h4>
-          <a href="#" class="footer__link">Window Sticker</a>
-          <a href="vin-decoder.html" class="footer__link">VIN Decoder</a>
-          <a href="#" class="footer__link">Build Sheet</a>
-          <a href="#" class="footer__link">Recall Lookup</a>
-          <a href="#" class="footer__link">Paint Code</a>
-        </div>
-        <div class="footer__col">
-          <h4 class="footer__heading">Resources</h4>
-          <a href="#" class="footer__link">How It Works</a>
-          <a href="#" class="footer__link">Honda VIN Guide</a>
-          <a href="#" class="footer__link">Sample Sticker</a>
-          <a href="#" class="footer__link">Blog</a>
-          <a href="#" class="footer__link">FAQ</a>
-        </div>
-        <div class="footer__col">
-          <h4 class="footer__heading">Company</h4>
+          <h4 class="footer__heading">About Us</h4>
           <a href="#" class="footer__link">About Us</a>
           <a href="#" class="footer__link">Privacy Policy</a>
-          <a href="#" class="footer__link">Terms of Service</a>
-          <a href="#" class="footer__link">Refund Policy</a>
-          <a href="#" class="footer__link">Contact</a>
+          <a href="#" class="footer__link">Contact Us</a>
+          <a href="#" class="footer__link">Request a Refund</a>
+          <a href="index.html#pricing" class="footer__link">Pricing</a>
+        </div>
+        <div class="footer__col">
+          <h4 class="footer__heading">Tools</h4>
+          <a href="#" class="footer__link">Honda Vehicle History</a>
+          <a href="#" class="footer__link">Honda Recall Check</a>
+          <a href="#" class="footer__link">Blog</a>
+          <a href="vin-decoder.html" class="footer__link">VIN Decoder</a>
+          <a href="window-sticker.html" class="footer__link">Window Sticker</a>
         </div>
         <div class="footer__col">
           <h4 class="footer__heading">Support</h4>
+          <a href="#faq" class="footer__link">FAQ</a>
           <a href="#" class="footer__link">Help Center</a>
           <a href="#" class="footer__link">VIN Help</a>
           <a href="#" class="footer__link">Troubleshooting</a>
           <a href="#" class="footer__link">Contact Us</a>
-          <a href="#" class="footer__link">Status</a>
         </div>
       </div>
       <div class="footer__bottom">
@@ -604,3 +808,5 @@
   <script src="js/scripts.js"></script>
 </body>
 </html>
+
+

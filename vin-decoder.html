@@ -3,68 +3,45 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Honda VIN Decoder - Decode Any Honda VIN Instantly</title>
-  <meta name="description" content="Free Honda VIN decoder. Enter your 17-character VIN to reveal model year, engine, transmission, trim, assembly plant, and more.">
+  <title>Free Honda VIN Decoder for Basic Specs and Market Value</title>
+  <meta name="description" content="Use our Honda VIN decoder to check basic vehicle details from your VIN. Enter a Honda VIN to identify year, make, model, trim, engine, fuel type, plant, and market value.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
   <style>
-    .page-hero { padding:140px 0 80px; background:var(--bg); text-align:center; position:relative; overflow:hidden }
-    .page-hero__bg { position:absolute; inset:0; pointer-events:none }
-    .page-hero__bg span { position:absolute; border-radius:50%; opacity:.03; background:var(--primary) }
-    .page-hero__bg span:nth-child(1) { width:500px; height:500px; top:-200px; right:-100px }
-    .page-hero__bg span:nth-child(2) { width:300px; height:300px; bottom:-100px; left:-80px }
-    .page-hero__title { font-family:var(--font-heading); font-size:clamp(30px,4vw,48px); font-weight:800; color:var(--text); margin-bottom:16px }
-    .page-hero__desc { font-size:clamp(15px,1.1vw,17px); color:var(--text-secondary); max-width:600px; margin:0 auto }
-    .detail { padding:80px 0 }
-    .detail:nth-child(even) { background:var(--bg-alt) }
-    .detail__grid { display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center }
-    .detail__content { order:0 }
-    .detail__visual { order:1; display:flex; justify-content:center; align-items:center }
-    .detail:nth-child(even) .detail__content { order:1 }
-    .detail:nth-child(even) .detail__visual { order:0 }
-    .detail__tag { display:inline-block; font-size:12px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--accent); background:rgba(38,72,189,.1); padding:4px 14px; border-radius:100px; margin-bottom:16px }
-    .detail__title { font-family:var(--font-heading); font-size:clamp(22px,2.5vw,30px); font-weight:800; color:var(--text); margin-bottom:12px }
-    .detail__desc { font-size:15px; color:var(--text-secondary); line-height:1.7; margin-bottom:20px }
-    .detail__features { list-style:none; padding:0; display:flex; flex-direction:column; gap:10px }
-    .detail__features li { display:flex; align-items:flex-start; gap:10px; font-size:14px; color:var(--text-secondary) }
-    .detail__features li::before { content:''; width:6px; height:6px; background:var(--primary); border-radius:50%; flex-shrink:0; margin-top:7px }
-    .detail__icon-wrap { width:80px; height:80px; display:flex; align-items:center; justify-content:center; background:rgba(243,4,21,.08); border-radius:20px }
-    .detail-card { background:#fff; border:1px solid var(--border); border-radius:var(--radius-lg); padding:24px; max-width:400px; width:100%; box-shadow:var(--shadow-md) }
-    .detail-card__header { background:var(--text); color:#fff; padding:10px 16px; display:flex; justify-content:space-between; font-size:12px; font-weight:700; font-family:var(--font-heading); border-radius:8px 8px 0 0; letter-spacing:.04em }
-    .detail-card__body { padding:16px 0 }
-    .detail-card__row { display:flex; justify-content:space-between; padding:7px 0; border-bottom:1px solid var(--border); font-size:13px }
-    .detail-card__row:last-child { border-bottom:none }
-    .detail-card__row span:first-child { color:var(--text-secondary); font-weight:500 }
-    .detail-card__row span:last-child { font-weight:600; color:var(--text) }
-    .detail-steps { display:flex; gap:24px; margin-top:24px }
-    .detail-step { flex:1; text-align:center; padding:20px; background:var(--card); border:1px solid var(--border); border-radius:var(--radius-md) }
-    .detail-step__num { width:36px; height:36px; display:flex; align-items:center; justify-content:center; background:var(--primary); color:#fff; font-family:var(--font-heading); font-size:16px; font-weight:700; border-radius:50%; margin:0 auto 12px }
-    .detail-step__title { font-family:var(--font-heading); font-size:14px; font-weight:700; color:var(--text); margin-bottom:6px }
-    .detail-step__desc { font-size:13px; color:var(--text-secondary); line-height:1.5 }
-    .sample-section { padding:80px 0; background:var(--bg-alt); text-align:center }
-    .sample-card { display:inline-block; background:#fff; border:1px solid var(--border); border-radius:var(--radius-lg); padding:32px; max-width:520px; width:100%; text-align:left; box-shadow:var(--shadow-md) }
-    .sample-card__header { background:var(--text); color:#fff; padding:12px 20px; display:flex; justify-content:space-between; font-size:13px; font-weight:700; font-family:var(--font-heading); border-radius:8px 8px 0 0; letter-spacing:.04em }
-    .sample-card__body { padding:20px 0 }
-    .sample-card__row { display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid var(--border); font-size:14px }
-    .sample-card__row:last-child { border-bottom:none }
-    .sample-card__row span:first-child { color:var(--text-secondary); font-weight:500 }
-    .sample-card__row span:last-child { font-weight:600; color:var(--text) }
-    .sample-card__note { padding:12px 20px; background:#F7F8FA; border-top:1px solid var(--border); font-size:12px; color:var(--text-secondary); text-align:left }
+    .compare__table-wrap { overflow-x:auto; max-width:860px; margin:0 auto; border:1px solid var(--border); border-radius:var(--radius-lg); background:#fff; box-shadow:var(--shadow-sm) }
+    .compare__table { width:100%; border-collapse:collapse; font-size:14px }
+    .compare__table th { background:var(--text); color:#fff; padding:12px 16px; text-align:left; font-family:var(--font-heading); font-weight:700; font-size:13px; letter-spacing:.04em; text-transform:uppercase }
+    .compare__table td { padding:10px 16px; border-bottom:1px solid var(--border); color:var(--text-secondary); font-size:13px }
+    .compare__table td:first-child { font-weight:600; color:var(--text); background:var(--bg-alt) }
+    .compare__table tr:last-child td { border-bottom:none }
+    .spec-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; max-width:960px; margin:0 auto }
+    .spec-pill { display:flex; align-items:center; gap:10px; padding:12px 16px; background:#fff; border:1px solid var(--border); border-radius:var(--radius-md); font-size:13px; font-weight:600; color:var(--text); transition:var(--transition) }
+    .spec-pill:hover { border-color:rgba(243,4,21,.12); box-shadow:var(--shadow-sm) }
+    .spec-pill__dot { width:8px; height:8px; background:var(--primary); border-radius:50%; flex-shrink:0 }
+    .deeper__grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; max-width:960px; margin:0 auto }
+    .deeper-card { background:#fff; border:1px solid var(--border); border-radius:var(--radius-md); padding:20px; transition:var(--transition) }
+    .deeper-card:hover { box-shadow:var(--shadow-md); transform:translateY(-2px); border-color:rgba(243,4,21,.12) }
+    .deeper-card__title { font-family:var(--font-heading); font-size:14px; font-weight:700; color:var(--text); margin-bottom:6px }
+    .deeper-card__desc { font-size:13px; color:var(--text-secondary); line-height:1.6; margin:0 }
+    .btn--outline { background:#fff; border:1.5px solid var(--primary); color:var(--primary); border-radius:var(--radius-md) }
+    .btn--outline:hover { background:rgba(243,4,21,.04); border-color:var(--primary-hover); color:var(--primary-hover); transform:translateY(-1px); box-shadow:0 4px 12px rgba(243,4,21,.08) }
+    .vin-example { display:inline-flex; align-items:center; gap:8px; background:var(--bg-alt); border:1px solid var(--border); border-radius:var(--radius-md); padding:10px 16px; font-family:monospace; font-size:14px; font-weight:600; color:var(--text); margin:12px 0 }
     @media (max-width:768px) {
-      .detail__grid { grid-template-columns:1fr; gap:32px }
-      .detail:nth-child(even) .detail__content { order:0 }
-      .detail:nth-child(even) .detail__visual { order:0 }
-      .detail__visual { order:-1 }
-      .detail:nth-child(even) .detail__visual { order:-1 }
-      .detail-steps { flex-direction:column; gap:12px }
+      .vin-loc__layout { grid-template-columns:1fr !important; gap:20px }
+      .spec-grid { grid-template-columns:repeat(2,1fr); gap:10px }
+      .deeper__grid { grid-template-columns:repeat(2,1fr); gap:12px }
+      .compare__table { font-size:12px }
+      .compare__table th, .compare__table td { padding:8px 12px }
+    }
+    @media (max-width:480px) {
+      .spec-grid { grid-template-columns:1fr }
+      .deeper__grid { grid-template-columns:1fr }
     }
   </style>
 </head>
 <body>
-
-  <!-- NAVIGATION -->
   <nav class="nav" id="nav">
     <div class="nav__container">
       <a href="index.html" class="nav__logo">
@@ -76,75 +53,53 @@
         <span class="nav__logo-text">Honda<span class="nav__logo-accent">WindowSticker</span></span>
       </a>
       <div class="nav__menu" id="navMenu">
+        <a href="build-sheet-by-vin.html" class="nav__link">Build Sheet</a>
+        <a href="paint-color-by-vin.html" class="nav__link">Paint Colour by VIN</a>
+        <a href="vin-decoder.html" class="nav__link">FREE VIN Decoder</a>
         <div class="nav__dropdown">
           <a href="#" class="nav__link nav__link--dropdown" id="servicesToggle">
-            Services
+            Tools
             <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 5l3 3 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
           <div class="nav__mega" id="navMega">
             <div class="nav__mega-grid">
-              <a href="window-sticker.html" class="nav__mega-item" data-service>
+              <a href="warranty-check-by-vin.html" class="nav__mega-item" data-service>
                 <div class="nav__mega-icon">
-                  <svg width="22" height="22" viewBox="0 0 28 28" fill="none"><rect x="3" y="4" width="22" height="20" rx="2" stroke="#F30415" stroke-width="1.5"/><path d="M3 10h22M9 4v6M19 4v6" stroke="#F30415" stroke-width="1.5"/></svg>
+                  <svg width="22" height="22" viewBox="0 0 28 28" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="#F30415" stroke-width="1.5" fill="none"/><path d="M9 12l2 2 4-4" stroke="#F30415" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </div>
                 <div class="nav__mega-text">
-                  <span class="nav__mega-title">Window Sticker</span>
-                  <span class="nav__mega-desc">Retrieve original factory window sticker</span>
+                  <span class="nav__mega-title">Warranty Check</span>
+                  <span class="nav__mega-desc">Check warranty status by VIN</span>
                 </div>
               </a>
-              <a href="vin-decoder.html" class="nav__mega-item" data-service>
+              <a href="msrp-by-vin.html" class="nav__mega-item" data-service>
                 <div class="nav__mega-icon">
-                  <svg width="22" height="22" viewBox="0 0 28 28" fill="none"><path d="M14 3L3 8v6c0 6.5 4.5 12.5 11 14 6.5-1.5 11-7.5 11-14V8L14 3z" stroke="#F30415" stroke-width="1.5" fill="none"/><path d="M14 14l-3-3m3 3l3-3m-3 3v-6" stroke="#F30415" stroke-width="1.5" stroke-linecap="round"/></svg>
+                  <svg width="22" height="22" viewBox="0 0 28 28" fill="none"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6" stroke="#F30415" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </div>
                 <div class="nav__mega-text">
-                  <span class="nav__mega-title">VIN Decoder</span>
-                  <span class="nav__mega-desc">Decode any Honda VIN instantly</span>
+                  <span class="nav__mega-title">MSRP Check</span>
+                  <span class="nav__mega-desc">Check original MSRP by VIN</span>
                 </div>
               </a>
-              <a href="index.html#services" class="nav__mega-item" data-service>
+              <a href="specifications-by-vin.html" class="nav__mega-item" data-service>
                 <div class="nav__mega-icon">
-                  <svg width="22" height="22" viewBox="0 0 28 28" fill="none"><path d="M5 7h18v14H5V7z" stroke="#F30415" stroke-width="1.5" fill="none"/><path d="M5 11h18M9 7v4M19 7v4" stroke="#F30415" stroke-width="1.5"/></svg>
+                  <svg width="22" height="22" viewBox="0 0 28 28" fill="none"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" stroke="#F30415" stroke-width="1.5" stroke-linecap="round"/></svg>
                 </div>
                 <div class="nav__mega-text">
-                  <span class="nav__mega-title">Build Sheet</span>
-                  <span class="nav__mega-desc">Complete factory build sheet data</span>
-                </div>
-              </a>
-              <a href="index.html#services" class="nav__mega-item" data-service>
-                <div class="nav__mega-icon">
-                  <svg width="22" height="22" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="11" stroke="#F30415" stroke-width="1.5" fill="none"/><path d="M14 8v6l4 4" stroke="#F30415" stroke-width="1.5" stroke-linecap="round"/></svg>
-                </div>
-                <div class="nav__mega-text">
-                  <span class="nav__mega-title">Recall Lookup</span>
-                  <span class="nav__mega-desc">Check open recalls by VIN</span>
-                </div>
-              </a>
-              <a href="index.html#services" class="nav__mega-item" data-service>
-                <div class="nav__mega-icon">
-                  <svg width="22" height="22" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="10" stroke="#F30415" stroke-width="1.5" fill="none"/><path d="M14 10v4l3 1.5" stroke="#F30415" stroke-width="1.5" stroke-linecap="round"/></svg>
-                </div>
-                <div class="nav__mega-text">
-                  <span class="nav__mega-title">Paint Code</span>
-                  <span class="nav__mega-desc">Find exact factory paint code</span>
-                </div>
-              </a>
-              <a href="index.html#services" class="nav__mega-item" data-service>
-                <div class="nav__mega-icon">
-                  <svg width="22" height="22" viewBox="0 0 28 28" fill="none"><path d="M4 8h20v14H4V8z" stroke="#F30415" stroke-width="1.5" fill="none"/><circle cx="14" cy="15" r="3" stroke="#F30415" stroke-width="1.5" fill="none"/></svg>
-                </div>
-                <div class="nav__mega-text">
-                  <span class="nav__mega-title">Factory Options</span>
-                  <span class="nav__mega-desc">Every installed option listed</span>
+                  <span class="nav__mega-title">Specifications Check</span>
+                  <span class="nav__mega-desc">View factory specifications</span>
                 </div>
               </a>
             </div>
           </div>
         </div>
-        <a href="index.html#pricing" class="nav__link">Pricing</a>
-        <a href="index.html#resources" class="nav__link">Resources</a>
-        <a href="index.html#faq" class="nav__link">FAQ</a>
+        <div class="nav__menu-divider"></div>
+        <a href="#login" class="nav__link nav__menu-login">Log In</a>
+        <a href="#signup" class="btn btn--primary btn--sm nav__menu-signup">Sign Up</a>
       </div>
       <div class="nav__actions">
+        <a href="#login" class="nav__link nav__link--login">Log In</a>
+        <a href="#signup" class="btn btn--primary btn--sm">Sign Up</a>
         <button class="nav__hamburger" id="hamburger" aria-label="Menu">
           <span></span><span></span><span></span>
         </button>
@@ -152,153 +107,496 @@
     </div>
   </nav>
 
-  <!-- PAGE HERO -->
-  <section class="page-hero">
-    <div class="page-hero__bg">
-      <span></span><span></span>
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero__bg">
+      <div class="hero__shape hero__shape--1"></div>
+      <div class="hero__shape hero__shape--2"></div>
+      <div class="hero__shape hero__shape--3"></div>
     </div>
-    <div class="container fade-up">
-      <span class="hero__badge" style="background:#E9ECF8;color:#264BBF">VIN Decoder</span>
-      <h1 class="page-hero__title">Decode Any Honda VIN Instantly</h1>
-      <p class="page-hero__desc">Enter your 17-character VIN and reveal the model year, engine, transmission, trim level, assembly plant, and more — directly from Honda factory data.</p>
-    </div>
-  </section>
-
-  <!-- WHAT IS A VIN -->
-  <section class="detail" id="about">
-    <div class="container">
-      <div class="detail__grid fade-up">
-        <div class="detail__content">
-          <span class="detail__tag">What Is It</span>
-          <h2 class="detail__title">The 17-Character Vehicle ID</h2>
-          <p class="detail__desc">Your Vehicle Identification Number (VIN) is a unique 17-character code that identifies your Honda — the year it was made, the model, the engine, where it was built, and its exact production sequence.</p>
-          <ul class="detail__features">
-            <li>WMI (1-3): Manufacturer and country of origin</li>
-            <li>VDS (4-8): Body style, model line, and engine</li>
-            <li>Check digit (9): Validates the entire VIN</li>
-            <li>Model year (10) and assembly plant (11)</li>
-            <li>VIS (12-17): Sequential production number</li>
-            <li>100% accurate decoding from factory records</li>
-          </ul>
+    <div class="container hero__container">
+      <div class="hero__content">
+        <span class="hero__badge" style="background:#E9ECF8;color:#264BBF">VIN Decoder</span>
+        <h1 class="hero__title">Decode Your Honda VIN for Free</h1>
+        <p class="hero__subtitle">Use our Honda VIN decoder to check basic vehicle details from your VIN. Enter a Honda VIN to identify year, make, model, trim, body type, engine, fuel type, assembly plant, country, serial number, and estimated market value when available.</p>
+        <div class="hero__tabs" style="margin-bottom:0">
+          <div class="hero__tabs-nav">
+            <button class="hero__tab active" data-tab="vin">By VIN</button>
+            <button class="hero__tab" data-tab="plate">By U.S License Plate</button>
+            <button class="hero__tab" data-tab="ymm">By Year, Make, Model</button>
+          </div>
+          <div class="hero__tabs-body">
+            <div class="hero__tab-panel active" data-panel="vin">
+              <div class="hero__search-input-wrap">
+                <input type="text" class="hero__search-input" placeholder="Enter your 17-character Honda VIN" maxlength="17" id="vinInput">
+                <button class="hero__search-btn btn btn--primary" id="searchBtn">Get Report</button>
+              </div>
+              <div class="hero__search-helpers">
+                <a href="#" class="hero__sample">How to find the VIN?</a>
+                <a href="#" class="hero__sample">View Sample</a>
+              </div>
+            </div>
+            <div class="hero__tab-panel" data-panel="plate">
+              <div class="hero__search-row">
+                <input type="text" class="hero__search-input" placeholder="Enter License Plate" maxlength="8" id="plateInput">
+                <select class="hero__search-select" id="plateState">
+                  <option value="">Select State</option>
+                  <option>Alabama</option><option>Alaska</option><option>Arizona</option><option>California</option><option>Colorado</option><option>Connecticut</option><option>Delaware</option><option>Florida</option><option>Georgia</option><option>Hawaii</option><option>Idaho</option><option>Illinois</option><option>Indiana</option><option>Iowa</option><option>Kansas</option><option>Kentucky</option><option>Louisiana</option><option>Maine</option><option>Maryland</option><option>Massachusetts</option><option>Michigan</option><option>Minnesota</option><option>Mississippi</option><option>Missouri</option><option>Montana</option><option>Nebraska</option><option>Nevada</option><option>New Hampshire</option><option>New Jersey</option><option>New Mexico</option><option>New York</option><option>North Carolina</option><option>North Dakota</option><option>Ohio</option><option>Oklahoma</option><option>Oregon</option><option>Pennsylvania</option><option>Rhode Island</option><option>South Carolina</option><option>South Dakota</option><option>Tennessee</option><option>Texas</option><option>Utah</option><option>Vermont</option><option>Virginia</option><option>Washington</option><option>West Virginia</option><option>Wisconsin</option><option>Wyoming</option>
+                </select>
+              </div>
+              <button class="hero__search-btn btn btn--primary" id="plateBtn" style="width:100%;margin-top:8px">Get Report</button>
+              <div class="hero__search-helpers">
+                <a href="#" class="hero__sample">How to find the VIN?</a>
+                <a href="#" class="hero__sample">View Sample</a>
+              </div>
+            </div>
+            <div class="hero__tab-panel" data-panel="ymm">
+              <div class="hero__search-row">
+                <select class="hero__search-select" id="ymmYear"><option value="">Select Year</option><option>2025</option><option>2024</option><option>2023</option><option>2022</option><option>2021</option><option>2020</option><option>2019</option><option>2018</option><option>2017</option><option>2016</option><option>2015</option><option>2014</option><option>2013</option><option>2012</option><option>2011</option><option>2010</option><option>2009</option><option>2008</option><option>2007</option><option>2006</option><option>2005</option><option>2004</option><option>2003</option><option>2002</option><option>2001</option><option>2000</option></select>
+                <select class="hero__search-select" id="ymmMake" disabled><option value="">Select Make</option></select>
+              </div>
+              <div class="hero__search-row" style="margin-top:8px">
+                <select class="hero__search-select" id="ymmModel" disabled><option value="">Select Model</option></select>
+                <input type="email" class="hero__search-input" placeholder="Enter Your Email" id="ymmEmail">
+              </div>
+              <div class="hero__search-row hero__search-row--promo" style="margin-top:8px">
+                <div class="hero__search-input-wrap hero__search-input-wrap--promo">
+                  <input type="tel" class="hero__search-input" placeholder="Enter Phone for" id="ymmPhone">
+                  <span class="hero__promo-badge">10% off</span>
+                </div>
+              </div>
+              <button class="hero__search-btn btn btn--primary" id="ymmBtn" style="width:100%;margin-top:8px">Get Report</button>
+              <div class="hero__search-helpers">
+                <a href="#" class="hero__sample">How to find the VIN?</a>
+                <a href="#" class="hero__sample">View Sample</a>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="detail__visual">
-          <div class="detail-card">
-            <div class="detail-card__header">
-              <span>VIN Structure</span>
-              <span>17 Characters</span>
-            </div>
-            <div class="detail-card__body">
-              <div class="detail-card__row"><span>WMI</span><span>2HK (Honda, USA)</span></div>
-              <div class="detail-card__row"><span>VDS</span><span>RW5H5 (CR-V EX-L)</span></div>
-              <div class="detail-card__row"><span>Check Digit</span><span>X</span></div>
-              <div class="detail-card__row"><span>Model Year</span><span>S (2025)</span></div>
-              <div class="detail-card__row"><span>Plant</span><span>H (Ohio)</span></div>
-              <div class="detail-card__row"><span>Sequence</span><span>123456</span></div>
-            </div>
+        <div class="hero__trust" style="margin-top:14px">
+          <div class="hero__trust-item">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 1L11.05 6.2l5.45.5-4.15 3.7L13.5 16 9 13.5 4.5 16l1.15-5.6L1.5 6.7l5.45-.5L9 1z" fill="#F30415"/></svg>
+            <span>Factory Accurate</span>
+          </div>
+          <div class="hero__trust-item">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 1L11.05 6.2l5.45.5-4.15 3.7L13.5 16 9 13.5 4.5 16l1.15-5.6L1.5 6.7l5.45-.5L9 1z" fill="#F30415"/></svg>
+            <span>Instant Report</span>
+          </div>
+          <div class="hero__trust-item">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 1L11.05 6.2l5.45.5-4.15 3.7L13.5 16 9 13.5 4.5 16l1.15-5.6L1.5 6.7l5.45-.5L9 1z" fill="#F30415"/></svg>
+            <span>Free Basic Decode</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero__visual">
+        <div class="hero__image-wrapper">
+          <div class="hero__car-glow"></div>
+          <img src="assets/images/Honda_Elevate_1_0e35d0dc4b.jpg" alt="Honda VIN Decoder - Vehicle Details" class="hero__car-img" loading="lazy">
+          <div class="hero__badge-float hero__badge-float--1">
+            <strong>Year</strong>
+            <span>2025</span>
+          </div>
+          <div class="hero__badge-float hero__badge-float--2">
+            <strong>Trim</strong>
+            <span>EX-L</span>
+          </div>
+          <div class="hero__badge-float hero__badge-float--3">
+            <strong>Engine</strong>
+            <span>1.5T</span>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- DECODED DATA -->
-  <section class="detail" id="decoded">
-    <div class="container">
-      <div class="detail__grid fade-up">
-        <div class="detail__content">
-          <span class="detail__tag">Decoded Data</span>
-          <h2 class="detail__title">Everything Your VIN Reveals</h2>
-          <p class="detail__desc">Our decoder pulls every specification tied to your VIN from Honda's official factory database — not generic VIN databases.</p>
-          <ul class="detail__features">
-            <li>Exact model year and generation</li>
-            <li>Engine type, displacement, and horsepower</li>
-            <li>Transmission and drivetrain configuration</li>
-            <li>Trim level and body style</li>
-            <li>Assembly plant and production date</li>
-            <li>Restraint and safety system details</li>
-          </ul>
-        </div>
-        <div class="detail__visual">
-          <div class="detail__icon-wrap">
-            <svg width="36" height="36" viewBox="0 0 28 28" fill="none"><path d="M14 3L3 8v6c0 6.5 4.5 12.5 11 14 6.5-1.5 11-7.5 11-14V8L14 3z" stroke="#F30415" stroke-width="1.5" fill="none"/><path d="M14 14l-3-3m3 3l3-3m-3 3v-6" stroke="#F30415" stroke-width="1.5" stroke-linecap="round"/></svg>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- STEPS -->
-  <section class="detail" id="how-it-works">
-    <div class="container">
-      <div class="section__header fade-up" style="margin-bottom:40px">
-        <span class="hero__badge" style="background:#E9ECF8;color:#264BBF">Process</span>
-        <h2 class="section__title" style="font-size:clamp(22px,2.5vw,30px)">How VIN Decoding Works</h2>
-      </div>
-      <div class="detail-steps fade-up">
-        <div class="detail-step">
-          <div class="detail-step__num">1</div>
-          <div class="detail-step__title">Enter Your VIN</div>
-          <div class="detail-step__desc">Type your 17-character VIN. Found on your dashboard, door jamb, or registration.</div>
-        </div>
-        <div class="detail-step">
-          <div class="detail-step__num">2</div>
-          <div class="detail-step__title">We Match Factory Data</div>
-          <div class="detail-step__desc">Our system validates the check digit and matches against Honda factory records.</div>
-        </div>
-        <div class="detail-step">
-          <div class="detail-step__num">3</div>
-          <div class="detail-step__title">View Decoded Details</div>
-          <div class="detail-step__desc">Receive a complete decoded report with every factory specification.</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SAMPLE RESULT -->
-  <section class="sample-section" id="sample">
+  <!-- FREE DECODER TOOL -->
+  <section class="what section" id="what">
     <div class="container">
       <div class="section__header fade-up">
-        <span class="hero__badge" style="background:#E9ECF8;color:#264BBF">Sample</span>
-        <h2 class="section__title" style="font-size:clamp(22px,2.5vw,30px)">What You'll Receive</h2>
-        <p class="section__desc">A complete decoded report showing every detail tied to your Honda's VIN.</p>
+        <span class="section__tag">What Is It</span>
+        <h2 class="section__title">Free Honda VIN Decoder Tool</h2>
+        <p class="section__desc">A Honda VIN is a unique code that identifies a specific Honda vehicle. Most Honda cars, SUVs, vans, trucks, motorcycles, and powersports vehicles use a 17-character VIN.</p>
       </div>
-      <div class="sample-card fade-up">
-        <div class="sample-card__header">
-          <span>Decoded Vehicle Information</span>
-          <span>2HKRW5H5XSH123456</span>
+      <div class="fade-up" style="max-width:720px; margin:0 auto; background:#fff; border:1px solid var(--border); border-radius:var(--radius-lg); padding:28px; text-align:center; box-shadow:var(--shadow-sm)">
+        <p style="font-size:14px; color:var(--text-secondary); margin-bottom:12px">Example Honda VIN:</p>
+        <div class="vin-example">
+          <span>1HGCM82633A123456</span>
+          <a href="#" style="color:var(--primary); font-size:12px; font-weight:600; text-decoration:none">Preview →</a>
         </div>
-        <div class="sample-card__body">
-          <div class="sample-card__row"><span>Make</span><span>Honda</span></div>
-          <div class="sample-card__row"><span>Model Year</span><span>2025</span></div>
-          <div class="sample-card__row"><span>Model</span><span>CR-V</span></div>
-          <div class="sample-card__row"><span>Trim Level</span><span>EX-L</span></div>
-          <div class="sample-card__row"><span>Body Style</span><span>Sport Utility Vehicle</span></div>
-          <div class="sample-card__row"><span>Engine</span><span>1.5L I-4 Turbo (190 hp)</span></div>
-          <div class="sample-card__row"><span>Transmission</span><span>CVT</span></div>
-          <div class="sample-card__row"><span>Drivetrain</span><span>Real-Time AWD</span></div>
-          <div class="sample-card__row"><span>Assembly Plant</span><span>East Liberty, Ohio (USA)</span></div>
-        </div>
-        <div class="sample-card__note">Sample output shown. Your vehicle's decoding will reflect its exact factory configuration.</div>
+        <p style="font-size:14px; color:var(--text-secondary); line-height:1.7; margin:16px 0 0; text-align:left">With our <strong style="color:var(--text)">Honda VIN decoder</strong>, you can turn that code into basic vehicle details such as year, make, model, trim, body type, engine, fuel type, Market Value, and others. This is useful when you want to check whether a Honda listing, title, registration, insurance document, or seller description matches the actual vehicle.</p>
       </div>
     </div>
   </section>
 
-  <!-- CTA -->
-  <section class="cta section">
+  <!-- WHAT IT SHOWS -->
+  <section class="section section--alt" id="shows">
     <div class="container">
-      <div class="cta__card fade-up">
-        <h2 class="cta__title">Ready to Decode Your Honda?</h2>
-        <p class="cta__desc">Enter your VIN below and unlock your vehicle's full factory history.</p>
-        <div class="cta__search">
-          <input type="text" class="cta__input" placeholder="Enter your 17-character Honda VIN" maxlength="17">
-          <button class="btn btn--primary btn--lg cta__btn">Decode VIN</button>
-        </div>
-        <p class="cta__fineprint">Free VIN decoding. Upgraded reports available with a window sticker purchase.</p>
+      <div class="section__header fade-up">
+        <span class="section__tag">Details</span>
+        <h2 class="section__title">What Information Does the Free Honda VIN Decoder Show?</h2>
+        <p class="section__desc">The free decoder is designed to show basic specifications. Helpful when you need quick confirmation that the vehicle description matches the VIN.</p>
+      </div>
+      <div class="spec-grid fade-up">
+        <div class="spec-pill"><span class="spec-pill__dot"></span> Year</div>
+        <div class="spec-pill"><span class="spec-pill__dot"></span> Make</div>
+        <div class="spec-pill"><span class="spec-pill__dot"></span> Model</div>
+        <div class="spec-pill"><span class="spec-pill__dot"></span> Trim</div>
+        <div class="spec-pill"><span class="spec-pill__dot"></span> Body type</div>
+        <div class="spec-pill"><span class="spec-pill__dot"></span> Number of doors</div>
+        <div class="spec-pill"><span class="spec-pill__dot"></span> Exterior dimensions</div>
+        <div class="spec-pill"><span class="spec-pill__dot"></span> Interior dimensions</div>
+        <div class="spec-pill"><span class="spec-pill__dot"></span> Ground clearance</div>
+        <div class="spec-pill"><span class="spec-pill__dot"></span> Cargo dimensions</div>
+        <div class="spec-pill"><span class="spec-pill__dot"></span> Standard seating</div>
+        <div class="spec-pill"><span class="spec-pill__dot"></span> Seating</div>
+        <div class="spec-pill"><span class="spec-pill__dot"></span> Engine Description</div>
+        <div class="spec-pill"><span class="spec-pill__dot"></span> Engine Size and specs</div>
+        <div class="spec-pill"><span class="spec-pill__dot"></span> Displacement</div>
+        <div class="spec-pill"><span class="spec-pill__dot"></span> Engine model</div>
+        <div class="spec-pill"><span class="spec-pill__dot"></span> Engine configuration</div>
+        <div class="spec-pill"><span class="spec-pill__dot"></span> Valve train design</div>
+        <div class="spec-pill"><span class="spec-pill__dot"></span> Transmission style</div>
+        <div class="spec-pill"><span class="spec-pill__dot"></span> Drive Type</div>
+        <div class="spec-pill"><span class="spec-pill__dot"></span> Fuel type</div>
+        <div class="spec-pill"><span class="spec-pill__dot"></span> Tank capacity</div>
+        <div class="spec-pill"><span class="spec-pill__dot"></span> Emissions</div>
+        <div class="spec-pill"><span class="spec-pill__dot"></span> Braking</div>
+        <div class="spec-pill"><span class="spec-pill__dot"></span> Suspension</div>
+        <div class="spec-pill"><span class="spec-pill__dot"></span> Steering</div>
+        <div class="spec-pill"><span class="spec-pill__dot"></span> Wheels</div>
+        <div class="spec-pill"><span class="spec-pill__dot"></span> Tire pressure and size</div>
+        <div class="spec-pill"><span class="spec-pill__dot"></span> Weight</div>
+        <div class="spec-pill"><span class="spec-pill__dot"></span> Front airbag information</div>
+        <div class="spec-pill"><span class="spec-pill__dot"></span> Seat belt type</div>
+        <div class="spec-pill"><span class="spec-pill__dot"></span> EPA Class</div>
+        <div class="spec-pill"><span class="spec-pill__dot"></span> MSRP</div>
+        <div class="spec-pill"><span class="spec-pill__dot"></span> Country</div>
+        <div class="spec-pill"><span class="spec-pill__dot"></span> Electrical powertrain</div>
+        <div class="spec-pill"><span class="spec-pill__dot"></span> Traction battery</div>
+        <div class="spec-pill"><span class="spec-pill__dot"></span> Electrical specifications</div>
+        <div class="spec-pill"><span class="spec-pill__dot"></span> Off-road attributes</div>
+        <div class="spec-pill"><span class="spec-pill__dot"></span> Trailering</div>
+        <div class="spec-pill"><span class="spec-pill__dot"></span> Range extender</div>
+      </div>
+      <div style="text-align:center; margin-top:24px" class="fade-up">
+        <a href="#hero" class="btn btn--primary btn--md">Decode Honda VIN for Free</a>
       </div>
     </div>
   </section>
 
-  <!-- FOOTER -->
+  <!-- VIN LOCATIONS — CARD + IMAGE SIDE BY SIDE -->
+  <section class="section" id="locations">
+    <div class="container">
+      <div class="section__header fade-up">
+        <span class="section__tag">Locations</span>
+        <h2 class="section__title">Honda VIN Number Locations</h2>
+        <p class="section__desc">Check the following VIN locations for your Honda vehicle:</p>
+      </div>
+      <div class="vin-loc__layout fade-up" style="display:grid; grid-template-columns:1.1fr 0.9fr; gap:32px; align-items:center; max-width:960px; margin:0 auto">
+        <div style="background:#fff; border:1px solid var(--border); border-radius:var(--radius-lg); padding:24px; box-shadow:var(--shadow-sm)">
+          <div style="display:flex; flex-direction:column; gap:12px; font-size:14px; color:var(--text-secondary)">
+            <div style="display:flex; gap:12px; align-items:center"><span style="color:var(--primary)">▸</span> On the dashboard of the vehicle, near the windshield.</div>
+            <div style="display:flex; gap:12px; align-items:center"><span style="color:var(--primary)">▸</span> On the driver's side door jamb.</div>
+            <div style="display:flex; gap:12px; align-items:center"><span style="color:var(--primary)">▸</span> On the engine block, check under the hood.</div>
+            <div style="display:flex; gap:12px; align-items:center"><span style="color:var(--primary)">▸</span> Just below the steering wheel.</div>
+            <div style="display:flex; gap:12px; align-items:center"><span style="color:var(--primary)">▸</span> Check a sticker typically located behind the door latch.</div>
+          </div>
+        </div>
+        <div style="border-radius:var(--radius-lg); overflow:hidden; border:1px solid var(--border); box-shadow:var(--shadow-sm)">
+          <img src="assets/images/honda-vin-location-1024x576.jpg" alt="Honda VIN Location - Dashboard and Door Jamb" style="width:100%; display:block" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW TO READ -->
+  <section class="section section--alt" id="read">
+    <div class="container">
+      <div class="section__header fade-up">
+        <span class="section__tag">Guide</span>
+        <h2 class="section__title">How to Read a Honda VIN Number</h2>
+      <p class="section__desc">A standard Honda VIN has 17 characters. Each section tells you something different about the vehicle's factory identity. VINs do not use the letters I, O, or Q.</p>
+    </div>
+    <div class="fade-up" style="max-width:720px; margin:0 auto 32px; border-radius:var(--radius-lg); overflow:hidden; border:1px solid var(--border); box-shadow:var(--shadow-sm)">
+      <img src="assets/images/audi-vin-number-breakdown_-how-to-read-a-audi-vin-number-8.jpg" alt="VIN Number Breakdown - How to Read a VIN Number" style="width:100%; display:block" loading="lazy">
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:20px; max-width:860px; margin:0 auto 32px" class="fade-up">
+        <div style="background:#fff; border:1px solid var(--border); border-radius:var(--radius-md); padding:20px; text-align:center">
+          <div style="width:40px; height:40px; background:rgba(243,4,21,.06); border-radius:10px; display:flex; align-items:center; justify-content:center; margin:0 auto 12px; font-weight:800; color:var(--primary); font-family:var(--font-heading)">1-3</div>
+          <h4 style="font-family:var(--font-heading); font-size:14px; font-weight:700; margin-bottom:6px">World Manufacturer Identifier (WMI)</h4>
+          <p style="font-size:13px; color:var(--text-secondary); line-height:1.6">First 3 characters — country of origin and manufacturer.</p>
+        </div>
+        <div style="background:#fff; border:1px solid var(--border); border-radius:var(--radius-md); padding:20px; text-align:center">
+          <div style="width:40px; height:40px; background:rgba(243,4,21,.06); border-radius:10px; display:flex; align-items:center; justify-content:center; margin:0 auto 12px; font-weight:800; color:var(--primary); font-family:var(--font-heading)">4-8</div>
+          <h4 style="font-family:var(--font-heading); font-size:14px; font-weight:700; margin-bottom:6px">Vehicle Descriptor Section (VDS)</h4>
+          <p style="font-size:13px; color:var(--text-secondary); line-height:1.6">Characters 4-8 — make, engine, model, restraint, trim, transmission.</p>
+        </div>
+        <div style="background:#fff; border:1px solid var(--border); border-radius:var(--radius-md); padding:20px; text-align:center">
+          <div style="width:40px; height:40px; background:rgba(243,4,21,.06); border-radius:10px; display:flex; align-items:center; justify-content:center; margin:0 auto 12px; font-weight:800; color:var(--primary); font-family:var(--font-heading)">9-17</div>
+          <h4 style="font-family:var(--font-heading); font-size:14px; font-weight:700; margin-bottom:6px">Vehicle Identifier Section (VIS)</h4>
+          <p style="font-size:13px; color:var(--text-secondary); line-height:1.6">Characters 9-17 — model year, plant code, and serial number.</p>
+        </div>
+      </div>
+      <div style="max-width:860px; margin:0 auto" class="fade-up">
+        <div style="background:#fff; border:1px solid var(--border); border-radius:var(--radius-lg); padding:24px; margin-bottom:20px">
+          <h4 style="font-family:var(--font-heading); font-size:15px; font-weight:700; margin-bottom:8px">Characters 1–3: World Manufacturer Identifier</h4>
+          <p style="font-size:14px; color:var(--text-secondary); line-height:1.6; margin-bottom:12px">The first character often points to the country or region: <strong>1,4,5</strong> United States · <strong>2</strong> Canada · <strong>3</strong> Mexico · <strong>J</strong> Japan. The second character is commonly <strong>H</strong> for Honda. The third describes vehicle type.</p>
+          <div class="compare__table-wrap">
+            <table class="compare__table">
+              <thead><tr><th>First Character</th><th>Common Meaning</th></tr></thead>
+              <tbody>
+                <tr><td>1, 4, or 5</td><td>United States</td></tr>
+                <tr><td>2</td><td>Canada</td></tr>
+                <tr><td>3</td><td>Mexico</td></tr>
+                <tr><td>J</td><td>Japan</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div style="background:#fff; border:1px solid var(--border); border-radius:var(--radius-lg); padding:24px; margin-bottom:20px">
+          <h4 style="font-family:var(--font-heading); font-size:15px; font-weight:700; margin-bottom:8px">Characters 4–8: Vehicle Descriptor Section</h4>
+          <p style="font-size:14px; color:var(--text-secondary); line-height:1.6; margin-bottom:12px">Characters 4 through 8 describe the vehicle. Depending on the Honda model and year, this part of the VIN may include information about:</p>
+          <ul style="list-style:none; padding:0; margin:0 0 12px; display:grid; grid-template-columns:repeat(2,1fr); gap:8px; font-size:14px; color:var(--text-secondary)">
+            <li style="display:flex; gap:8px; align-items:center"><span style="width:6px; height:6px; background:var(--primary); border-radius:50%; flex-shrink:0"></span> Model</li>
+            <li style="display:flex; gap:8px; align-items:center"><span style="width:6px; height:6px; background:var(--primary); border-radius:50%; flex-shrink:0"></span> Body style</li>
+            <li style="display:flex; gap:8px; align-items:center"><span style="width:6px; height:6px; background:var(--primary); border-radius:50%; flex-shrink:0"></span> Engine type</li>
+            <li style="display:flex; gap:8px; align-items:center"><span style="width:6px; height:6px; background:var(--primary); border-radius:50%; flex-shrink:0"></span> Restraint system</li>
+            <li style="display:flex; gap:8px; align-items:center"><span style="width:6px; height:6px; background:var(--primary); border-radius:50%; flex-shrink:0"></span> Series or trim</li>
+            <li style="display:flex; gap:8px; align-items:center"><span style="width:6px; height:6px; background:var(--primary); border-radius:50%; flex-shrink:0"></span> Transmission type</li>
+          </ul>
+          <p style="font-size:14px; color:var(--text-secondary); line-height:1.6; margin:0">This is where a Honda VIN search is useful. Instead of relying only on a seller's listing, you can decode the VIN and compare the result with the vehicle in front of you.</p>
+        </div>
+        <div style="background:#fff; border:1px solid var(--border); border-radius:var(--radius-lg); padding:24px; margin-bottom:20px">
+          <h4 style="font-family:var(--font-heading); font-size:15px; font-weight:700; margin-bottom:8px">Character 9: Check Digit</h4>
+          <p style="font-size:14px; color:var(--text-secondary); line-height:1.6; margin-bottom:8px">The ninth character is the check digit. It helps verify that the VIN follows the correct structure.</p>
+          <p style="font-size:14px; color:var(--text-secondary); line-height:1.6; margin:0">This character does not describe the model, trim, engine, or plant. It is mainly used to help detect invalid VINs or typing mistakes.</p>
+        </div>
+        <div style="background:#fff; border:1px solid var(--border); border-radius:var(--radius-lg); padding:24px; margin-bottom:20px">
+          <h4 style="font-family:var(--font-heading); font-size:15px; font-weight:700; margin-bottom:8px">Character 10: Model Year</h4>
+          <p style="font-size:14px; color:var(--text-secondary); line-height:1.6; margin-bottom:12px">The tenth character identifies the model year. This helps confirm whether the vehicle year matches the listing, title, or registration.</p>
+          <div class="compare__table-wrap">
+            <table class="compare__table">
+              <thead><tr><th>Code</th><th>Year</th><th>Code</th><th>Year</th><th>Code</th><th>Year</th></tr></thead>
+              <tbody>
+                <tr><td>A</td><td>1980 / 2010</td><td>L</td><td>1990 / 2020</td><td>Y</td><td>2000</td></tr>
+                <tr><td>B</td><td>1981 / 2011</td><td>M</td><td>1991 / 2021</td><td>1</td><td>2001</td></tr>
+                <tr><td>C</td><td>1982 / 2012</td><td>N</td><td>1992 / 2022</td><td>2</td><td>2002</td></tr>
+                <tr><td>D</td><td>1983 / 2013</td><td>P</td><td>1993 / 2023</td><td>3</td><td>2003</td></tr>
+                <tr><td>E</td><td>1984 / 2014</td><td>R</td><td>1994 / 2024</td><td>4</td><td>2004</td></tr>
+                <tr><td>F</td><td>1985 / 2015</td><td>S</td><td>1995 / 2025</td><td>5</td><td>2005</td></tr>
+                <tr><td>G</td><td>1986 / 2016</td><td>T</td><td>1996 / 2026</td><td>6</td><td>2006</td></tr>
+                <tr><td>H</td><td>1987 / 2017</td><td>V</td><td>1997 / 2027</td><td>7</td><td>2007</td></tr>
+                <tr><td>J</td><td>1988 / 2018</td><td>W</td><td>1998 / 2028</td><td>8</td><td>2008</td></tr>
+                <tr><td>K</td><td>1989 / 2019</td><td>X</td><td>1999 / 2029</td><td>9</td><td>2009</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div style="background:#fff; border:1px solid var(--border); border-radius:var(--radius-lg); padding:24px; margin-bottom:20px">
+          <h4 style="font-family:var(--font-heading); font-size:15px; font-weight:700; margin-bottom:8px">Character 11: Assembly Plant</h4>
+          <p style="font-size:14px; color:var(--text-secondary); line-height:1.6; margin-bottom:12px">The eleventh character identifies the assembly plant. Honda has used different plant codes across different years, models, and vehicle types.</p>
+          <div class="compare__table-wrap">
+            <table class="compare__table">
+              <thead><tr><th>Code</th><th>Common Plant Reference</th></tr></thead>
+              <tbody>
+                <tr><td>A</td><td>Marysville, Ohio</td></tr>
+                <tr><td>B</td><td>Lincoln, Alabama</td></tr>
+                <tr><td>C</td><td>Alliston, Ontario</td></tr>
+                <tr><td>D</td><td>East Liberty, Ohio</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p style="font-size:13px; color:var(--text-secondary); line-height:1.6; margin:12px 0 0">Plant codes can vary, so the most reliable approach is to run the full VIN through the decoder.</p>
+        </div>
+        <div style="background:#fff; border:1px solid var(--border); border-radius:var(--radius-lg); padding:24px">
+          <h4 style="font-family:var(--font-heading); font-size:15px; font-weight:700; margin-bottom:8px">Characters 12–17: Serial Number</h4>
+          <p style="font-size:14px; color:var(--text-secondary); line-height:1.6; margin-bottom:8px">The final six characters are the unique production sequence. This number separates one Honda from another within a production run.</p>
+          <p style="font-size:14px; color:var(--text-secondary); line-height:1.6; margin:0">Together, these characters help identify the specific vehicle, not just the model or trim.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW TO DECODE -->
+  <section class="section" id="how">
+    <div class="container">
+      <div class="section__header fade-up">
+        <span class="section__tag">Process</span>
+        <h2 class="section__title">How to Decode a Honda VIN Number</h2>
+        <p class="section__desc">Decode your Honda VIN in three quick steps to preview basic vehicle details and decide if you need deeper History.</p>
+      </div>
+      <div class="how__layout how__layout--bridge fade-up">
+        <div class="how__steps-side">
+          <div class="how__bridge-plain">
+            <div class="how__bridge-vline" aria-hidden="true"></div>
+            <div class="how__bridge-plain-step">
+              <div class="how__bridge-plain-num">1</div>
+              <div>
+                <h3 class="how__bridge-plain-title">Enter the Honda VIN</h3>
+                <p class="how__bridge-plain-desc">Type or paste your Honda VIN number into the decoder tool.</p>
+              </div>
+            </div>
+            <div class="how__bridge-plain-step">
+              <div class="how__bridge-plain-num">2</div>
+              <div>
+                <h3 class="how__bridge-plain-title">Preview Details for Free</h3>
+                <p class="how__bridge-plain-desc">Click “Get Report” to view basic specs such as year, model, trim, engine, fuel type, assembly plant, and estimated market value.</p>
+              </div>
+            </div>
+            <div class="how__bridge-plain-step">
+              <div class="how__bridge-plain-num">3</div>
+              <div>
+                <h3 class="how__bridge-plain-title">Check Deeper History</h3>
+                <p class="how__bridge-plain-desc">Need accident, title, odometer, ownership, auction, theft, or lien records? View the paid Honda vehicle history report.</p>
+              </div>
+            </div>
+          </div>
+          <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-top:16px">
+            <a href="#hero" class="btn btn--primary btn--md">Decode Your Honda VIN</a>
+            <a href="#" class="btn btn--outline" style="padding:14px 28px; font-size:15px; font-weight:600">View Sample Report</a>
+          </div>
+        </div>
+        <div class="how__visual how__visual--side fade-up">
+          <img src="assets/images/window-sticker-sample.jpg" alt="Preview Vehicle Specs of Honda" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEED MORE -->
+  <section class="section section--alt" id="more">
+    <div class="container">
+      <div class="section__header fade-up">
+        <span class="section__tag">Go Deeper</span>
+        <h2 class="section__title">Need More Than Basic VIN Specifications?</h2>
+        <p class="section__desc">A paid Honda VIN check may include deeper records not included in the free basic decode.</p>
+      </div>
+      <div class="deeper__grid fade-up">
+        <div class="deeper-card">
+          <h4 class="deeper-card__title">Title Brand</h4>
+          <p class="deeper-card__desc">Check title branding that may affect value, ownership, or resale.</p>
+        </div>
+        <div class="deeper-card">
+          <h4 class="deeper-card__title">Accident Record</h4>
+          <p class="deeper-card__desc">Review accident history to understand possible damage, repairs, or claims.</p>
+        </div>
+        <div class="deeper-card">
+          <h4 class="deeper-card__title">Ownership History</h4>
+          <p class="deeper-card__desc">See ownership changes to understand how the vehicle changed hands.</p>
+        </div>
+        <div class="deeper-card">
+          <h4 class="deeper-card__title">Auction Records</h4>
+          <p class="deeper-card__desc">Check auction listings, sale dates, prices, and condition notes details.</p>
+        </div>
+        <div class="deeper-card">
+          <h4 class="deeper-card__title">Odometer Readings</h4>
+          <p class="deeper-card__desc">Review mileage entries to help identify possible odometer inconsistencies issues.</p>
+        </div>
+        <div class="deeper-card">
+          <h4 class="deeper-card__title">Theft Records</h4>
+          <p class="deeper-card__desc">Check theft records to identify possible stolen vehicle activity alerts.</p>
+        </div>
+        <div class="deeper-card">
+          <h4 class="deeper-card__title">Lien or Loan Records</h4>
+          <p class="deeper-card__desc">Check finance records that may affect purchase or ownership decisions.</p>
+        </div>
+        <div class="deeper-card">
+          <h4 class="deeper-card__title">Salvage Brand</h4>
+          <p class="deeper-card__desc">Identify salvage branding that may indicate major loss or rebuilding.</p>
+        </div>
+      </div>
+      <div style="text-align:center; margin-top:24px" class="fade-up">
+        <a href="#" class="btn btn--primary btn--md">View Honda Vehicle History Report</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- START WITH FREE -->
+  <section class="verify section" id="verify">
+    <div class="container">
+      <div class="verify__card fade-up">
+        <h2 class="verify__title">Start With a Free Honda VIN Search</h2>
+        <p class="verify__desc">A free Honda VIN search helps you confirm basic details like year, model, trim, engine, fuel type, MSRP, and estimated market value. For deeper records such as title, accident, odometer, ownership, auction, theft, lien, or salvage history, view the paid Honda vehicle history report.</p>
+        <a href="#hero" class="btn btn--primary btn--lg">Decode Your Honda VIN</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq section" id="faq">
+    <div class="container">
+      <div class="section__header fade-up">
+        <span class="section__tag">FAQ</span>
+        <h2 class="section__title">Frequently Asked Questions</h2>
+      </div>
+      <div class="faq__list">
+        <div class="faq__item fade-up">
+          <button class="faq__question">
+            <span>Does the free Honda VIN decoder show fuel type?</span>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round"/></svg>
+          </button>
+          <div class="faq__answer">
+            <p>Yes. The free decoder can show the vehicle's fuel type, such as gasoline, hybrid, electric, or another fuel type, based on the VIN data.</p>
+          </div>
+        </div>
+        <div class="faq__item fade-up">
+          <button class="faq__question">
+            <span>Does the free Honda VIN decoder show market value?</span>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round"/></svg>
+          </button>
+          <div class="faq__answer">
+            <p>Yes. The decoder can show an estimated market value based on vehicle details and market data. This estimate should be used as a general guide, not a final sale price.</p>
+          </div>
+        </div>
+        <div class="faq__item fade-up">
+          <button class="faq__question">
+            <span>What is the difference between a Honda VIN decoder and a Honda VIN check?</span>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round"/></svg>
+          </button>
+          <div class="faq__answer">
+            <p>A VIN decoder shows basic specifications. A paid Honda VIN check can show deeper records such as accident history, title brands, odometer readings, ownership history, auction records, theft records, liens, and salvage records.</p>
+          </div>
+        </div>
+        <div class="faq__item fade-up">
+          <button class="faq__question">
+            <span>Can a Honda VIN decoder show accident history?</span>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round"/></svg>
+          </button>
+          <div class="faq__answer">
+            <p>No. A free VIN decoder is for basic vehicle specifications only. To check accident records, use the paid Honda vehicle history report.</p>
+          </div>
+        </div>
+        <div class="faq__item fade-up">
+          <button class="faq__question">
+            <span>Can a Honda VIN decoder show title or salvage records?</span>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round"/></svg>
+          </button>
+          <div class="faq__answer">
+            <p>No. Title brands and salvage records are part of a deeper paid VIN check, not the free basic VIN decode.</p>
+          </div>
+        </div>
+        <div class="faq__item fade-up">
+          <button class="faq__question">
+            <span>Can I use this tool before buying a used Honda?</span>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round"/></svg>
+          </button>
+          <div class="faq__answer">
+            <p>Yes. A free Honda VIN lookup helps you compare the decoded details with the seller's listing, title, registration, and physical vehicle before moving forward.</p>
+          </div>
+        </div>
+        <div class="faq__item fade-up">
+          <button class="faq__question">
+            <span>Can I decode Honda motorcycle or ATV VINs?</span>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round"/></svg>
+          </button>
+          <div class="faq__answer">
+            <p>Yes. The decoder can support Honda motorcycles, ATVs, and powersports vehicles if the VIN data is available. Enter the VIN exactly as shown on the vehicle or documents.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <footer class="footer">
     <div class="container">
       <div class="footer__grid">
@@ -312,43 +610,23 @@
             <span class="nav__logo-text">Honda<span class="nav__logo-accent">WindowSticker</span></span>
           </a>
           <p class="footer__desc">Retrieve your original Honda factory window sticker using your VIN. Fast, accurate, and secure.</p>
-          <div class="footer__social">
-            <a href="#" aria-label="Facebook"><svg width="20" height="20" viewBox="0 0 20 20" fill="#5F6368"><path d="M18 10c0-4.4-3.6-8-8-8s-8 3.6-8 8c0 4 2.9 7.3 6.7 7.9v-5.6H7.3V10h1.4V8.3c0-1.4.8-2.1 2-2.1.6 0 1.2.1 1.2.1v1.3h-.7c-.6 0-.8.4-.8.9V10h1.5l-.2 1.5h-1.3v5.6c3.8-.6 6.7-3.9 6.7-7.9z"/></svg></a>
-            <a href="#" aria-label="Twitter"><svg width="20" height="20" viewBox="0 0 20 20" fill="#5F6368"><path d="M15.3 4.5h1.9l-4.2 4.8 4.9 6.5h-3.9l-3-3.9-3.4 3.9H3.7l4.5-5.1-4.7-6.2h4l2.7 3.6 3.1-3.6zm-.7 10.1h1.1L7.1 5.6H5.9l8.7 9z"/></svg></a>
-            <a href="#" aria-label="Instagram"><svg width="20" height="20" viewBox="0 0 20 20" fill="#5F6368"><path d="M10 2.2c2.7 0 3.1 0 4.1.1 1.1.1 1.8.2 2.5.5.7.3 1.3.7 1.9 1.3.6.6 1 1.2 1.3 1.9.3.6.5 1.4.5 2.5.1 1.1.1 1.4.1 4.1s0 3.1-.1 4.1c-.1 1.1-.2 1.8-.5 2.5-.3.7-.7 1.3-1.3 1.9-.6.6-1.2 1-1.9 1.3-.6.3-1.4.5-2.5.5-1.1.1-1.4.1-4.1.1s-3.1 0-4.1-.1c-1.1-.1-1.8-.2-2.5-.5-.7-.3-1.3-.7-1.9-1.3-.6-.6-1-1.2-1.3-1.9-.3-.6-.5-1.4-.5-2.5-.1-1.1-.1-1.4-.1-4.1s0-3.1.1-4.1c.1-1.1.2-1.8.5-2.5.3-.7.7-1.3 1.3-1.9C3 3.4 3.6 3 4.3 2.7c.6-.3 1.4-.5 2.5-.5 1-.1 1.4-.1 4.1-.1h.1zM10 3.7c-2.7 0-3 0-4.1.1-.9 0-1.5.2-1.8.3-.5.2-.8.4-1.2.7-.4.4-.6.7-.8 1.2-.1.4-.3 1-.3 1.8 0 1.1-.1 1.4-.1 4.1s0 3 .1 4.1c0 .9.2 1.5.3 1.8.2.5.4.8.7 1.2.4.4.7.6 1.2.8.4.1 1 .3 1.8.3 1.1 0 1.4.1 4.1.1s3 0 4.1-.1c.9 0 1.5-.2 1.8-.3.5-.2.8-.4 1.2-.7.4-.4.6-.7.8-1.2.1-.4.3-1 .3-1.8 0-1.1.1-1.4.1-4.1s0-3-.1-4.1c0-.9-.2-1.5-.3-1.8-.2-.5-.4-.8-.7-1.2-.4-.4-.7-.6-1.2-.8-.4-.1-1-.3-1.8-.3-1.1 0-1.4-.1-4.1-.1z"/><path d="M10 5.3c-2.6 0-4.7 2.1-4.7 4.7s2.1 4.7 4.7 4.7 4.7-2.1 4.7-4.7-2.1-4.7-4.7-4.7zm0 7.7c-1.7 0-3-1.3-3-3s1.3-3 3-3 3 1.3 3 3-1.3 3-3 3z"/><circle cx="15.2" cy="4.8" r="1.1"/></svg></a>
-          </div>
         </div>
         <div class="footer__col">
           <h4 class="footer__heading">Products</h4>
-          <a href="window-sticker.html" class="footer__link">Window Sticker</a>
-          <a href="vin-decoder.html" class="footer__link">VIN Decoder</a>
-          <a href="index.html#services" class="footer__link">Build Sheet</a>
-          <a href="index.html#services" class="footer__link">Recall Lookup</a>
-          <a href="index.html#services" class="footer__link">Paint Code</a>
+          <a href="build-sheet-by-vin.html" class="footer__link">Build Sheet</a>
+          <a href="paint-color-by-vin.html" class="footer__link">Paint Colour by VIN</a>
+          <a href="vin-decoder.html" class="footer__link">FREE VIN Decoder</a>
         </div>
         <div class="footer__col">
-          <h4 class="footer__heading">Resources</h4>
-          <a href="index.html#how" class="footer__link">How It Works</a>
-          <a href="#" class="footer__link">Honda VIN Guide</a>
-          <a href="index.html#preview" class="footer__link">Sample Sticker</a>
-          <a href="index.html#resources" class="footer__link">Blog</a>
-          <a href="index.html#faq" class="footer__link">FAQ</a>
-        </div>
-        <div class="footer__col">
-          <h4 class="footer__heading">Company</h4>
-          <a href="#" class="footer__link">About Us</a>
-          <a href="#" class="footer__link">Privacy Policy</a>
-          <a href="#" class="footer__link">Terms of Service</a>
-          <a href="#" class="footer__link">Refund Policy</a>
-          <a href="#" class="footer__link">Contact</a>
+          <h4 class="footer__heading">Tools</h4>
+          <a href="warranty-check-by-vin.html" class="footer__link">Warranty Check</a>
+          <a href="msrp-by-vin.html" class="footer__link">MSRP Check</a>
+          <a href="specifications-by-vin.html" class="footer__link">Specifications Check</a>
         </div>
         <div class="footer__col">
           <h4 class="footer__heading">Support</h4>
-          <a href="#" class="footer__link">Help Center</a>
-          <a href="#" class="footer__link">VIN Help</a>
-          <a href="#" class="footer__link">Troubleshooting</a>
+          <a href="index.html#faq" class="footer__link">FAQ</a>
           <a href="#" class="footer__link">Contact Us</a>
-          <a href="#" class="footer__link">Status</a>
         </div>
       </div>
       <div class="footer__bottom">
@@ -356,7 +634,6 @@
       </div>
     </div>
   </footer>
-
   <script src="js/scripts.js"></script>
 </body>
 </html>

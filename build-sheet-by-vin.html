@@ -1,0 +1,698 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Honda Build Sheet by VIN - Factory Options & Build Details</title>
+  <meta name="description" content="Get your Honda factory build sheet by VIN. Verify trim, packages, paint, engine, transmission, wheels and all factory configuration details.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    .bs-hero { padding:160px 0 60px; background:var(--bg); position:relative; overflow:hidden }
+    .bs-hero__bg { position:absolute; inset:0; pointer-events:none; overflow:hidden }
+    .bs-hero__bg span { position:absolute; border-radius:50%; background:var(--primary); opacity:.03 }
+    .bs-hero__bg span:nth-child(1) { width:600px; height:600px; top:-220px; left:-120px }
+    .bs-hero__bg span:nth-child(2) { width:400px; height:400px; bottom:-120px; right:-80px; background:var(--accent) }
+    .bs-hero__container { display:flex !important; gap:48px; align-items:center; position:relative; z-index:1 }
+    .bs-hero__container > div:first-child { flex:1.1; min-width:0 }
+    .bs-hero__visual { flex:0.9; min-width:0; display:flex; justify-content:center; position:relative }
+    .bs-hero__title { font-family:var(--font-heading); font-size:clamp(28px,4vw,44px); font-weight:800; color:var(--text); margin:0 0 12px; max-width:640px }
+    .bs-hero__desc { font-size:16px; color:var(--text-secondary); max-width:640px; margin:0 0 28px; line-height:1.7 }
+    .bs-hero__form-card { max-width:100%; width:100%; background:#fff; border:1px solid var(--border); border-radius:var(--radius-lg); padding:24px; box-shadow:var(--shadow-lg); position:relative; overflow:hidden; text-align:left; box-sizing:border-box }
+    .bs-hero__form-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%) }
+    .bs-hero__visual { display:flex; justify-content:center; position:relative }
+    .bs-hero__visual img { width:100%; max-width:480px; border-radius:var(--radius-lg); box-shadow:var(--shadow-lg); border:1px solid var(--border); display:block }
+    .compare__table-wrap { overflow-x:auto; max-width:860px; margin:0 auto; border:1px solid var(--border); border-radius:var(--radius-lg); background:#fff; box-shadow:var(--shadow-sm) }
+    .compare__table { width:100%; border-collapse:collapse; font-size:14px }
+    .compare__table th { background:var(--text); color:#fff; padding:14px 20px; text-align:left; font-family:var(--font-heading); font-weight:700; font-size:13px; letter-spacing:.04em; text-transform:uppercase }
+    .compare__table th:first-child { border-radius:var(--radius-lg) 0 0 0 }
+    .compare__table th:last-child { border-radius:0 var(--radius-lg) 0 0 }
+    .compare__table td { padding:12px 20px; border-bottom:1px solid var(--border); color:var(--text-secondary) }
+    .compare__table td:first-child { font-weight:600; color:var(--text); background:var(--bg-alt); width:36% }
+    .compare__table tr:last-child td { border-bottom:none }
+    .compare__table td.yes { color:#059669; font-weight:600 }
+    .compare__table td.no { color:#9CA3AF }
+    .picture__grid { display:grid; grid-template-columns:repeat(2,1fr); gap:24px; max-width:720px; margin:0 auto }
+    .picture__card { background:#fff; border:1px solid var(--border); border-radius:var(--radius-lg); padding:32px; text-align:left; transition:var(--transition) }
+    .picture__card:hover { box-shadow:var(--shadow-md); transform:translateY(-2px); border-color:rgba(243,4,21,.12) }
+    .picture__card h4 { font-family:var(--font-heading); font-size:16px; font-weight:700; color:var(--text); margin-bottom:8px }
+    .picture__card p { font-size:14px; color:var(--text-secondary); line-height:1.6; margin-bottom:16px }
+    .picture__card a { font-size:14px; font-weight:600; color:var(--primary) }
+    .picture__card a:hover { color:var(--primary-hover) }
+    .tools-red { background:#A50F1E; position:relative; overflow:hidden }
+    .tools-red::before { content:''; position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.08) 0%, transparent 100%); pointer-events:none }
+    .tools-red .container { position:relative; z-index:1 }
+    .tools-red__bar { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; max-width:960px; margin:0 auto }
+    .tool-pill { display:flex; align-items:center; justify-content:space-between; gap:16px; padding:16px 20px; background:rgba(255,255,255,.14); border:1px solid rgba(255,255,255,.18); border-radius:8px; color:#fff; font-family:var(--font-heading); font-size:14px; font-weight:600; text-decoration:none; transition:var(--transition); backdrop-filter:blur(4px) }
+    .tool-pill:hover { background:rgba(255,255,255,.22); border-color:rgba(255,255,255,.28); transform:translateY(-1px) }
+    .tool-pill__arrow { flex-shrink:0; width:28px; height:28px; display:flex; align-items:center; justify-content:center; font-size:16px; opacity:.9; transition:var(--transition) }
+    .tool-pill:hover .tool-pill__arrow { transform:translateX(4px) }
+    @media (max-width:768px) {
+      .bs-hero { padding:120px 0 32px !important }
+      .bs-hero__container { flex-direction:column; gap:24px; padding:0 16px !important }
+      .bs-hero__container > div:first-child { padding:0 8px }
+      .bs-hero__title, .bs-hero__desc { text-align:left }
+      .bs-hero__title { font-size:26px; line-height:1.2; margin-bottom:10px }
+      .bs-hero__desc { font-size:14px; margin-bottom:24px; line-height:1.6; padding-bottom:8px }
+      .bs-hero__form-card { padding:16px 12px; border-radius:var(--radius-md); margin:0 auto; width:100%; max-width:100%; box-sizing:border-box }
+      .bs-hero__visual { order:1; margin-top:8px; padding:0 }
+      .bs-hero__visual img { max-width:100%; border-radius:var(--radius-md) }
+      .bs-hero__form-card .hero__tabs { margin-bottom:16px }
+      .bs-hero__form-card .hero__tabs-nav { flex-wrap:nowrap; gap:4px; padding:4px; overflow-x:auto; scrollbar-width:none; -webkit-overflow-scrolling:touch }
+      .bs-hero__form-card .hero__tabs-nav::-webkit-scrollbar { display:none }
+      .bs-hero__form-card .hero__tab { flex:0 0 auto; font-size:12px; padding:8px 14px; white-space:nowrap }
+      .bs-hero__form-card .hero__search-row { flex-direction:column; gap:10px; width:100% }
+      .bs-hero__form-card .hero__search-row .hero__search-input,
+      .bs-hero__form-card .hero__search-row .hero__search-select { width:100%; min-width:0; font-size:15px }
+      .bs-hero__form-card .hero__search-input-wrap--promo { width:100% }
+      .bs-hero__form-card .hero__search-btn { width:100%; padding:15px; font-size:15px }
+      .bs-hero__form-card .hero__search-helpers { flex-wrap:wrap; gap:10px; margin-top:10px }
+      .compare__table { font-size:13px }
+      .compare__table th, .compare__table td { padding:10px 14px }
+      .picture__grid { grid-template-columns:1fr }
+      .tools-red__bar { grid-template-columns:1fr }
+      #why .use-cases__grid { grid-template-columns:1fr !important }
+      .hero { padding:120px 0 32px !important }
+      .hero .hero__tabs { margin-top:16px; padding-top:8px }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav" id="nav">
+    <div class="nav__container">
+      <a href="index.html" class="nav__logo">
+        <svg class="nav__logo-icon" viewBox="0 0 32 32" fill="none">
+          <rect width="32" height="32" rx="6" fill="#F30415"/>
+          <path d="M16 8c-4.4 0-8 3.6-8 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8zm0 14c-3.3 0-6-2.7-6-6s2.7-6 6-6 6 2.7 6 6-2.7 6-6 6z" fill="#fff"/>
+          <path d="M16 11l-2 5h4l-2 5" stroke="#F30415" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+        <span class="nav__logo-text">Honda<span class="nav__logo-accent">WindowSticker</span></span>
+      </a>
+      <div class="nav__menu" id="navMenu">
+        <a href="build-sheet-by-vin.html" class="nav__link">Build Sheet</a>
+        <a href="paint-color-by-vin.html" class="nav__link">Paint Colour by VIN</a>
+        <a href="vin-decoder.html" class="nav__link">FREE VIN Decoder</a>
+        <div class="nav__dropdown">
+          <a href="#" class="nav__link nav__link--dropdown" id="servicesToggle">
+            Tools
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 5l3 3 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <div class="nav__mega" id="navMega">
+            <div class="nav__mega-grid">
+              <a href="warranty-check-by-vin.html" class="nav__mega-item" data-service>
+                <div class="nav__mega-icon">
+                  <svg width="22" height="22" viewBox="0 0 28 28" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="#F30415" stroke-width="1.5" fill="none"/><path d="M9 12l2 2 4-4" stroke="#F30415" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <div class="nav__mega-text">
+                  <span class="nav__mega-title">Warranty Check</span>
+                  <span class="nav__mega-desc">Check warranty status by VIN</span>
+                </div>
+              </a>
+              <a href="msrp-by-vin.html" class="nav__mega-item" data-service>
+                <div class="nav__mega-icon">
+                  <svg width="22" height="22" viewBox="0 0 28 28" fill="none"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6" stroke="#F30415" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <div class="nav__mega-text">
+                  <span class="nav__mega-title">MSRP Check</span>
+                  <span class="nav__mega-desc">Check original MSRP by VIN</span>
+                </div>
+              </a>
+              <a href="specifications-by-vin.html" class="nav__mega-item" data-service>
+                <div class="nav__mega-icon">
+                  <svg width="22" height="22" viewBox="0 0 28 28" fill="none"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" stroke="#F30415" stroke-width="1.5" stroke-linecap="round"/></svg>
+                </div>
+                <div class="nav__mega-text">
+                  <span class="nav__mega-title">Specifications Check</span>
+                  <span class="nav__mega-desc">View factory specifications</span>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="nav__menu-divider"></div>
+        <a href="#login" class="nav__link nav__menu-login">Log In</a>
+        <a href="#signup" class="btn btn--primary btn--sm nav__menu-signup">Sign Up</a>
+      </div>
+      <div class="nav__actions">
+        <a href="#login" class="nav__link nav__link--login">Log In</a>
+        <a href="#signup" class="btn btn--primary btn--sm">Sign Up</a>
+        <button class="nav__hamburger" id="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO — SAME AS HOME PAGE (HEADER + FORM LEFT, IMAGE RIGHT) -->
+  <section class="hero" id="hero">
+    <div class="hero__bg">
+      <div class="hero__shape hero__shape--1"></div>
+      <div class="hero__shape hero__shape--2"></div>
+      <div class="hero__shape hero__shape--3"></div>
+    </div>
+    <div class="container hero__container">
+      <div class="hero__content">
+        <span class="hero__badge" style="background:#E9ECF8;color:#264BBF">Build Sheet</span>
+        <h1 class="hero__title">Get Honda Build Sheet by VIN</h1>
+        <p class="hero__subtitle">Check your Honda's original factory build details using the VIN. Verify trim, packages, equipment, paint color, interior material, engine, transmission, wheels, tires, and all factory configuration details.</p>
+        <div class="hero__tabs" style="margin-bottom:0">
+          <div class="hero__tabs-nav">
+            <button class="hero__tab active" data-tab="vin">By VIN</button>
+            <button class="hero__tab" data-tab="plate">By U.S License Plate</button>
+            <button class="hero__tab" data-tab="ymm">By Year, Make, Model</button>
+          </div>
+          <div class="hero__tabs-body">
+            <div class="hero__tab-panel active" data-panel="vin">
+              <div class="hero__search-input-wrap">
+                <input type="text" class="hero__search-input" placeholder="Enter your 17-character Honda VIN" maxlength="17" id="vinInput">
+                <button class="hero__search-btn btn btn--primary" id="searchBtn">Get Build Sheet</button>
+              </div>
+              <div class="hero__search-helpers">
+                <a href="#" class="hero__sample">How to find the VIN?</a>
+                <a href="#" class="hero__sample">View Sample</a>
+              </div>
+            </div>
+            <div class="hero__tab-panel" data-panel="plate">
+              <div class="hero__search-row">
+                <input type="text" class="hero__search-input" placeholder="Enter License Plate" maxlength="8" id="plateInput">
+                <select class="hero__search-select" id="plateState">
+                  <option value="">Select State</option>
+                  <option>Alabama</option><option>Alaska</option><option>Arizona</option><option>California</option><option>Colorado</option><option>Connecticut</option><option>Delaware</option><option>Florida</option><option>Georgia</option><option>Hawaii</option><option>Idaho</option><option>Illinois</option><option>Indiana</option><option>Iowa</option><option>Kansas</option><option>Kentucky</option><option>Louisiana</option><option>Maine</option><option>Maryland</option><option>Massachusetts</option><option>Michigan</option><option>Minnesota</option><option>Mississippi</option><option>Missouri</option><option>Montana</option><option>Nebraska</option><option>Nevada</option><option>New Hampshire</option><option>New Jersey</option><option>New Mexico</option><option>New York</option><option>North Carolina</option><option>North Dakota</option><option>Ohio</option><option>Oklahoma</option><option>Oregon</option><option>Pennsylvania</option><option>Rhode Island</option><option>South Carolina</option><option>South Dakota</option><option>Tennessee</option><option>Texas</option><option>Utah</option><option>Vermont</option><option>Virginia</option><option>Washington</option><option>West Virginia</option><option>Wisconsin</option><option>Wyoming</option>
+                </select>
+              </div>
+              <button class="hero__search-btn btn btn--primary" id="plateBtn" style="width:100%;margin-top:8px">Get Build Sheet</button>
+              <div class="hero__search-helpers">
+                <a href="#" class="hero__sample">How to find the VIN?</a>
+                <a href="#" class="hero__sample">View Sample</a>
+              </div>
+            </div>
+            <div class="hero__tab-panel" data-panel="ymm">
+              <div class="hero__search-row">
+                <select class="hero__search-select" id="ymmYear"><option value="">Select Year</option><option>2025</option><option>2024</option><option>2023</option><option>2022</option><option>2021</option><option>2020</option><option>2019</option><option>2018</option><option>2017</option><option>2016</option><option>2015</option><option>2014</option><option>2013</option><option>2012</option><option>2011</option><option>2010</option><option>2009</option><option>2008</option><option>2007</option><option>2006</option><option>2005</option><option>2004</option><option>2003</option><option>2002</option><option>2001</option><option>2000</option></select>
+                <select class="hero__search-select" id="ymmMake" disabled><option value="">Select Make</option></select>
+              </div>
+              <div class="hero__search-row" style="margin-top:8px">
+                <select class="hero__search-select" id="ymmModel" disabled><option value="">Select Model</option></select>
+                <input type="email" class="hero__search-input" placeholder="Enter Your Email" id="ymmEmail">
+              </div>
+              <div class="hero__search-row hero__search-row--promo" style="margin-top:8px">
+                <div class="hero__search-input-wrap hero__search-input-wrap--promo">
+                  <input type="tel" class="hero__search-input" placeholder="Enter Phone for" id="ymmPhone">
+                  <span class="hero__promo-badge">10% off</span>
+                </div>
+              </div>
+              <button class="hero__search-btn btn btn--primary" id="ymmBtn" style="width:100%;margin-top:8px">Get Build Sheet</button>
+              <div class="hero__search-helpers">
+                <a href="#" class="hero__sample">How to find the VIN?</a>
+                <a href="#" class="hero__sample">View Sample</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="hero__trust" style="margin-top:14px">
+          <div class="hero__trust-item">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 1L11.05 6.2l5.45.5-4.15 3.7L13.5 16 9 13.5 4.5 16l1.15-5.6L1.5 6.7l5.45-.5L9 1z" fill="#F30415"/></svg>
+            <span>Factory Accurate</span>
+          </div>
+          <div class="hero__trust-item">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 1L11.05 6.2l5.45.5-4.15 3.7L13.5 16 9 13.5 4.5 16l1.15-5.6L1.5 6.7l5.45-.5L9 1z" fill="#F30415"/></svg>
+            <span>Instant PDF</span>
+          </div>
+          <div class="hero__trust-item">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 1L11.05 6.2l5.45.5-4.15 3.7L13.5 16 9 13.5 4.5 16l1.15-5.6L1.5 6.7l5.45-.5L9 1z" fill="#F30415"/></svg>
+            <span>Secure Checkout</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero__visual">
+        <div class="hero__image-wrapper">
+          <div class="hero__car-glow"></div>
+          <img src="assets/images/window-sticker-sample.jpg" alt="Honda Build Sheet Sample" class="hero__car-img" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT IS -->
+  <section class="what section" id="what">
+    <div class="container">
+      <div class="section__header fade-up" style="margin-bottom:32px">
+        <span class="section__tag">What Is It</span>
+        <h2 class="section__title">What is a Honda Build Sheet?</h2>
+      </div>
+      <div class="what__content fade-up" style="max-width:780px; margin:0 auto; background:#fff; border:1px solid var(--border); border-radius:var(--radius-lg); padding:32px 36px; box-shadow:var(--shadow-sm); position:relative; overflow:hidden; text-align:left">
+        <div style="position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%)"></div>
+        <p style="font-size:15px; color:var(--text-secondary); line-height:1.8; margin-bottom:16px">Build sheet of Honda displays the factory configuration associated with the particular VIN. It can be used to determine the initial configuration of the car in terms of trim, package, accessories, paint color, interior trim, engine, transmission, wheels, tires, and other build options available.</p>
+        <p style="font-size:15px; color:var(--text-secondary); line-height:1.8; margin:0">It will be useful for used Honda buyers, sellers, mechanics, and enthusiasts, as it will allow checking if the car remains in its original configuration from the factory.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY MATTERS -->
+  <section class="use-cases section section--alt" id="why">
+    <div class="container">
+      <div class="section__header fade-up">
+        <span class="section__tag">Why It Matters</span>
+        <h2 class="section__title">Why Honda Build Sheet Lookup Matters?</h2>
+        <p class="section__desc">Whether you are shopping, selling, or maintaining a car, having a Honda build sheet gives you a major advantage.</p>
+      </div>
+      <div class="use-cases__grid" style="grid-template-columns:repeat(3,1fr)">
+        <div class="use-case-card fade-up">
+          <div class="use-case-card__header use-case-card__header--buyer">Buyers Looking for Used Cars</div>
+          <div class="use-case-card__body">
+            <h4 class="use-case-card__title">Confirm Original Equipment</h4>
+            <p class="use-case-card__desc">Buyers can check if a used Honda still has its factory parts. This helps avoid cars with swapped engines or mismatched trims.</p>
+            <h4 class="use-case-card__title">Confirm the trim level</h4>
+            <p class="use-case-card__desc">Sellers often confuse LX, EX, and Touring trims. Your build sheet proves the exact trim level so you do not overpay.</p>
+          </div>
+        </div>
+        <div class="use-case-card fade-up">
+          <div class="use-case-card__header use-case-card__header--seller">Private Sellers</div>
+          <div class="use-case-card__body">
+            <h4 class="use-case-card__title">Build Buyer Trust</h4>
+            <p class="use-case-card__desc">Sellers who share a build sheet show buyers they have nothing to hide. This builds trust and speeds up the sale.</p>
+            <h4 class="use-case-card__title">Justify Resale value</h4>
+            <p class="use-case-card__desc">Boost resale value with credible documentation. It makes the car more attractive to potential buyers by ensuring transparency.</p>
+          </div>
+        </div>
+        <div class="use-case-card fade-up">
+          <div class="use-case-card__header use-case-card__header--dealer">Mechanics and Enthusiasts</div>
+          <div class="use-case-card__body">
+            <h4 class="use-case-card__title">Order the right replacement parts</h4>
+            <p class="use-case-card__desc">Avoid the hassle of ordering incorrect parts by matching them with your factory build codes.</p>
+            <h4 class="use-case-card__title">Avoid Mismatched Repairs</h4>
+            <p class="use-case-card__desc">When factory details are clear, it becomes easier to avoid parts or components that do not match the vehicle's original configuration.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT IT REVEALS -->
+  <section class="included section" id="reveals">
+    <div class="container">
+      <div class="section__header fade-up">
+        <span class="section__tag">Complete Details</span>
+        <h2 class="section__title">What a Honda Build Sheet Reveals About Your Vehicle?</h2>
+      </div>
+      <div class="included__grid included__accordion">
+        <div class="included__card fade-up">
+          <button class="included__card-header" aria-expanded="false">
+            <span class="included__card-left">
+              <span class="included__card-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" stroke="#F30415" stroke-width="1.5" stroke-linecap="round"/></svg>
+              </span>
+              <span class="included__card-title">Trim Level and Package</span>
+            </span>
+            <svg class="included__chevron" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="included__card-body"><p class="included__card-desc">You can confirm if your Honda is a base model, EX, EX L, Touring, or Sport trim.</p></div>
+        </div>
+        <div class="included__card fade-up">
+          <button class="included__card-header" aria-expanded="false">
+            <span class="included__card-left">
+              <span class="included__card-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#F30415" stroke-width="1.5"/><path d="M12 8v4l3 2" stroke="#F30415" stroke-width="1.5" stroke-linecap="round"/></svg>
+              </span>
+              <span class="included__card-title">Exterior Paint</span>
+            </span>
+            <svg class="included__chevron" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="included__card-body"><p class="included__card-desc">Get the exact name and code for the factory paint. Highly useful if you need to order matching touch-up paint.</p></div>
+        </div>
+        <div class="included__card fade-up">
+          <button class="included__card-header" aria-expanded="false">
+            <span class="included__card-left">
+              <span class="included__card-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2M12 3a4 4 0 110 8 4 4 0 010-8z" stroke="#F30415" stroke-width="1.5" stroke-linecap="round"/></svg>
+              </span>
+              <span class="included__card-title">Interior Color and Material</span>
+            </span>
+            <svg class="included__chevron" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="included__card-body"><p class="included__card-desc">You can find out whether your Honda came with cloth, leather, or a combination of interior materials.</p></div>
+        </div>
+        <div class="included__card fade-up">
+          <button class="included__card-header" aria-expanded="false">
+            <span class="included__card-left">
+              <span class="included__card-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="#F30415" stroke-width="1.5"/><path d="M9 12l2 2 4-4" stroke="#F30415" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <span class="included__card-title">Production Plant Information</span>
+            </span>
+            <svg class="included__chevron" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="included__card-body"><p class="included__card-desc">The build sheet often shows which Honda plant assembled your vehicle and the production date.</p></div>
+        </div>
+        <div class="included__card fade-up">
+          <button class="included__card-header" aria-expanded="false">
+            <span class="included__card-left">
+              <span class="included__card-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="#F30415" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <span class="included__card-title">Engine and Transmission Specifications</span>
+            </span>
+            <svg class="included__chevron" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="included__card-body"><p class="included__card-desc">You will see the precise engine code, cylinder count, displacement, and horsepower that came with your Honda. The build sheet also shows whether your vehicle was equipped with a manual, automatic, or CVT transmission.</p></div>
+        </div>
+        <div class="included__card fade-up">
+          <button class="included__card-header" aria-expanded="false">
+            <span class="included__card-left">
+              <span class="included__card-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#F30415" stroke-width="1.5"/><path d="M12 8v4l3 2" stroke="#F30415" stroke-width="1.5" stroke-linecap="round"/></svg>
+              </span>
+              <span class="included__card-title">Wheel and Tire Specifications</span>
+            </span>
+            <svg class="included__chevron" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="included__card-body"><p class="included__card-desc">This section lists the exact wheel size, style, and tire rating that came with the car when it rolled off the production line.</p></div>
+        </div>
+        <div class="included__card fade-up">
+          <button class="included__card-header" aria-expanded="false">
+            <span class="included__card-left">
+              <span class="included__card-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 6h16M4 12h16M4 18h16" stroke="#F30415" stroke-width="1.5" stroke-linecap="round"/></svg>
+              </span>
+              <span class="included__card-title">Interior Comfort and Convenience Features</span>
+            </span>
+            <svg class="included__chevron" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="included__card-body"><p class="included__card-desc">Your sheet lists everything from dual-zone climate control to heated seats and a power sunroof.</p></div>
+        </div>
+        <div class="included__card fade-up">
+          <button class="included__card-header" aria-expanded="false">
+            <span class="included__card-left">
+              <span class="included__card-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="#F30415" stroke-width="1.5"/><path d="M9 12l2 2 4-4" stroke="#F30415" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <span class="included__card-title">Safety and Braking Systems</span>
+            </span>
+            <svg class="included__chevron" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="included__card-body"><p class="included__card-desc">Confirm the presence of specific airbag configurations, anti-lock braking systems, and electronic stability control systems.</p></div>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:32px" class="fade-up">
+        <a href="#" class="btn btn--primary btn--md">View Sample</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW TO GET -->
+  <section class="how section section--alt" id="how">
+    <div class="container">
+      <div class="section__header fade-up">
+        <span class="section__tag">Process</span>
+        <h2 class="section__title">How to Get a Honda Build Sheet by VIN?</h2>
+        <p class="section__desc">Getting a Honda build sheet by VIN is simple. Follow these three easy steps.</p>
+      </div>
+      <div class="how__layout how__layout--bridge fade-up">
+        <div class="how__steps-side">
+          <div class="how__bridge-plain">
+            <div class="how__bridge-vline" aria-hidden="true"></div>
+            <div class="how__bridge-plain-step">
+              <div class="how__bridge-plain-num">1</div>
+              <div>
+                <h3 class="how__bridge-plain-title">Find Your VIN</h3>
+                <p class="how__bridge-plain-desc">Check the dashboard, the driver's side door frame, or your registration and insurance card to find your VIN quickly.</p>
+              </div>
+            </div>
+            <div class="how__bridge-plain-step">
+              <div class="how__bridge-plain-num">2</div>
+              <div>
+                <h3 class="how__bridge-plain-title">Submit Your Request</h3>
+                <p class="how__bridge-plain-desc">Type your VIN into the form at the top of this page. Double-check each number and letter carefully to ensure there are no typos.</p>
+              </div>
+            </div>
+            <div class="how__bridge-plain-step">
+              <div class="how__bridge-plain-num">3</div>
+              <div>
+                <h3 class="how__bridge-plain-title">Retrieve Your Build Sheet</h3>
+                <p class="how__bridge-plain-desc">Choose the preferred plan, complete the payment, and your factory build sheet will be available right away, ready to view and download in seconds.</p>
+              </div>
+            </div>
+          </div>
+          <div style="text-align:center; margin-top:28px">
+            <a href="#hero" class="btn btn--primary btn--md">Get Build Sheet by VIN</a>
+          </div>
+        </div>
+        <div class="how__visual how__visual--side fade-up">
+          <img src="assets/images/honda-vin-location-1024x576.jpg" alt="Honda VIN Location - Dashboard and Driver Door Frame" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIFFERENCE -->
+  <section class="section" id="difference">
+    <div class="container">
+      <div class="section__header fade-up">
+        <span class="section__tag">Compare</span>
+        <h2 class="section__title">Difference Between Honda Build Sheet and Honda Window Sticker</h2>
+        <p class="section__desc">Many people confuse a Honda build sheet with a Honda window sticker. They are related but not the same thing.</p>
+      </div>
+      <div class="fade-up" style="max-width:860px;margin:0 auto 24px;display:grid;grid-template-columns:1fr 1fr;gap:20px;text-align:left">
+        <div style="background:var(--bg-alt);border:1px solid var(--border);border-radius:var(--radius-md);padding:20px">
+          <h4 style="font-family:var(--font-heading);font-size:15px;font-weight:700;margin-bottom:8px">Honda Build Sheet</h4>
+          <p style="font-size:14px;color:var(--text-secondary);line-height:1.6">A detailed internal factory document. It focuses entirely on technical parts, part numbers, and engineering codes presented in raw format.</p>
+        </div>
+        <div style="background:var(--bg-alt);border:1px solid var(--border);border-radius:var(--radius-md);padding:20px">
+          <h4 style="font-family:var(--font-heading);font-size:15px;font-weight:700;margin-bottom:8px">Honda Window Sticker</h4>
+          <p style="font-size:14px;color:var(--text-secondary);line-height:1.6">Also called a Monroney label — the sticker placed on a new car's window. It shows MSRP, standard equipment, fuel economy, and safety ratings in an easy-to-read layout.</p>
+        </div>
+      </div>
+      <div class="compare__table-wrap fade-up">
+        <table class="compare__table">
+          <thead>
+            <tr><th>Feature</th><th>Honda Build Sheet</th><th>Honda Window Sticker</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Purpose</td><td>Shows factory production data</td><td>Shows pricing and consumer details</td></tr>
+            <tr><td>Format</td><td>Detailed and technical</td><td>Simple and easy to read</td></tr>
+            <tr><td>Used By</td><td>Technicians, restorers, dealers</td><td>Buyers, shoppers, sellers</td></tr>
+            <tr><td>Includes Pricing</td><td class="no">No</td><td class="yes">Yes</td></tr>
+            <tr><td>Includes Fuel Economy</td><td class="no">No</td><td class="yes">Yes</td></tr>
+            <tr><td>Includes Safety Ratings</td><td class="no">No</td><td class="yes">Yes</td></tr>
+            <tr><td>Best For</td><td>Verifying original parts</td><td>Comparing new car value</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPLETE PICTURE -->
+  <section class="section section--alt" id="complete">
+    <div class="container">
+      <div class="section__header fade-up">
+        <span class="section__tag">Go Further</span>
+        <h2 class="section__title">Get the Complete Picture of Your Honda</h2>
+        <p class="section__desc">Sometimes a build sheet alone is not enough. Depending on your goal, you may need a different type of report.</p>
+      </div>
+      <div class="picture__grid">
+        <div class="picture__card fade-up">
+          <h4>Honda Window Sticker</h4>
+          <p>If you want a pricing breakdown and an easy-to-read format, a Honda window sticker is your best choice. It shows MSRP, standard equipment, fuel economy, and safety ratings.</p>
+          <a href="index.html">Get Window Sticker &rarr;</a>
+        </div>
+        <div class="picture__card fade-up">
+          <h4>Honda Vehicle History Report</h4>
+          <p>If you want ownership history, service records, recalls, odometer readings, title history, or theft records, get a Honda vehicle history report for deeper insight after it left the factory.</p>
+          <a href="#">Get Vehicle History &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ALL MODELS -->
+  <section class="models section" id="models">
+    <div class="container">
+      <div class="section__header fade-up">
+        <span class="section__tag">All Models</span>
+        <h2 class="section__title">Get Build Sheets for All Honda Models</h2>
+        <p class="section__desc">Our Honda VIN build sheet tool is compatible with all Honda models, including classic cars.</p>
+      </div>
+      <div class="models__dark-grid fade-up">
+        <a href="#" class="model-dark"><span class="model-dark__name">Civic</span><span class="model-dark__arrow">&rarr;</span></a>
+        <a href="#" class="model-dark"><span class="model-dark__name">Accord</span><span class="model-dark__arrow">&rarr;</span></a>
+        <a href="#" class="model-dark"><span class="model-dark__name">CR-V</span><span class="model-dark__arrow">&rarr;</span></a>
+        <a href="#" class="model-dark"><span class="model-dark__name">Pilot</span><span class="model-dark__arrow">&rarr;</span></a>
+        <a href="#" class="model-dark"><span class="model-dark__name">Odyssey</span><span class="model-dark__arrow">&rarr;</span></a>
+        <a href="#" class="model-dark"><span class="model-dark__name">HR-V</span><span class="model-dark__arrow">&rarr;</span></a>
+        <a href="#" class="model-dark"><span class="model-dark__name">Ridgeline</span><span class="model-dark__arrow">&rarr;</span></a>
+        <a href="#" class="model-dark"><span class="model-dark__name">Passport</span><span class="model-dark__arrow">&rarr;</span></a>
+        <a href="#" class="model-dark"><span class="model-dark__name">Fit</span><span class="model-dark__arrow">&rarr;</span></a>
+        <a href="#" class="model-dark"><span class="model-dark__name">Insight</span><span class="model-dark__arrow">&rarr;</span></a>
+      </div>
+      <p style="text-align:center;margin-top:12px;color:var(--text-secondary);font-size:13px">← Scroll to see more models on mobile →</p>
+    </div>
+  </section>
+
+  <!-- TOOLS — RED BAR (THEMED) -->
+  <section class="tools-red section" id="tools">
+    <div class="container">
+      <div class="section__header fade-up">
+        <span class="section__tag" style="color:rgba(255,255,255,.7)">More Tools</span>
+        <h2 class="section__title" style="color:#fff">Honda Tools & Resources</h2>
+      </div>
+      <div class="tools-red__bar fade-up">
+        <a href="vin-decoder.html" class="tool-pill"><span>Free Honda VIN Decoder</span><span class="tool-pill__arrow">&rarr;</span></a>
+        <a href="#" class="tool-pill"><span>Honda Recall Check</span><span class="tool-pill__arrow">&rarr;</span></a>
+        <a href="index.html" class="tool-pill"><span>Get Honda Window Sticker</span><span class="tool-pill__arrow">&rarr;</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- BENEFITS -->
+  <section class="benefits section" id="benefits">
+    <div class="container">
+      <div class="section__header fade-up">
+        <span class="section__tag">Benefits</span>
+        <h2 class="section__title">Benefits You'll Get</h2>
+      </div>
+      <div class="benefits__checklist fade-up">
+        <div class="benefit-check"><span class="benefit-check__box"><svg width="18" height="18" viewBox="0 0 28 28" fill="none"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span><span class="benefit-check__text">Covers All Honda Models</span></div>
+        <div class="benefit-check"><span class="benefit-check__box"><svg width="18" height="18" viewBox="0 0 28 28" fill="none"><path d="M14 3L3 8v6c0 6.5 4.5 12.5 11 14 6.5-1.5 11-7.5 11-14V8L14 3z" stroke="currentColor" stroke-width="1.6" fill="none"/><path d="M9 14l4 4 6-8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="benefit-check__text">Precise Data in PDF</span></div>
+        <div class="benefit-check"><span class="benefit-check__box"><svg width="18" height="18" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="10" stroke="currentColor" stroke-width="1.6" fill="none"/><path d="M14 8v4l3 2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span><span class="benefit-check__text">Support Classic Models</span></div>
+        <div class="benefit-check"><span class="benefit-check__box"><svg width="18" height="18" viewBox="0 0 28 28" fill="none"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z" stroke="currentColor" stroke-width="1.6"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="benefit-check__text">Always-Updated Trusted Database</span></div>
+        <div class="benefit-check"><span class="benefit-check__box"><svg width="18" height="18" viewBox="0 0 28 28" fill="none"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="benefit-check__text">24/7 Customer Support</span></div>
+        <div class="benefit-check"><span class="benefit-check__box"><svg width="18" height="18" viewBox="0 0 28 28" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="benefit-check__text">Satisfaction Guarantee</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq section section--alt" id="faq">
+    <div class="container">
+      <div class="section__header fade-up">
+        <span class="section__tag">FAQ</span>
+        <h2 class="section__title">FAQs on Honda Build Sheet by VIN</h2>
+      </div>
+      <div class="faq__list">
+        <div class="faq__item fade-up">
+          <button class="faq__question">
+            <span>Can I get a free Honda build sheet by VIN?</span>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round"/></svg>
+          </button>
+          <div class="faq__answer">
+            <p>Yes, basic vehicle information can often be retrieved online at no cost. However, a free Honda VIN lookup usually only provides basic specifications. For a complete list of factory features, paint codes, and packages, you will need a build sheet. This is because the report pulls detailed production data that is not included in a basic VIN check.</p>
+          </div>
+        </div>
+        <div class="faq__item fade-up">
+          <button class="faq__question">
+            <span>How do I get a Honda build sheet by VIN?</span>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round"/></svg>
+          </button>
+          <div class="faq__answer">
+            <p>You just need your 17-digit VIN to run a Honda build sheet search. Enter the VIN into the hondawindowsticker.com search tool and submit it. Within moments, you will receive a full build sheet of your car's factory configuration. You can view or print the document in just a few seconds.</p>
+          </div>
+        </div>
+        <div class="faq__item fade-up">
+          <button class="faq__question">
+            <span>What is the difference between a Honda build sheet and a window sticker?</span>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round"/></svg>
+          </button>
+          <div class="faq__answer">
+            <p>A build sheet is a highly technical document that lists the exact parts and engineering codes used to assemble your car. A Honda window sticker, on the other hand, is a consumer document intended for car buyers at dealership lots. The window sticker includes the original MSRP, standard features, and EPA fuel economy ratings.</p>
+          </div>
+        </div>
+        <div class="faq__item fade-up">
+          <button class="faq__question">
+            <span>Where is the VIN number located on a Honda?</span>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round"/></svg>
+          </button>
+          <div class="faq__answer">
+            <p>Your VIN is usually found on the driver's side dashboard near the windshield. You can also find it on the driver’s door jamb sticker. In addition, your insurance card and registration papers list the VIN as well.</p>
+          </div>
+        </div>
+        <div class="faq__item fade-up">
+          <button class="faq__question">
+            <span>How do I find the paint code on my Honda build sheet?</span>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round"/></svg>
+          </button>
+          <div class="faq__answer">
+            <p>Your factory paint code is listed under the exterior styling section of your build sheet. This code is crucial if you need to buy matching touch up paint or replace a body panel. You can also find this paint code printed on the safety label inside the driver side door frame.</p>
+          </div>
+        </div>
+        <div class="faq__item fade-up">
+          <button class="faq__question">
+            <span>Will a Honda build sheet show my exact trim level?</span>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round"/></svg>
+          </button>
+          <div class="faq__answer">
+            <p>Yes, your build sheet will clearly state whether your car is an LX, EX, Sport, or Touring trim. Sellers often list the wrong trim level when posting used cars online. Checking your document ensures you know the exact Honda trim package and avoid overpaying for a used vehicle.</p>
+          </div>
+        </div>
+        <div class="faq__item fade-up">
+          <button class="faq__question">
+            <span>Can I get a build sheet for an older or classic Honda?</span>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round"/></svg>
+          </button>
+          <div class="faq__answer">
+            <p>Yes, hondawindowsticker.com offers build sheets for any classic Honda. Your build sheet displays specifications, configurations, and the original MSRP. It is a popular tool among Honda restoration fans across the USA.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="cta section" id="pricing">
+    <div class="container">
+      <div class="cta__card cta__card--premium fade-up">
+        <span class="section__tag">Instant Access</span>
+        <h2 class="cta__title">Ready to Get Your Honda Build Sheet?</h2>
+        <p class="cta__desc">Enter your VIN below and retrieve your original factory build sheet instantly.</p>
+        <div class="cta__search">
+          <input type="text" class="cta__input" placeholder="Enter your 17-character Honda VIN" maxlength="17">
+          <button class="btn btn--primary btn--lg cta__btn">Get Build Sheet</button>
+        </div>
+        <p class="cta__fineprint">Factory-accurate build data direct from Honda's database.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__col footer__col--brand">
+          <a href="index.html" class="nav__logo" style="margin-bottom:1rem">
+            <svg class="nav__logo-icon" viewBox="0 0 32 32" fill="none">
+              <rect width="32" height="32" rx="6" fill="#F30415"/>
+              <path d="M16 8c-4.4 0-8 3.6-8 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8zm0 14c-3.3 0-6-2.7-6-6s2.7-6 6-6 6 2.7 6 6-2.7 6-6 6z" fill="#fff"/>
+              <path d="M16 11l-2 5h4l-2 5" stroke="#F30415" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            </svg>
+            <span class="nav__logo-text">Honda<span class="nav__logo-accent">WindowSticker</span></span>
+          </a>
+          <p class="footer__desc">Retrieve your original Honda factory window sticker using your VIN. Fast, accurate, and secure.</p>
+        </div>
+        <div class="footer__col">
+          <h4 class="footer__heading">Products</h4>
+          <a href="build-sheet-by-vin.html" class="footer__link">Build Sheet</a>
+          <a href="paint-color-by-vin.html" class="footer__link">Paint Colour by VIN</a>
+          <a href="vin-decoder.html" class="footer__link">FREE VIN Decoder</a>
+        </div>
+        <div class="footer__col">
+          <h4 class="footer__heading">Tools</h4>
+          <a href="warranty-check-by-vin.html" class="footer__link">Warranty Check</a>
+          <a href="msrp-by-vin.html" class="footer__link">MSRP Check</a>
+          <a href="specifications-by-vin.html" class="footer__link">Specifications Check</a>
+        </div>
+        <div class="footer__col">
+          <h4 class="footer__heading">Support</h4>
+          <a href="index.html#faq" class="footer__link">FAQ</a>
+          <a href="#" class="footer__link">Contact Us</a>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>&copy; 2026 HondaWindowSticker.com. All rights reserved. Not affiliated with or endorsed by Honda Motor Co., Ltd.</p>
+      </div>
+    </div>
+  </footer>
+  <script src="js/scripts.js"></script>
+</body>
+</html>
+
+
